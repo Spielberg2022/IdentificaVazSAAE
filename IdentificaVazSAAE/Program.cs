@@ -17,7 +17,7 @@ namespace IdentificaVazSAAE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormVazamento());
+            Application.Run(new FormConfigBD());
         }
     }
 }

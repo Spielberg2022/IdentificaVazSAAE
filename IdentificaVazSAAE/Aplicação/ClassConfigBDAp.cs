@@ -9,12 +9,12 @@ using IdentificaVazSAAE.Domínio;
 
 namespace IdentificaVazSAAE.Aplicação
 {
-    class ClassVerificaVazamento
+    class ClassConfigBDAp
     {
-        public ClassConfiguracaoBD configBD = new ClassConfiguracaoBD();
-        public ClassBD Bd = new ClassBD();
-        public string erro;
-        public bool vf;
+		public ClassConfiguracaoBD configBD = new ClassConfiguracaoBD();
+		public ClassBD Bd = new ClassBD();
+		public string erro;
+		public bool vf;
 
 		/// <summary>
 		/// Lista todos os servidores da rede
