@@ -240,6 +240,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.Controls.Add(this.bd_groupBox);
             this.Name = "FormConfigBD";
             this.Text = "Configurações do BD";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormConfigBD_FormClosed);
             this.bd_groupBox.ResumeLayout(false);
             this.bd_groupBox.PerformLayout();
             this.ResumeLayout(false);

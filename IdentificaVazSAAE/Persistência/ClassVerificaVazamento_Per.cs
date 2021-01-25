@@ -13,7 +13,7 @@ namespace IdentificaVazSAAE.Persistência
         int consumo;
     }
 
-    class ClassVazamento
+    class ClassVerificaVazamento_Per
     {
         /// <summary>
         /// Define a quantidade de anos a serem analisados

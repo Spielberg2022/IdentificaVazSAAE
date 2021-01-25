@@ -9,7 +9,7 @@ using IdentificaVazSAAE.Domínio;
 
 namespace IdentificaVazSAAE.Aplicação
 {
-    class ClassVerificaVazamentoAp
+    class ClassVerificaVazamento_Apl
     {
         
 	}

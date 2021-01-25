@@ -9,10 +9,10 @@ using IdentificaVazSAAE.Domínio;
 
 namespace IdentificaVazSAAE.Aplicação
 {
-    class ClassConfigBDAp
+    class ClassConfigBD_Apl
     {
-		public ClassConfiguracaoBD configBD = new ClassConfiguracaoBD();
-		public ClassBD Bd = new ClassBD();
+		public ClassConfigBD_Dom configBD = new ClassConfigBD_Dom();
+		public ClassConfigBD_Per Bd = new ClassConfigBD_Per();
 		public string erro;
 		public bool vf;
 
@@ -39,7 +39,7 @@ namespace IdentificaVazSAAE.Aplicação
 		/// </summary>
 		/// <param name="BD"> Dados do banco de dados</param>
 		/// <returns> True para conexão realizada com sucesso e False para conexão não realizada.</returns>
-		public bool Conectar(ClassConfiguracaoBD BD)
+		public bool Conectar(ClassConfigBD_Dom BD)
 		{
 			if (!Bd.Conectar(BD))
 			{

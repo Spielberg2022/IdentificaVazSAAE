@@ -43,30 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aplicação\ClassConfigBDAp.cs" />
-    <Compile Include="Aplicação\ClassVerificaVazamentoAp.cs" />
+    <Compile Include="Aplicação\ClassConfigBD_Apl.cs" />
+    <Compile Include="Aplicação\ClassVerificaVazamento_Apl.cs" />
     <Compile Include="Apresentação\FormConfigBD.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Apresentação\FormConfigBD.Designer.cs">
       <DependentUpon>FormConfigBD.cs</DependentUpon>
     </Compile>
-    <Compile Include="Domínio\ClassConfiguracaoBD.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistência\ClassBD.cs" />
-    <Compile Include="Persistência\ClassVazamento.cs" />
+    <Compile Include="Domínio\ClassConfigBD_Dom.cs" />
+    <Compile Include="Persistência\ClassConfigBD_Per.cs" />
+    <Compile Include="Persistência\ClassVerificaVazamento_Per.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Apresentação\FormConfigBD.resx">
       <DependentUpon>FormConfigBD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

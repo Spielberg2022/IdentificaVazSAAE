@@ -5,7 +5,7 @@ using System.Text;
 
 namespace IdentificaVazSAAE.Domínio
 {
-    class ClassConfiguracaoBD
+    class ClassConfigBD_Dom
     {
         public string Servidor { get; set; }
         public string Instância { get; set; }
