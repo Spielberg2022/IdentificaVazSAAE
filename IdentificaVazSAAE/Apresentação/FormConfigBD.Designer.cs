@@ -34,7 +34,6 @@ namespace IdentificaVazSAAE.Apresentação
             this.instancia_label = new System.Windows.Forms.Label();
             this.instancia_comboBox = new System.Windows.Forms.ComboBox();
             this.atualizarServidores_button = new System.Windows.Forms.Button();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.bd_comboBox = new System.Windows.Forms.ComboBox();
             this.bd_label = new System.Windows.Forms.Label();
             this.senha_label = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.servidor_label = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelarButton = new System.Windows.Forms.Button();
+            this.testaBd_button = new System.Windows.Forms.Button();
             this.bd_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +55,6 @@ namespace IdentificaVazSAAE.Apresentação
             this.bd_groupBox.Controls.Add(this.instancia_label);
             this.bd_groupBox.Controls.Add(this.instancia_comboBox);
             this.bd_groupBox.Controls.Add(this.atualizarServidores_button);
-            this.bd_groupBox.Controls.Add(this.progressBar);
             this.bd_groupBox.Controls.Add(this.bd_comboBox);
             this.bd_groupBox.Controls.Add(this.bd_label);
             this.bd_groupBox.Controls.Add(this.senha_label);
@@ -68,7 +67,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.bd_groupBox.Controls.Add(this.servidor_label);
             this.bd_groupBox.Location = new System.Drawing.Point(12, 12);
             this.bd_groupBox.Name = "bd_groupBox";
-            this.bd_groupBox.Size = new System.Drawing.Size(315, 207);
+            this.bd_groupBox.Size = new System.Drawing.Size(315, 191);
             this.bd_groupBox.TabIndex = 1;
             this.bd_groupBox.TabStop = false;
             this.bd_groupBox.Text = "Configurações do banco de dados:";
@@ -103,16 +102,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.atualizarServidores_button.Size = new System.Drawing.Size(28, 23);
             this.atualizarServidores_button.TabIndex = 0;
             this.atualizarServidores_button.UseVisualStyleBackColor = true;
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(16, 183);
-            this.progressBar.MarqueeAnimationSpeed = 30;
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(284, 12);
-            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar.TabIndex = 6;
-            this.progressBar.Visible = false;
+            this.atualizarServidores_button.Click += new System.EventHandler(this.atualizarServidores_button_Click);
             // 
             // bd_comboBox
             // 
@@ -124,6 +114,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.bd_comboBox.Name = "bd_comboBox";
             this.bd_comboBox.Size = new System.Drawing.Size(188, 21);
             this.bd_comboBox.TabIndex = 6;
+            this.bd_comboBox.Enter += new System.EventHandler(this.Bd_comboBoxEnter);
             // 
             // bd_label
             // 
@@ -192,6 +183,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.autenticação_comboBox.Size = new System.Drawing.Size(188, 21);
             this.autenticação_comboBox.TabIndex = 3;
             this.autenticação_comboBox.Tag = "";
+            this.autenticação_comboBox.SelectedIndexChanged += new System.EventHandler(this.autenticação_comboBox_SelectedIndexChanged);
             // 
             // servidor_comboBox
             // 
@@ -202,6 +194,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.servidor_comboBox.Name = "servidor_comboBox";
             this.servidor_comboBox.Size = new System.Drawing.Size(154, 21);
             this.servidor_comboBox.TabIndex = 1;
+            this.servidor_comboBox.SelectedIndexChanged += new System.EventHandler(this.servidor_comboBox_SelectedIndexChanged);
             // 
             // servidor_label
             // 
@@ -229,16 +222,30 @@ namespace IdentificaVazSAAE.Apresentação
             this.cancelarButton.TabIndex = 4;
             this.cancelarButton.Text = "&Cancelar";
             this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
+            // 
+            // testaBd_button
+            // 
+            this.testaBd_button.Location = new System.Drawing.Point(333, 79);
+            this.testaBd_button.Name = "testaBd_button";
+            this.testaBd_button.Size = new System.Drawing.Size(68, 124);
+            this.testaBd_button.TabIndex = 5;
+            this.testaBd_button.Text = "&Testar conexão com o Bd";
+            this.testaBd_button.UseVisualStyleBackColor = true;
+            this.testaBd_button.Click += new System.EventHandler(this.testaBd_button_Click);
             // 
             // FormConfigBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 231);
+            this.ClientSize = new System.Drawing.Size(409, 215);
+            this.Controls.Add(this.testaBd_button);
             this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.bd_groupBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormConfigBD";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurações do BD";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormConfigBD_FormClosed);
             this.bd_groupBox.ResumeLayout(false);
@@ -253,7 +260,6 @@ namespace IdentificaVazSAAE.Apresentação
         private System.Windows.Forms.Label instancia_label;
         private System.Windows.Forms.ComboBox instancia_comboBox;
         private System.Windows.Forms.Button atualizarServidores_button;
-        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ComboBox bd_comboBox;
         private System.Windows.Forms.Label bd_label;
         private System.Windows.Forms.Label senha_label;
@@ -266,5 +272,6 @@ namespace IdentificaVazSAAE.Apresentação
         private System.Windows.Forms.Label servidor_label;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelarButton;
+        private System.Windows.Forms.Button testaBd_button;
     }
 }

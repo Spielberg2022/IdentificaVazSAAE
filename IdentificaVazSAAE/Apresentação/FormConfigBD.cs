@@ -15,7 +15,6 @@ namespace IdentificaVazSAAE.Apresentação
 {
     public partial class FormConfigBD : Form
     {
-        DialogResult resultado;
         ClassConfigBD_Apl configBD_Apl = new ClassConfigBD_Apl();
         ClassConfigBD_Per configBD_Per = new ClassConfigBD_Per();
         ClassConfigBD_Dom bd = new ClassConfigBD_Dom();
@@ -29,7 +28,6 @@ namespace IdentificaVazSAAE.Apresentação
             AtualizarServidores();
             this.Cursor = Cursors.Default;
         }
-
 		void Limpa()
 		{
 			this.Cursor = Cursors.WaitCursor;
@@ -73,22 +71,6 @@ namespace IdentificaVazSAAE.Apresentação
 			instancia_comboBox.DataSource = relacionamento;
 			this.Cursor = Cursors.Default;
 			servidor_comboBox.Focus();
-		}
-
-		void AtualizarServidores_buttonClick(object sender, EventArgs e)
-		{
-			Limpa();
-			AtualizarServidores();
-		}
-
-		void Autenticação_comboBoxSelectedIndexChanged(object sender, EventArgs e)
-		{
-			Limpa();
-		}
-
-		void Servidor_comboBoxSelectedIndexChanged(object sender, EventArgs e)
-		{
-			Limpa();
 		}
 
 		void Bd_comboBoxEnter(object sender, EventArgs e)
@@ -149,5 +131,41 @@ namespace IdentificaVazSAAE.Apresentação
         {
 			Application.Exit();
         }
+
+        private void autenticação_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			Limpa();
+        }
+
+        private void atualizarServidores_button_Click(object sender, EventArgs e)
+        {
+			Limpa();
+			AtualizarServidores();
+		}
+
+        private void servidor_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			Limpa();
+		}
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+			this.Close();
+        }
+
+        private void testaBd_button_Click(object sender, EventArgs e)
+        {
+			bd.Bd = bd_comboBox.Text;
+			if (configBD_Apl.Conectar(bd))
+				MessageBox.Show("Conexão com banco de dados bem sucedida!.",
+										"Informação",
+										 MessageBoxButtons.OK,
+										 MessageBoxIcon.Information);
+			else
+				MessageBox.Show("Erro ao tentar conectar com o banco de dados.\n\n" + configBD_Per.erro,
+										"Erro",
+										  MessageBoxButtons.OK,
+										 MessageBoxIcon.Error);
+		}
     }
 }
