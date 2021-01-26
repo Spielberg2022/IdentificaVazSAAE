@@ -68,14 +68,14 @@ namespace IdentificaVazSAAE.Apresentação
             this.bd_groupBox.Controls.Add(this.servidor_label);
             this.bd_groupBox.Location = new System.Drawing.Point(12, 12);
             this.bd_groupBox.Name = "bd_groupBox";
-            this.bd_groupBox.Size = new System.Drawing.Size(315, 190);
+            this.bd_groupBox.Size = new System.Drawing.Size(315, 207);
             this.bd_groupBox.TabIndex = 1;
             this.bd_groupBox.TabStop = false;
             this.bd_groupBox.Text = "Configurações do banco de dados:";
             // 
             // instancia_label
             // 
-            this.instancia_label.Location = new System.Drawing.Point(14, 41);
+            this.instancia_label.Location = new System.Drawing.Point(14, 52);
             this.instancia_label.Name = "instancia_label";
             this.instancia_label.Size = new System.Drawing.Size(92, 18);
             this.instancia_label.TabIndex = 11;
@@ -88,7 +88,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.instancia_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.instancia_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.instancia_comboBox.FormattingEnabled = true;
-            this.instancia_comboBox.Location = new System.Drawing.Point(112, 41);
+            this.instancia_comboBox.Location = new System.Drawing.Point(112, 52);
             this.instancia_comboBox.Name = "instancia_comboBox";
             this.instancia_comboBox.Size = new System.Drawing.Size(188, 21);
             this.instancia_comboBox.TabIndex = 2;
@@ -98,7 +98,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.atualizarServidores_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("atualizarServidores_button.BackgroundImage")));
             this.atualizarServidores_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.atualizarServidores_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.atualizarServidores_button.Location = new System.Drawing.Point(272, 15);
+            this.atualizarServidores_button.Location = new System.Drawing.Point(272, 26);
             this.atualizarServidores_button.Name = "atualizarServidores_button";
             this.atualizarServidores_button.Size = new System.Drawing.Size(28, 23);
             this.atualizarServidores_button.TabIndex = 0;
@@ -106,7 +106,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(16, 172);
+            this.progressBar.Location = new System.Drawing.Point(16, 183);
             this.progressBar.MarqueeAnimationSpeed = 30;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(284, 12);
@@ -120,14 +120,14 @@ namespace IdentificaVazSAAE.Apresentação
             this.bd_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.bd_comboBox.DisplayMember = "Name";
             this.bd_comboBox.FormattingEnabled = true;
-            this.bd_comboBox.Location = new System.Drawing.Point(112, 145);
+            this.bd_comboBox.Location = new System.Drawing.Point(112, 156);
             this.bd_comboBox.Name = "bd_comboBox";
             this.bd_comboBox.Size = new System.Drawing.Size(188, 21);
             this.bd_comboBox.TabIndex = 6;
             // 
             // bd_label
             // 
-            this.bd_label.Location = new System.Drawing.Point(14, 145);
+            this.bd_label.Location = new System.Drawing.Point(14, 156);
             this.bd_label.Name = "bd_label";
             this.bd_label.Size = new System.Drawing.Size(92, 18);
             this.bd_label.TabIndex = 9;
@@ -136,7 +136,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // senha_label
             // 
-            this.senha_label.Location = new System.Drawing.Point(14, 119);
+            this.senha_label.Location = new System.Drawing.Point(14, 130);
             this.senha_label.Name = "senha_label";
             this.senha_label.Size = new System.Drawing.Size(92, 18);
             this.senha_label.TabIndex = 8;
@@ -145,7 +145,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // usuário_label
             // 
-            this.usuário_label.Location = new System.Drawing.Point(14, 93);
+            this.usuário_label.Location = new System.Drawing.Point(14, 104);
             this.usuário_label.Name = "usuário_label";
             this.usuário_label.Size = new System.Drawing.Size(92, 18);
             this.usuário_label.TabIndex = 7;
@@ -154,7 +154,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // autenticação_label
             // 
-            this.autenticação_label.Location = new System.Drawing.Point(14, 66);
+            this.autenticação_label.Location = new System.Drawing.Point(14, 77);
             this.autenticação_label.Name = "autenticação_label";
             this.autenticação_label.Size = new System.Drawing.Size(92, 18);
             this.autenticação_label.TabIndex = 6;
@@ -164,7 +164,7 @@ namespace IdentificaVazSAAE.Apresentação
             // senha_textBox
             // 
             this.senha_textBox.Enabled = false;
-            this.senha_textBox.Location = new System.Drawing.Point(112, 119);
+            this.senha_textBox.Location = new System.Drawing.Point(112, 130);
             this.senha_textBox.Name = "senha_textBox";
             this.senha_textBox.Size = new System.Drawing.Size(188, 20);
             this.senha_textBox.TabIndex = 5;
@@ -173,7 +173,7 @@ namespace IdentificaVazSAAE.Apresentação
             // usuário_textBox
             // 
             this.usuário_textBox.Enabled = false;
-            this.usuário_textBox.Location = new System.Drawing.Point(112, 93);
+            this.usuário_textBox.Location = new System.Drawing.Point(112, 104);
             this.usuário_textBox.Name = "usuário_textBox";
             this.usuário_textBox.Size = new System.Drawing.Size(188, 20);
             this.usuário_textBox.TabIndex = 4;
@@ -187,7 +187,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.autenticação_comboBox.Items.AddRange(new object[] {
             "Autenticação do Windows",
             "Autenticação do Servidor SQL"});
-            this.autenticação_comboBox.Location = new System.Drawing.Point(112, 66);
+            this.autenticação_comboBox.Location = new System.Drawing.Point(112, 77);
             this.autenticação_comboBox.Name = "autenticação_comboBox";
             this.autenticação_comboBox.Size = new System.Drawing.Size(188, 21);
             this.autenticação_comboBox.TabIndex = 3;
@@ -198,14 +198,14 @@ namespace IdentificaVazSAAE.Apresentação
             this.servidor_comboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.servidor_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.servidor_comboBox.FormattingEnabled = true;
-            this.servidor_comboBox.Location = new System.Drawing.Point(112, 16);
+            this.servidor_comboBox.Location = new System.Drawing.Point(112, 27);
             this.servidor_comboBox.Name = "servidor_comboBox";
             this.servidor_comboBox.Size = new System.Drawing.Size(154, 21);
             this.servidor_comboBox.TabIndex = 1;
             // 
             // servidor_label
             // 
-            this.servidor_label.Location = new System.Drawing.Point(14, 16);
+            this.servidor_label.Location = new System.Drawing.Point(14, 27);
             this.servidor_label.Name = "servidor_label";
             this.servidor_label.Size = new System.Drawing.Size(92, 18);
             this.servidor_label.TabIndex = 0;
@@ -214,7 +214,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(333, 28);
+            this.okButton.Location = new System.Drawing.Point(333, 21);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(68, 23);
             this.okButton.TabIndex = 3;
@@ -223,7 +223,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // cancelarButton
             // 
-            this.cancelarButton.Location = new System.Drawing.Point(333, 57);
+            this.cancelarButton.Location = new System.Drawing.Point(333, 50);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(68, 23);
             this.cancelarButton.TabIndex = 4;
@@ -234,7 +234,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 210);
+            this.ClientSize = new System.Drawing.Size(409, 231);
             this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.bd_groupBox);
