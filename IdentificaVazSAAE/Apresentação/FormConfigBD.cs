@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Sql;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,7 +17,9 @@ namespace IdentificaVazSAAE.Apresentação
 {
     public partial class FormConfigBD : Form
     {
-        ClassConfigBD_Apl configBD_Apl = new ClassConfigBD_Apl();
+		public SqlConnection connection = new SqlConnection();
+
+		ClassConfigBD_Apl configBD_Apl = new ClassConfigBD_Apl();
         ClassConfigBD_Per configBD_Per = new ClassConfigBD_Per();
         ClassConfigBD_Dom bd = new ClassConfigBD_Dom();
         BindingSource relacionamento = new BindingSource();
@@ -167,5 +171,14 @@ namespace IdentificaVazSAAE.Apresentação
 										  MessageBoxButtons.OK,
 										 MessageBoxIcon.Error);
 		}
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+			FormVerificaVazamento verificaVazamento = new FormVerificaVazamento();
+
+			verificaVazamento.connection = configBD_Per.sqlConnection;
+			verificaVazamento.Show();
+			this.Hide();
+        }
     }
 }

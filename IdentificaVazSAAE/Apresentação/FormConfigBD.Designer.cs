@@ -213,6 +213,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.okButton.TabIndex = 3;
             this.okButton.Text = "&Ok";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelarButton
             // 

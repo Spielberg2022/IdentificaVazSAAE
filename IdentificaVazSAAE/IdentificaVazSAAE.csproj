@@ -58,6 +58,7 @@
       <DependentUpon>FormVerificaVazamento.cs</DependentUpon>
     </Compile>
     <Compile Include="Domínio\ClassConfigBD_Dom.cs" />
+    <Compile Include="Domínio\ClassVerificaVazamento_Dom.cs" />
     <Compile Include="Persistência\ClassConfigBD_Per.cs" />
     <Compile Include="Persistência\ClassVerificaVazamento_Per.cs" />
     <Compile Include="Program.cs" />
