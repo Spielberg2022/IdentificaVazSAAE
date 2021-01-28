@@ -21,6 +21,10 @@ namespace IdentificaVazSAAE.Apresentação
         ClassVerificaVazamento_Per verificaVazamento_Per = new ClassVerificaVazamento_Per();
         ClassVerificaVazamento_Dom verificaVazamento_Dom = new ClassVerificaVazamento_Dom();
 
+        public ClassConfigBD_Apl configBD_Apl = new ClassConfigBD_Apl();
+        public ClassConfigBD_Per configBD_Per = new ClassConfigBD_Per();
+        public ClassConfigBD_Dom configBD_Dom = new ClassConfigBD_Dom();
+
         public SqlConnection connection = new SqlConnection();
 
         public FormVerificaVazamento()

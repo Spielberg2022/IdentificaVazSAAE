@@ -161,10 +161,13 @@ namespace IdentificaVazSAAE.Apresentação
         {
 			bd.Bd = bd_comboBox.Text;
 			if (configBD_Apl.Conectar(bd))
+            {
+				connection = configBD_Per.sqlConnection;
 				MessageBox.Show("Conexão com banco de dados bem sucedida!.",
 										"Informação",
 										 MessageBoxButtons.OK,
 										 MessageBoxIcon.Information);
+			}
 			else
 				MessageBox.Show("Erro ao tentar conectar com o banco de dados.\n\n" + configBD_Per.erro,
 										"Erro",
@@ -175,8 +178,9 @@ namespace IdentificaVazSAAE.Apresentação
         private void okButton_Click(object sender, EventArgs e)
         {
 			FormVerificaVazamento verificaVazamento = new FormVerificaVazamento();
-
-			verificaVazamento.connection = configBD_Per.sqlConnection;
+			verificaVazamento.configBD_Apl = configBD_Apl;
+			verificaVazamento.configBD_Per = configBD_Per;
+			verificaVazamento.configBD_Dom = bd;
 			verificaVazamento.Show();
 			this.Hide();
         }

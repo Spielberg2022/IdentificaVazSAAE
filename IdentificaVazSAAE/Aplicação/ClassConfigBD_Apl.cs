@@ -9,7 +9,7 @@ using IdentificaVazSAAE.Domínio;
 
 namespace IdentificaVazSAAE.Aplicação
 {
-    class ClassConfigBD_Apl
+    public class ClassConfigBD_Apl
     {
 		public ClassConfigBD_Dom configBD = new ClassConfigBD_Dom();
 		public ClassConfigBD_Per Bd = new ClassConfigBD_Per();

@@ -10,7 +10,7 @@ using IdentificaVazSAAE.Domínio;
 
 namespace IdentificaVazSAAE.Persistência
 {
-    class ClassConfigBD_Per
+    public class ClassConfigBD_Per
     {
 		public SqlConnection sqlConnection = new SqlConnection();
 		public SqlDataAdapter adaptador;
