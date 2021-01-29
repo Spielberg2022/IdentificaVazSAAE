@@ -36,9 +36,40 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_tabPage = new System.Windows.Forms.TabPage();
             this.leituras_dataGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.medias_tabPage = new System.Windows.Forms.TabPage();
+            this.meses_groupBox = new System.Windows.Forms.GroupBox();
+            this.jan_label = new System.Windows.Forms.Label();
+            this.jan_textBox = new System.Windows.Forms.TextBox();
+            this.fev_textBox = new System.Windows.Forms.TextBox();
+            this.fev_label = new System.Windows.Forms.Label();
+            this.mar_textBox = new System.Windows.Forms.TextBox();
+            this.mar_label = new System.Windows.Forms.Label();
+            this.abr_textBox = new System.Windows.Forms.TextBox();
+            this.abr_label = new System.Windows.Forms.Label();
+            this.mai_textBox = new System.Windows.Forms.TextBox();
+            this.mai_label = new System.Windows.Forms.Label();
+            this.jun_textBox = new System.Windows.Forms.TextBox();
+            this.jun_label = new System.Windows.Forms.Label();
+            this.jul_textBox = new System.Windows.Forms.TextBox();
+            this.jul_label = new System.Windows.Forms.Label();
+            this.ago_textBox = new System.Windows.Forms.TextBox();
+            this.ago_label = new System.Windows.Forms.Label();
+            this.set_textBox = new System.Windows.Forms.TextBox();
+            this.set_label = new System.Windows.Forms.Label();
+            this.out_textBox = new System.Windows.Forms.TextBox();
+            this.out_label = new System.Windows.Forms.Label();
+            this.nov_textBox = new System.Windows.Forms.TextBox();
+            this.nov_label = new System.Windows.Forms.Label();
+            this.dez_textBox = new System.Windows.Forms.TextBox();
+            this.dez_label = new System.Windows.Forms.Label();
+            this.rol_dataGridView = new System.Windows.Forms.DataGridView();
+            this.rol_label = new System.Windows.Forms.Label();
             this.leituras_tabControl.SuspendLayout();
             this.leituras_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).BeginInit();
+            this.medias_tabPage.SuspendLayout();
+            this.meses_groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rol_dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // codLigacao_label
@@ -73,6 +104,7 @@ namespace IdentificaVazSAAE.Apresentação
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.leituras_tabControl.Controls.Add(this.leituras_tabPage);
+            this.leituras_tabControl.Controls.Add(this.medias_tabPage);
             this.leituras_tabControl.Location = new System.Drawing.Point(12, 42);
             this.leituras_tabControl.Name = "leituras_tabControl";
             this.leituras_tabControl.SelectedIndex = 0;
@@ -113,6 +145,266 @@ namespace IdentificaVazSAAE.Apresentação
             this.label1.TabIndex = 0;
             this.label1.Text = "Leituras dos últimos 3 anos:";
             // 
+            // medias_tabPage
+            // 
+            this.medias_tabPage.Controls.Add(this.rol_label);
+            this.medias_tabPage.Controls.Add(this.rol_dataGridView);
+            this.medias_tabPage.Controls.Add(this.meses_groupBox);
+            this.medias_tabPage.Location = new System.Drawing.Point(4, 22);
+            this.medias_tabPage.Name = "medias_tabPage";
+            this.medias_tabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.medias_tabPage.Size = new System.Drawing.Size(665, 398);
+            this.medias_tabPage.TabIndex = 1;
+            this.medias_tabPage.Text = "Médias";
+            this.medias_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // meses_groupBox
+            // 
+            this.meses_groupBox.Controls.Add(this.dez_textBox);
+            this.meses_groupBox.Controls.Add(this.dez_label);
+            this.meses_groupBox.Controls.Add(this.nov_textBox);
+            this.meses_groupBox.Controls.Add(this.nov_label);
+            this.meses_groupBox.Controls.Add(this.out_textBox);
+            this.meses_groupBox.Controls.Add(this.out_label);
+            this.meses_groupBox.Controls.Add(this.set_textBox);
+            this.meses_groupBox.Controls.Add(this.set_label);
+            this.meses_groupBox.Controls.Add(this.ago_textBox);
+            this.meses_groupBox.Controls.Add(this.ago_label);
+            this.meses_groupBox.Controls.Add(this.jul_textBox);
+            this.meses_groupBox.Controls.Add(this.jul_label);
+            this.meses_groupBox.Controls.Add(this.jun_textBox);
+            this.meses_groupBox.Controls.Add(this.jun_label);
+            this.meses_groupBox.Controls.Add(this.mai_textBox);
+            this.meses_groupBox.Controls.Add(this.mai_label);
+            this.meses_groupBox.Controls.Add(this.abr_textBox);
+            this.meses_groupBox.Controls.Add(this.abr_label);
+            this.meses_groupBox.Controls.Add(this.mar_textBox);
+            this.meses_groupBox.Controls.Add(this.mar_label);
+            this.meses_groupBox.Controls.Add(this.fev_textBox);
+            this.meses_groupBox.Controls.Add(this.fev_label);
+            this.meses_groupBox.Controls.Add(this.jan_textBox);
+            this.meses_groupBox.Controls.Add(this.jan_label);
+            this.meses_groupBox.Location = new System.Drawing.Point(6, 17);
+            this.meses_groupBox.Name = "meses_groupBox";
+            this.meses_groupBox.Size = new System.Drawing.Size(276, 196);
+            this.meses_groupBox.TabIndex = 0;
+            this.meses_groupBox.TabStop = false;
+            this.meses_groupBox.Text = "Consumo médio do mês de:";
+            // 
+            // jan_label
+            // 
+            this.jan_label.AutoSize = true;
+            this.jan_label.Location = new System.Drawing.Point(6, 30);
+            this.jan_label.Name = "jan_label";
+            this.jan_label.Size = new System.Drawing.Size(30, 13);
+            this.jan_label.TabIndex = 0;
+            this.jan_label.Text = "Jan.:";
+            // 
+            // jan_textBox
+            // 
+            this.jan_textBox.Location = new System.Drawing.Point(42, 27);
+            this.jan_textBox.Name = "jan_textBox";
+            this.jan_textBox.Size = new System.Drawing.Size(80, 20);
+            this.jan_textBox.TabIndex = 1;
+            // 
+            // fev_textBox
+            // 
+            this.fev_textBox.Location = new System.Drawing.Point(42, 53);
+            this.fev_textBox.Name = "fev_textBox";
+            this.fev_textBox.Size = new System.Drawing.Size(80, 20);
+            this.fev_textBox.TabIndex = 3;
+            // 
+            // fev_label
+            // 
+            this.fev_label.AutoSize = true;
+            this.fev_label.Location = new System.Drawing.Point(6, 56);
+            this.fev_label.Name = "fev_label";
+            this.fev_label.Size = new System.Drawing.Size(31, 13);
+            this.fev_label.TabIndex = 2;
+            this.fev_label.Text = "Fev.:";
+            // 
+            // mar_textBox
+            // 
+            this.mar_textBox.Location = new System.Drawing.Point(42, 79);
+            this.mar_textBox.Name = "mar_textBox";
+            this.mar_textBox.Size = new System.Drawing.Size(80, 20);
+            this.mar_textBox.TabIndex = 5;
+            // 
+            // mar_label
+            // 
+            this.mar_label.AutoSize = true;
+            this.mar_label.Location = new System.Drawing.Point(6, 82);
+            this.mar_label.Name = "mar_label";
+            this.mar_label.Size = new System.Drawing.Size(31, 13);
+            this.mar_label.TabIndex = 4;
+            this.mar_label.Text = "Mar.:";
+            // 
+            // abr_textBox
+            // 
+            this.abr_textBox.Location = new System.Drawing.Point(42, 105);
+            this.abr_textBox.Name = "abr_textBox";
+            this.abr_textBox.Size = new System.Drawing.Size(80, 20);
+            this.abr_textBox.TabIndex = 7;
+            // 
+            // abr_label
+            // 
+            this.abr_label.AutoSize = true;
+            this.abr_label.Location = new System.Drawing.Point(6, 108);
+            this.abr_label.Name = "abr_label";
+            this.abr_label.Size = new System.Drawing.Size(29, 13);
+            this.abr_label.TabIndex = 6;
+            this.abr_label.Text = "Abr.:";
+            // 
+            // mai_textBox
+            // 
+            this.mai_textBox.Location = new System.Drawing.Point(42, 131);
+            this.mai_textBox.Name = "mai_textBox";
+            this.mai_textBox.Size = new System.Drawing.Size(80, 20);
+            this.mai_textBox.TabIndex = 9;
+            // 
+            // mai_label
+            // 
+            this.mai_label.AutoSize = true;
+            this.mai_label.Location = new System.Drawing.Point(6, 134);
+            this.mai_label.Name = "mai_label";
+            this.mai_label.Size = new System.Drawing.Size(30, 13);
+            this.mai_label.TabIndex = 8;
+            this.mai_label.Text = "Mai.:";
+            // 
+            // jun_textBox
+            // 
+            this.jun_textBox.Location = new System.Drawing.Point(42, 157);
+            this.jun_textBox.Name = "jun_textBox";
+            this.jun_textBox.Size = new System.Drawing.Size(80, 20);
+            this.jun_textBox.TabIndex = 11;
+            // 
+            // jun_label
+            // 
+            this.jun_label.AutoSize = true;
+            this.jun_label.Location = new System.Drawing.Point(6, 160);
+            this.jun_label.Name = "jun_label";
+            this.jun_label.Size = new System.Drawing.Size(30, 13);
+            this.jun_label.TabIndex = 10;
+            this.jun_label.Text = "Jun.:";
+            // 
+            // jul_textBox
+            // 
+            this.jul_textBox.Location = new System.Drawing.Point(172, 27);
+            this.jul_textBox.Name = "jul_textBox";
+            this.jul_textBox.Size = new System.Drawing.Size(80, 20);
+            this.jul_textBox.TabIndex = 13;
+            // 
+            // jul_label
+            // 
+            this.jul_label.AutoSize = true;
+            this.jul_label.Location = new System.Drawing.Point(136, 30);
+            this.jul_label.Name = "jul_label";
+            this.jul_label.Size = new System.Drawing.Size(26, 13);
+            this.jul_label.TabIndex = 12;
+            this.jul_label.Text = "Jul.:";
+            // 
+            // ago_textBox
+            // 
+            this.ago_textBox.Location = new System.Drawing.Point(172, 53);
+            this.ago_textBox.Name = "ago_textBox";
+            this.ago_textBox.Size = new System.Drawing.Size(80, 20);
+            this.ago_textBox.TabIndex = 15;
+            // 
+            // ago_label
+            // 
+            this.ago_label.AutoSize = true;
+            this.ago_label.Location = new System.Drawing.Point(136, 56);
+            this.ago_label.Name = "ago_label";
+            this.ago_label.Size = new System.Drawing.Size(32, 13);
+            this.ago_label.TabIndex = 14;
+            this.ago_label.Text = "Ago.:";
+            // 
+            // set_textBox
+            // 
+            this.set_textBox.Location = new System.Drawing.Point(172, 79);
+            this.set_textBox.Name = "set_textBox";
+            this.set_textBox.Size = new System.Drawing.Size(80, 20);
+            this.set_textBox.TabIndex = 17;
+            // 
+            // set_label
+            // 
+            this.set_label.AutoSize = true;
+            this.set_label.Location = new System.Drawing.Point(136, 82);
+            this.set_label.Name = "set_label";
+            this.set_label.Size = new System.Drawing.Size(29, 13);
+            this.set_label.TabIndex = 16;
+            this.set_label.Text = "Set.:";
+            // 
+            // out_textBox
+            // 
+            this.out_textBox.Location = new System.Drawing.Point(172, 105);
+            this.out_textBox.Name = "out_textBox";
+            this.out_textBox.Size = new System.Drawing.Size(80, 20);
+            this.out_textBox.TabIndex = 19;
+            // 
+            // out_label
+            // 
+            this.out_label.AutoSize = true;
+            this.out_label.Location = new System.Drawing.Point(136, 108);
+            this.out_label.Name = "out_label";
+            this.out_label.Size = new System.Drawing.Size(30, 13);
+            this.out_label.TabIndex = 18;
+            this.out_label.Text = "Out.:";
+            // 
+            // nov_textBox
+            // 
+            this.nov_textBox.Location = new System.Drawing.Point(172, 131);
+            this.nov_textBox.Name = "nov_textBox";
+            this.nov_textBox.Size = new System.Drawing.Size(80, 20);
+            this.nov_textBox.TabIndex = 21;
+            // 
+            // nov_label
+            // 
+            this.nov_label.AutoSize = true;
+            this.nov_label.Location = new System.Drawing.Point(136, 134);
+            this.nov_label.Name = "nov_label";
+            this.nov_label.Size = new System.Drawing.Size(33, 13);
+            this.nov_label.TabIndex = 20;
+            this.nov_label.Text = "Nov.:";
+            // 
+            // dez_textBox
+            // 
+            this.dez_textBox.Location = new System.Drawing.Point(172, 157);
+            this.dez_textBox.Name = "dez_textBox";
+            this.dez_textBox.Size = new System.Drawing.Size(80, 20);
+            this.dez_textBox.TabIndex = 23;
+            // 
+            // dez_label
+            // 
+            this.dez_label.AutoSize = true;
+            this.dez_label.Location = new System.Drawing.Point(136, 160);
+            this.dez_label.Name = "dez_label";
+            this.dez_label.Size = new System.Drawing.Size(32, 13);
+            this.dez_label.TabIndex = 22;
+            this.dez_label.Text = "Dez.:";
+            // 
+            // rol_dataGridView
+            // 
+            this.rol_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rol_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.rol_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.rol_dataGridView.Location = new System.Drawing.Point(7, 232);
+            this.rol_dataGridView.Name = "rol_dataGridView";
+            this.rol_dataGridView.RowHeadersVisible = false;
+            this.rol_dataGridView.Size = new System.Drawing.Size(650, 160);
+            this.rol_dataGridView.TabIndex = 2;
+            // 
+            // rol_label
+            // 
+            this.rol_label.AutoSize = true;
+            this.rol_label.Location = new System.Drawing.Point(6, 216);
+            this.rol_label.Name = "rol_label";
+            this.rol_label.Size = new System.Drawing.Size(26, 13);
+            this.rol_label.TabIndex = 24;
+            this.rol_label.Text = "Rol:";
+            // 
             // FormVerificaVazamento
             // 
             this.AcceptButton = this.localizar_button;
@@ -131,6 +423,11 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_tabPage.ResumeLayout(false);
             this.leituras_tabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).EndInit();
+            this.medias_tabPage.ResumeLayout(false);
+            this.medias_tabPage.PerformLayout();
+            this.meses_groupBox.ResumeLayout(false);
+            this.meses_groupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rol_dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +442,33 @@ namespace IdentificaVazSAAE.Apresentação
         private System.Windows.Forms.TabPage leituras_tabPage;
         private System.Windows.Forms.DataGridView leituras_dataGridView;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage medias_tabPage;
+        private System.Windows.Forms.GroupBox meses_groupBox;
+        private System.Windows.Forms.TextBox dez_textBox;
+        private System.Windows.Forms.Label dez_label;
+        private System.Windows.Forms.TextBox nov_textBox;
+        private System.Windows.Forms.Label nov_label;
+        private System.Windows.Forms.TextBox out_textBox;
+        private System.Windows.Forms.Label out_label;
+        private System.Windows.Forms.TextBox set_textBox;
+        private System.Windows.Forms.Label set_label;
+        private System.Windows.Forms.TextBox ago_textBox;
+        private System.Windows.Forms.Label ago_label;
+        private System.Windows.Forms.TextBox jul_textBox;
+        private System.Windows.Forms.Label jul_label;
+        private System.Windows.Forms.TextBox jun_textBox;
+        private System.Windows.Forms.Label jun_label;
+        private System.Windows.Forms.TextBox mai_textBox;
+        private System.Windows.Forms.Label mai_label;
+        private System.Windows.Forms.TextBox abr_textBox;
+        private System.Windows.Forms.Label abr_label;
+        private System.Windows.Forms.TextBox mar_textBox;
+        private System.Windows.Forms.Label mar_label;
+        private System.Windows.Forms.TextBox fev_textBox;
+        private System.Windows.Forms.Label fev_label;
+        private System.Windows.Forms.TextBox jan_textBox;
+        private System.Windows.Forms.Label jan_label;
+        private System.Windows.Forms.Label rol_label;
+        private System.Windows.Forms.DataGridView rol_dataGridView;
     }
 }
