@@ -37,39 +37,51 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_dataGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.medias_tabPage = new System.Windows.Forms.TabPage();
+            this.rol_label = new System.Windows.Forms.Label();
+            this.rol_dataGridView = new System.Windows.Forms.DataGridView();
             this.meses_groupBox = new System.Windows.Forms.GroupBox();
-            this.jan_label = new System.Windows.Forms.Label();
-            this.jan_textBox = new System.Windows.Forms.TextBox();
-            this.fev_textBox = new System.Windows.Forms.TextBox();
-            this.fev_label = new System.Windows.Forms.Label();
-            this.mar_textBox = new System.Windows.Forms.TextBox();
-            this.mar_label = new System.Windows.Forms.Label();
-            this.abr_textBox = new System.Windows.Forms.TextBox();
-            this.abr_label = new System.Windows.Forms.Label();
-            this.mai_textBox = new System.Windows.Forms.TextBox();
-            this.mai_label = new System.Windows.Forms.Label();
-            this.jun_textBox = new System.Windows.Forms.TextBox();
-            this.jun_label = new System.Windows.Forms.Label();
-            this.jul_textBox = new System.Windows.Forms.TextBox();
-            this.jul_label = new System.Windows.Forms.Label();
-            this.ago_textBox = new System.Windows.Forms.TextBox();
-            this.ago_label = new System.Windows.Forms.Label();
-            this.set_textBox = new System.Windows.Forms.TextBox();
-            this.set_label = new System.Windows.Forms.Label();
-            this.out_textBox = new System.Windows.Forms.TextBox();
-            this.out_label = new System.Windows.Forms.Label();
-            this.nov_textBox = new System.Windows.Forms.TextBox();
-            this.nov_label = new System.Windows.Forms.Label();
             this.dez_textBox = new System.Windows.Forms.TextBox();
             this.dez_label = new System.Windows.Forms.Label();
-            this.rol_dataGridView = new System.Windows.Forms.DataGridView();
-            this.rol_label = new System.Windows.Forms.Label();
+            this.nov_textBox = new System.Windows.Forms.TextBox();
+            this.nov_label = new System.Windows.Forms.Label();
+            this.out_textBox = new System.Windows.Forms.TextBox();
+            this.out_label = new System.Windows.Forms.Label();
+            this.set_textBox = new System.Windows.Forms.TextBox();
+            this.set_label = new System.Windows.Forms.Label();
+            this.ago_textBox = new System.Windows.Forms.TextBox();
+            this.ago_label = new System.Windows.Forms.Label();
+            this.jul_textBox = new System.Windows.Forms.TextBox();
+            this.jul_label = new System.Windows.Forms.Label();
+            this.jun_textBox = new System.Windows.Forms.TextBox();
+            this.jun_label = new System.Windows.Forms.Label();
+            this.mai_textBox = new System.Windows.Forms.TextBox();
+            this.mai_label = new System.Windows.Forms.Label();
+            this.abr_textBox = new System.Windows.Forms.TextBox();
+            this.abr_label = new System.Windows.Forms.Label();
+            this.mar_textBox = new System.Windows.Forms.TextBox();
+            this.mar_label = new System.Windows.Forms.Label();
+            this.fev_textBox = new System.Windows.Forms.TextBox();
+            this.fev_label = new System.Windows.Forms.Label();
+            this.jan_textBox = new System.Windows.Forms.TextBox();
+            this.jan_label = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.leituras_tabControl.SuspendLayout();
             this.leituras_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).BeginInit();
             this.medias_tabPage.SuspendLayout();
-            this.meses_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rol_dataGridView)).BeginInit();
+            this.meses_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // codLigacao_label
@@ -158,8 +170,42 @@ namespace IdentificaVazSAAE.Apresentação
             this.medias_tabPage.Text = "Médias";
             this.medias_tabPage.UseVisualStyleBackColor = true;
             // 
+            // rol_label
+            // 
+            this.rol_label.AutoSize = true;
+            this.rol_label.Location = new System.Drawing.Point(6, 216);
+            this.rol_label.Name = "rol_label";
+            this.rol_label.Size = new System.Drawing.Size(26, 13);
+            this.rol_label.TabIndex = 24;
+            this.rol_label.Text = "Rol:";
+            // 
+            // rol_dataGridView
+            // 
+            this.rol_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rol_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.rol_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.rol_dataGridView.Location = new System.Drawing.Point(7, 232);
+            this.rol_dataGridView.Name = "rol_dataGridView";
+            this.rol_dataGridView.RowHeadersVisible = false;
+            this.rol_dataGridView.Size = new System.Drawing.Size(650, 160);
+            this.rol_dataGridView.TabIndex = 2;
+            // 
             // meses_groupBox
             // 
+            this.meses_groupBox.Controls.Add(this.label13);
+            this.meses_groupBox.Controls.Add(this.label12);
+            this.meses_groupBox.Controls.Add(this.label11);
+            this.meses_groupBox.Controls.Add(this.label10);
+            this.meses_groupBox.Controls.Add(this.label9);
+            this.meses_groupBox.Controls.Add(this.label8);
+            this.meses_groupBox.Controls.Add(this.label7);
+            this.meses_groupBox.Controls.Add(this.label6);
+            this.meses_groupBox.Controls.Add(this.label5);
+            this.meses_groupBox.Controls.Add(this.label4);
+            this.meses_groupBox.Controls.Add(this.label3);
+            this.meses_groupBox.Controls.Add(this.label2);
             this.meses_groupBox.Controls.Add(this.dez_textBox);
             this.meses_groupBox.Controls.Add(this.dez_label);
             this.meses_groupBox.Controls.Add(this.nov_textBox);
@@ -191,187 +237,11 @@ namespace IdentificaVazSAAE.Apresentação
             this.meses_groupBox.TabStop = false;
             this.meses_groupBox.Text = "Consumo médio do mês de:";
             // 
-            // jan_label
-            // 
-            this.jan_label.AutoSize = true;
-            this.jan_label.Location = new System.Drawing.Point(6, 30);
-            this.jan_label.Name = "jan_label";
-            this.jan_label.Size = new System.Drawing.Size(30, 13);
-            this.jan_label.TabIndex = 0;
-            this.jan_label.Text = "Jan.:";
-            // 
-            // jan_textBox
-            // 
-            this.jan_textBox.Location = new System.Drawing.Point(42, 27);
-            this.jan_textBox.Name = "jan_textBox";
-            this.jan_textBox.Size = new System.Drawing.Size(80, 20);
-            this.jan_textBox.TabIndex = 1;
-            // 
-            // fev_textBox
-            // 
-            this.fev_textBox.Location = new System.Drawing.Point(42, 53);
-            this.fev_textBox.Name = "fev_textBox";
-            this.fev_textBox.Size = new System.Drawing.Size(80, 20);
-            this.fev_textBox.TabIndex = 3;
-            // 
-            // fev_label
-            // 
-            this.fev_label.AutoSize = true;
-            this.fev_label.Location = new System.Drawing.Point(6, 56);
-            this.fev_label.Name = "fev_label";
-            this.fev_label.Size = new System.Drawing.Size(31, 13);
-            this.fev_label.TabIndex = 2;
-            this.fev_label.Text = "Fev.:";
-            // 
-            // mar_textBox
-            // 
-            this.mar_textBox.Location = new System.Drawing.Point(42, 79);
-            this.mar_textBox.Name = "mar_textBox";
-            this.mar_textBox.Size = new System.Drawing.Size(80, 20);
-            this.mar_textBox.TabIndex = 5;
-            // 
-            // mar_label
-            // 
-            this.mar_label.AutoSize = true;
-            this.mar_label.Location = new System.Drawing.Point(6, 82);
-            this.mar_label.Name = "mar_label";
-            this.mar_label.Size = new System.Drawing.Size(31, 13);
-            this.mar_label.TabIndex = 4;
-            this.mar_label.Text = "Mar.:";
-            // 
-            // abr_textBox
-            // 
-            this.abr_textBox.Location = new System.Drawing.Point(42, 105);
-            this.abr_textBox.Name = "abr_textBox";
-            this.abr_textBox.Size = new System.Drawing.Size(80, 20);
-            this.abr_textBox.TabIndex = 7;
-            // 
-            // abr_label
-            // 
-            this.abr_label.AutoSize = true;
-            this.abr_label.Location = new System.Drawing.Point(6, 108);
-            this.abr_label.Name = "abr_label";
-            this.abr_label.Size = new System.Drawing.Size(29, 13);
-            this.abr_label.TabIndex = 6;
-            this.abr_label.Text = "Abr.:";
-            // 
-            // mai_textBox
-            // 
-            this.mai_textBox.Location = new System.Drawing.Point(42, 131);
-            this.mai_textBox.Name = "mai_textBox";
-            this.mai_textBox.Size = new System.Drawing.Size(80, 20);
-            this.mai_textBox.TabIndex = 9;
-            // 
-            // mai_label
-            // 
-            this.mai_label.AutoSize = true;
-            this.mai_label.Location = new System.Drawing.Point(6, 134);
-            this.mai_label.Name = "mai_label";
-            this.mai_label.Size = new System.Drawing.Size(30, 13);
-            this.mai_label.TabIndex = 8;
-            this.mai_label.Text = "Mai.:";
-            // 
-            // jun_textBox
-            // 
-            this.jun_textBox.Location = new System.Drawing.Point(42, 157);
-            this.jun_textBox.Name = "jun_textBox";
-            this.jun_textBox.Size = new System.Drawing.Size(80, 20);
-            this.jun_textBox.TabIndex = 11;
-            // 
-            // jun_label
-            // 
-            this.jun_label.AutoSize = true;
-            this.jun_label.Location = new System.Drawing.Point(6, 160);
-            this.jun_label.Name = "jun_label";
-            this.jun_label.Size = new System.Drawing.Size(30, 13);
-            this.jun_label.TabIndex = 10;
-            this.jun_label.Text = "Jun.:";
-            // 
-            // jul_textBox
-            // 
-            this.jul_textBox.Location = new System.Drawing.Point(172, 27);
-            this.jul_textBox.Name = "jul_textBox";
-            this.jul_textBox.Size = new System.Drawing.Size(80, 20);
-            this.jul_textBox.TabIndex = 13;
-            // 
-            // jul_label
-            // 
-            this.jul_label.AutoSize = true;
-            this.jul_label.Location = new System.Drawing.Point(136, 30);
-            this.jul_label.Name = "jul_label";
-            this.jul_label.Size = new System.Drawing.Size(26, 13);
-            this.jul_label.TabIndex = 12;
-            this.jul_label.Text = "Jul.:";
-            // 
-            // ago_textBox
-            // 
-            this.ago_textBox.Location = new System.Drawing.Point(172, 53);
-            this.ago_textBox.Name = "ago_textBox";
-            this.ago_textBox.Size = new System.Drawing.Size(80, 20);
-            this.ago_textBox.TabIndex = 15;
-            // 
-            // ago_label
-            // 
-            this.ago_label.AutoSize = true;
-            this.ago_label.Location = new System.Drawing.Point(136, 56);
-            this.ago_label.Name = "ago_label";
-            this.ago_label.Size = new System.Drawing.Size(32, 13);
-            this.ago_label.TabIndex = 14;
-            this.ago_label.Text = "Ago.:";
-            // 
-            // set_textBox
-            // 
-            this.set_textBox.Location = new System.Drawing.Point(172, 79);
-            this.set_textBox.Name = "set_textBox";
-            this.set_textBox.Size = new System.Drawing.Size(80, 20);
-            this.set_textBox.TabIndex = 17;
-            // 
-            // set_label
-            // 
-            this.set_label.AutoSize = true;
-            this.set_label.Location = new System.Drawing.Point(136, 82);
-            this.set_label.Name = "set_label";
-            this.set_label.Size = new System.Drawing.Size(29, 13);
-            this.set_label.TabIndex = 16;
-            this.set_label.Text = "Set.:";
-            // 
-            // out_textBox
-            // 
-            this.out_textBox.Location = new System.Drawing.Point(172, 105);
-            this.out_textBox.Name = "out_textBox";
-            this.out_textBox.Size = new System.Drawing.Size(80, 20);
-            this.out_textBox.TabIndex = 19;
-            // 
-            // out_label
-            // 
-            this.out_label.AutoSize = true;
-            this.out_label.Location = new System.Drawing.Point(136, 108);
-            this.out_label.Name = "out_label";
-            this.out_label.Size = new System.Drawing.Size(30, 13);
-            this.out_label.TabIndex = 18;
-            this.out_label.Text = "Out.:";
-            // 
-            // nov_textBox
-            // 
-            this.nov_textBox.Location = new System.Drawing.Point(172, 131);
-            this.nov_textBox.Name = "nov_textBox";
-            this.nov_textBox.Size = new System.Drawing.Size(80, 20);
-            this.nov_textBox.TabIndex = 21;
-            // 
-            // nov_label
-            // 
-            this.nov_label.AutoSize = true;
-            this.nov_label.Location = new System.Drawing.Point(136, 134);
-            this.nov_label.Name = "nov_label";
-            this.nov_label.Size = new System.Drawing.Size(33, 13);
-            this.nov_label.TabIndex = 20;
-            this.nov_label.Text = "Nov.:";
-            // 
             // dez_textBox
             // 
             this.dez_textBox.Location = new System.Drawing.Point(172, 157);
             this.dez_textBox.Name = "dez_textBox";
-            this.dez_textBox.Size = new System.Drawing.Size(80, 20);
+            this.dez_textBox.Size = new System.Drawing.Size(47, 20);
             this.dez_textBox.TabIndex = 23;
             // 
             // dez_label
@@ -383,27 +253,289 @@ namespace IdentificaVazSAAE.Apresentação
             this.dez_label.TabIndex = 22;
             this.dez_label.Text = "Dez.:";
             // 
-            // rol_dataGridView
+            // nov_textBox
             // 
-            this.rol_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rol_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.rol_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.rol_dataGridView.Location = new System.Drawing.Point(7, 232);
-            this.rol_dataGridView.Name = "rol_dataGridView";
-            this.rol_dataGridView.RowHeadersVisible = false;
-            this.rol_dataGridView.Size = new System.Drawing.Size(650, 160);
-            this.rol_dataGridView.TabIndex = 2;
+            this.nov_textBox.Location = new System.Drawing.Point(172, 131);
+            this.nov_textBox.Name = "nov_textBox";
+            this.nov_textBox.Size = new System.Drawing.Size(47, 20);
+            this.nov_textBox.TabIndex = 21;
             // 
-            // rol_label
+            // nov_label
             // 
-            this.rol_label.AutoSize = true;
-            this.rol_label.Location = new System.Drawing.Point(6, 216);
-            this.rol_label.Name = "rol_label";
-            this.rol_label.Size = new System.Drawing.Size(26, 13);
-            this.rol_label.TabIndex = 24;
-            this.rol_label.Text = "Rol:";
+            this.nov_label.AutoSize = true;
+            this.nov_label.Location = new System.Drawing.Point(136, 134);
+            this.nov_label.Name = "nov_label";
+            this.nov_label.Size = new System.Drawing.Size(33, 13);
+            this.nov_label.TabIndex = 20;
+            this.nov_label.Text = "Nov.:";
+            // 
+            // out_textBox
+            // 
+            this.out_textBox.Location = new System.Drawing.Point(172, 105);
+            this.out_textBox.Name = "out_textBox";
+            this.out_textBox.Size = new System.Drawing.Size(47, 20);
+            this.out_textBox.TabIndex = 19;
+            // 
+            // out_label
+            // 
+            this.out_label.AutoSize = true;
+            this.out_label.Location = new System.Drawing.Point(136, 108);
+            this.out_label.Name = "out_label";
+            this.out_label.Size = new System.Drawing.Size(30, 13);
+            this.out_label.TabIndex = 18;
+            this.out_label.Text = "Out.:";
+            // 
+            // set_textBox
+            // 
+            this.set_textBox.Location = new System.Drawing.Point(172, 79);
+            this.set_textBox.Name = "set_textBox";
+            this.set_textBox.Size = new System.Drawing.Size(47, 20);
+            this.set_textBox.TabIndex = 17;
+            // 
+            // set_label
+            // 
+            this.set_label.AutoSize = true;
+            this.set_label.Location = new System.Drawing.Point(136, 82);
+            this.set_label.Name = "set_label";
+            this.set_label.Size = new System.Drawing.Size(29, 13);
+            this.set_label.TabIndex = 16;
+            this.set_label.Text = "Set.:";
+            // 
+            // ago_textBox
+            // 
+            this.ago_textBox.Location = new System.Drawing.Point(172, 53);
+            this.ago_textBox.Name = "ago_textBox";
+            this.ago_textBox.Size = new System.Drawing.Size(47, 20);
+            this.ago_textBox.TabIndex = 15;
+            // 
+            // ago_label
+            // 
+            this.ago_label.AutoSize = true;
+            this.ago_label.Location = new System.Drawing.Point(136, 56);
+            this.ago_label.Name = "ago_label";
+            this.ago_label.Size = new System.Drawing.Size(32, 13);
+            this.ago_label.TabIndex = 14;
+            this.ago_label.Text = "Ago.:";
+            // 
+            // jul_textBox
+            // 
+            this.jul_textBox.Location = new System.Drawing.Point(172, 27);
+            this.jul_textBox.Name = "jul_textBox";
+            this.jul_textBox.Size = new System.Drawing.Size(47, 20);
+            this.jul_textBox.TabIndex = 13;
+            // 
+            // jul_label
+            // 
+            this.jul_label.AutoSize = true;
+            this.jul_label.Location = new System.Drawing.Point(136, 30);
+            this.jul_label.Name = "jul_label";
+            this.jul_label.Size = new System.Drawing.Size(26, 13);
+            this.jul_label.TabIndex = 12;
+            this.jul_label.Text = "Jul.:";
+            // 
+            // jun_textBox
+            // 
+            this.jun_textBox.Location = new System.Drawing.Point(42, 157);
+            this.jun_textBox.Name = "jun_textBox";
+            this.jun_textBox.Size = new System.Drawing.Size(47, 20);
+            this.jun_textBox.TabIndex = 11;
+            // 
+            // jun_label
+            // 
+            this.jun_label.AutoSize = true;
+            this.jun_label.Location = new System.Drawing.Point(6, 160);
+            this.jun_label.Name = "jun_label";
+            this.jun_label.Size = new System.Drawing.Size(30, 13);
+            this.jun_label.TabIndex = 10;
+            this.jun_label.Text = "Jun.:";
+            // 
+            // mai_textBox
+            // 
+            this.mai_textBox.Location = new System.Drawing.Point(42, 131);
+            this.mai_textBox.Name = "mai_textBox";
+            this.mai_textBox.Size = new System.Drawing.Size(47, 20);
+            this.mai_textBox.TabIndex = 9;
+            // 
+            // mai_label
+            // 
+            this.mai_label.AutoSize = true;
+            this.mai_label.Location = new System.Drawing.Point(6, 134);
+            this.mai_label.Name = "mai_label";
+            this.mai_label.Size = new System.Drawing.Size(30, 13);
+            this.mai_label.TabIndex = 8;
+            this.mai_label.Text = "Mai.:";
+            // 
+            // abr_textBox
+            // 
+            this.abr_textBox.Location = new System.Drawing.Point(42, 105);
+            this.abr_textBox.Name = "abr_textBox";
+            this.abr_textBox.Size = new System.Drawing.Size(47, 20);
+            this.abr_textBox.TabIndex = 7;
+            // 
+            // abr_label
+            // 
+            this.abr_label.AutoSize = true;
+            this.abr_label.Location = new System.Drawing.Point(6, 108);
+            this.abr_label.Name = "abr_label";
+            this.abr_label.Size = new System.Drawing.Size(29, 13);
+            this.abr_label.TabIndex = 6;
+            this.abr_label.Text = "Abr.:";
+            // 
+            // mar_textBox
+            // 
+            this.mar_textBox.Location = new System.Drawing.Point(42, 79);
+            this.mar_textBox.Name = "mar_textBox";
+            this.mar_textBox.Size = new System.Drawing.Size(47, 20);
+            this.mar_textBox.TabIndex = 5;
+            // 
+            // mar_label
+            // 
+            this.mar_label.AutoSize = true;
+            this.mar_label.Location = new System.Drawing.Point(6, 82);
+            this.mar_label.Name = "mar_label";
+            this.mar_label.Size = new System.Drawing.Size(31, 13);
+            this.mar_label.TabIndex = 4;
+            this.mar_label.Text = "Mar.:";
+            // 
+            // fev_textBox
+            // 
+            this.fev_textBox.Location = new System.Drawing.Point(42, 53);
+            this.fev_textBox.Name = "fev_textBox";
+            this.fev_textBox.Size = new System.Drawing.Size(47, 20);
+            this.fev_textBox.TabIndex = 3;
+            // 
+            // fev_label
+            // 
+            this.fev_label.AutoSize = true;
+            this.fev_label.Location = new System.Drawing.Point(6, 56);
+            this.fev_label.Name = "fev_label";
+            this.fev_label.Size = new System.Drawing.Size(31, 13);
+            this.fev_label.TabIndex = 2;
+            this.fev_label.Text = "Fev.:";
+            // 
+            // jan_textBox
+            // 
+            this.jan_textBox.Location = new System.Drawing.Point(42, 27);
+            this.jan_textBox.Name = "jan_textBox";
+            this.jan_textBox.Size = new System.Drawing.Size(47, 20);
+            this.jan_textBox.TabIndex = 1;
+            // 
+            // jan_label
+            // 
+            this.jan_label.AutoSize = true;
+            this.jan_label.Location = new System.Drawing.Point(6, 30);
+            this.jan_label.Name = "jan_label";
+            this.jan_label.Size = new System.Drawing.Size(30, 13);
+            this.jan_label.TabIndex = 0;
+            this.jan_label.Text = "Jan.:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(95, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(18, 13);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "m³";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(95, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "m³";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(95, 82);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 13);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "m³";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(95, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(18, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "m³";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(95, 134);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "m³";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(95, 160);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 13);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "m³";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(225, 30);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(18, 13);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "m³";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(225, 56);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 13);
+            this.label9.TabIndex = 31;
+            this.label9.Text = "m³";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(225, 82);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(18, 13);
+            this.label10.TabIndex = 32;
+            this.label10.Text = "m³";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(225, 108);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 13);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "m³";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(225, 134);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(18, 13);
+            this.label12.TabIndex = 34;
+            this.label12.Text = "m³";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(225, 160);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(18, 13);
+            this.label13.TabIndex = 35;
+            this.label13.Text = "m³";
             // 
             // FormVerificaVazamento
             // 
@@ -425,9 +557,9 @@ namespace IdentificaVazSAAE.Apresentação
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).EndInit();
             this.medias_tabPage.ResumeLayout(false);
             this.medias_tabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rol_dataGridView)).EndInit();
             this.meses_groupBox.ResumeLayout(false);
             this.meses_groupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rol_dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -470,5 +602,17 @@ namespace IdentificaVazSAAE.Apresentação
         private System.Windows.Forms.Label jan_label;
         private System.Windows.Forms.Label rol_label;
         private System.Windows.Forms.DataGridView rol_dataGridView;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
