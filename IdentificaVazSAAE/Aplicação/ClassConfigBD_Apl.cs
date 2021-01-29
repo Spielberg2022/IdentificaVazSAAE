@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.Data.Sql;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,7 @@ namespace IdentificaVazSAAE.Aplicação
     {
 		public ClassConfigBD_Dom configBD = new ClassConfigBD_Dom();
 		public ClassConfigBD_Per Bd = new ClassConfigBD_Per();
+		public SqlConnection connection = new SqlConnection();
 		public string erro;
 		public bool vf;
 
@@ -47,7 +50,10 @@ namespace IdentificaVazSAAE.Aplicação
 				return false;
 			}
 			else
+			{
+				connection = Bd.sqlConnection;
 				return true;
+			}	
 		}
 	}
 }

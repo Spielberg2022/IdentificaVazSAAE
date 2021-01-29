@@ -27,8 +27,8 @@ namespace IdentificaVazSAAE.Persistência
 				erro = "";
 
 				comando.Connection = sqlConnection;
-				comando.Parameters.Add("@ligacao");
-				comando.Parameters["@ligacao"].Value = verificaVazamento.ligacao;
+				comando.Parameters.Add("@ligacao", SqlDbType.Int);
+				comando.Parameters["@ligacao"].Value = Int64.Parse(verificaVazamento.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
 				comando.CommandText = "select cod_ligacao as ligacao, data_ref as dataRef, data_leitura as dataLeitura, leitura_orig as leitura, ocorrencia_orig as ocorrencia,consumo_faturado as consumoFaturado, hidrometro as hidrometro from leituras where cod_ligacao = @ligacao and data_ref >= '202002' - 300";

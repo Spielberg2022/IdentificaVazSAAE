@@ -34,6 +34,7 @@ namespace IdentificaVazSAAE.Apresentação
 
         private void localizar_button_Click(object sender, EventArgs e)
         {
+            verificaVazamento_Apl.connection = connection;
             verificaVazamento_Dom.ligacao = Int64.Parse(codLigacao_textBox.Text);
             leituras_dataGridView.DataSource = verificaVazamento_Apl.ListaLeituras(verificaVazamento_Dom);
         }

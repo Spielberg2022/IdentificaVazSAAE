@@ -162,7 +162,8 @@ namespace IdentificaVazSAAE.Apresentação
 			bd.Bd = bd_comboBox.Text;
 			if (configBD_Apl.Conectar(bd))
             {
-				connection = configBD_Per.sqlConnection;
+				//connection = configBD_Per.sqlConnection;
+				connection = configBD_Apl.connection;
 				MessageBox.Show("Conexão com banco de dados bem sucedida!.",
 										"Informação",
 										 MessageBoxButtons.OK,
@@ -181,6 +182,7 @@ namespace IdentificaVazSAAE.Apresentação
 			verificaVazamento.configBD_Apl = configBD_Apl;
 			verificaVazamento.configBD_Per = configBD_Per;
 			verificaVazamento.configBD_Dom = bd;
+			verificaVazamento.connection = connection;
 			verificaVazamento.Show();
 			this.Hide();
         }
