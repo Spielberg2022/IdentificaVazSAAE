@@ -38,7 +38,7 @@ namespace IdentificaVazSAAE.Aplicação
         public string MediaJan(ClassVerificaVazamento_Dom vazamento_Dom)
         {
             verificaVazamento_Per.sqlConnection = connection;
-            vazamento_Dom.mediaJan = verificaVazamento_Per.CalcMediaFev(vazamento_Dom);
+            vazamento_Dom.mediaJan = verificaVazamento_Per.CalcMediaJan(vazamento_Dom);
             verificaVazamento_Dom.mediaJan = vazamento_Dom.mediaJan;
             return vazamento_Dom.mediaJan.ToString();
         }
