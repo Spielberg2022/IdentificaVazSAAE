@@ -11,7 +11,7 @@ using IdentificaVazSAAE.Domínio;
 
 namespace IdentificaVazSAAE.Aplicação
 {
-    class ClassVerificaVazamento_Apl
+    public class ClassVerificaVazamento_Apl
     {
 		public SqlConnection connection = new SqlConnection();
 		public ClassVerificaVazamento_Dom verificaVazamento_Dom = new ClassVerificaVazamento_Dom();

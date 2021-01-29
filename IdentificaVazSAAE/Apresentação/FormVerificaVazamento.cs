@@ -17,9 +17,9 @@ namespace IdentificaVazSAAE.Apresentação
 {
     public partial class FormVerificaVazamento : Form
     {
-        ClassVerificaVazamento_Apl verificaVazamento_Apl = new ClassVerificaVazamento_Apl();
-        ClassVerificaVazamento_Per verificaVazamento_Per = new ClassVerificaVazamento_Per();
-        ClassVerificaVazamento_Dom verificaVazamento_Dom = new ClassVerificaVazamento_Dom();
+        public ClassVerificaVazamento_Apl verificaVazamento_Apl = new ClassVerificaVazamento_Apl();
+        public ClassVerificaVazamento_Per verificaVazamento_Per = new ClassVerificaVazamento_Per();
+        public ClassVerificaVazamento_Dom verificaVazamento_Dom = new ClassVerificaVazamento_Dom();
 
         public ClassConfigBD_Apl configBD_Apl = new ClassConfigBD_Apl();
         public ClassConfigBD_Per configBD_Per = new ClassConfigBD_Per();

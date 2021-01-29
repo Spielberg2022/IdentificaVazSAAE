@@ -162,7 +162,6 @@ namespace IdentificaVazSAAE.Apresentação
 			bd.Bd = bd_comboBox.Text;
 			if (configBD_Apl.Conectar(bd))
             {
-				//connection = configBD_Per.sqlConnection;
 				connection = configBD_Apl.connection;
 				MessageBox.Show("Conexão com banco de dados bem sucedida!.",
 										"Informação",

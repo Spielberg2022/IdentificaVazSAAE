@@ -6,7 +6,7 @@ using System.Text;
 
 namespace IdentificaVazSAAE.Domínio
 {
-    class ClassVerificaVazamento_Dom
+    public class ClassVerificaVazamento_Dom
     {
         public DataTable leituras { get; set; }
         public Int64 ligacao { get; set; }

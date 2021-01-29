@@ -34,8 +34,8 @@ namespace IdentificaVazSAAE.Apresentação
             this.localizar_button = new System.Windows.Forms.Button();
             this.leituras_tabControl = new System.Windows.Forms.TabControl();
             this.leituras_tabPage = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
             this.leituras_dataGridView = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.leituras_tabControl.SuspendLayout();
             this.leituras_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).BeginInit();
@@ -69,11 +69,14 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // leituras_tabControl
             // 
+            this.leituras_tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.leituras_tabControl.Controls.Add(this.leituras_tabPage);
             this.leituras_tabControl.Location = new System.Drawing.Point(12, 42);
             this.leituras_tabControl.Name = "leituras_tabControl";
             this.leituras_tabControl.SelectedIndex = 0;
-            this.leituras_tabControl.Size = new System.Drawing.Size(673, 281);
+            this.leituras_tabControl.Size = new System.Drawing.Size(673, 424);
             this.leituras_tabControl.TabIndex = 3;
             // 
             // leituras_tabPage
@@ -83,10 +86,23 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_tabPage.Location = new System.Drawing.Point(4, 22);
             this.leituras_tabPage.Name = "leituras_tabPage";
             this.leituras_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.leituras_tabPage.Size = new System.Drawing.Size(665, 255);
+            this.leituras_tabPage.Size = new System.Drawing.Size(665, 398);
             this.leituras_tabPage.TabIndex = 0;
             this.leituras_tabPage.Text = "Leituras";
             this.leituras_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // leituras_dataGridView
+            // 
+            this.leituras_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.leituras_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.leituras_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.leituras_dataGridView.Location = new System.Drawing.Point(9, 38);
+            this.leituras_dataGridView.Name = "leituras_dataGridView";
+            this.leituras_dataGridView.RowHeadersVisible = false;
+            this.leituras_dataGridView.Size = new System.Drawing.Size(650, 354);
+            this.leituras_dataGridView.TabIndex = 1;
             // 
             // label1
             // 
@@ -97,24 +113,18 @@ namespace IdentificaVazSAAE.Apresentação
             this.label1.TabIndex = 0;
             this.label1.Text = "Leituras dos últimos 3 anos:";
             // 
-            // leituras_dataGridView
-            // 
-            this.leituras_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.leituras_dataGridView.Location = new System.Drawing.Point(9, 38);
-            this.leituras_dataGridView.Name = "leituras_dataGridView";
-            this.leituras_dataGridView.Size = new System.Drawing.Size(650, 211);
-            this.leituras_dataGridView.TabIndex = 1;
-            // 
             // FormVerificaVazamento
             // 
+            this.AcceptButton = this.localizar_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 335);
+            this.ClientSize = new System.Drawing.Size(697, 478);
             this.Controls.Add(this.leituras_tabControl);
             this.Controls.Add(this.localizar_button);
             this.Controls.Add(this.codLigacao_textBox);
             this.Controls.Add(this.codLigacao_label);
             this.Name = "FormVerificaVazamento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Verifica Vazamento";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormVerificaVazamento_FormClosed);
             this.leituras_tabControl.ResumeLayout(false);

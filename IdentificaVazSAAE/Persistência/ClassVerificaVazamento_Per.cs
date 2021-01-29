@@ -9,7 +9,7 @@ using IdentificaVazSAAE.Domínio;
 
 namespace IdentificaVazSAAE.Persistência
 {
-    class ClassVerificaVazamento_Per
+    public class ClassVerificaVazamento_Per
     {
 		public SqlConnection sqlConnection = new SqlConnection();
 		public SqlDataAdapter adaptador;
@@ -31,7 +31,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(verificaVazamento.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select cod_ligacao as ligacao, data_ref as dataRef, data_leitura as dataLeitura, leitura_orig as leitura, ocorrencia_orig as ocorrencia,consumo_faturado as consumoFaturado, hidrometro as hidrometro from leituras where cod_ligacao = @ligacao and data_ref >= '202002' - 300";
+				comando.CommandText = "select (substring(data_ref, 5, 2) + '/' + substring(data_ref, 1, 4)) as [Data Ref], data_leitura as [Data da Leitura], leitura_orig as Leitura, ocorrencia_orig as Ocorrencia,consumo_faturado as [Consumo Faturado], hidrometro as Hidrometro from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300)";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(leituras);

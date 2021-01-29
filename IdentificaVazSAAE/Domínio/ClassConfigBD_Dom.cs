@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace IdentificaVazSAAE.Domínio
+﻿namespace IdentificaVazSAAE.Domínio
 {
     public class ClassConfigBD_Dom
     {
