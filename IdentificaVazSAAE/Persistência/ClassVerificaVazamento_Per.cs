@@ -451,5 +451,56 @@ namespace IdentificaVazSAAE.Persistência
 
 			return rol;
 		}
+		
+		public DataTable mMensais(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+			DataTable m_mensais = new DataTable();
+			DataColumn dcjan = new DataColumn("jan", typeof(double));
+			DataColumn dcfev = new DataColumn("fev", typeof(double));
+			DataColumn dcmar = new DataColumn("mar", typeof(double));
+			DataColumn dcabr = new DataColumn("abr", typeof(double));
+			DataColumn dcmai = new DataColumn("mai", typeof(double));
+			DataColumn dcjun = new DataColumn("jun", typeof(double));
+			DataColumn dcjul = new DataColumn("jul", typeof(double));
+			DataColumn dcago = new DataColumn("ago", typeof(double));
+			DataColumn dcset = new DataColumn("set", typeof(double));
+			DataColumn dcout = new DataColumn("out", typeof(double));
+			DataColumn dcnov = new DataColumn("nov", typeof(double));
+			DataColumn dcdez = new DataColumn("dez", typeof(double));
+
+			m_mensais.Columns.Add(dcjan);
+			m_mensais.Columns.Add(dcfev);
+			m_mensais.Columns.Add(dcmar);
+			m_mensais.Columns.Add(dcabr);
+			m_mensais.Columns.Add(dcmai);
+			m_mensais.Columns.Add(dcjun);
+			m_mensais.Columns.Add(dcjul);
+			m_mensais.Columns.Add(dcago);
+			m_mensais.Columns.Add(dcset);
+			m_mensais.Columns.Add(dcout);
+			m_mensais.Columns.Add(dcnov);
+			m_mensais.Columns.Add(dcdez);
+
+			DataRow dr = m_mensais.NewRow();
+
+			m_mensais.NewRow();
+
+			dr[0] = CalcMediaJan(vazamento_Dom);
+			dr[1] = CalcMediaFev(vazamento_Dom);
+			dr[2] = CalcMediaMar(vazamento_Dom);
+			dr[3] = CalcMediaAbr(vazamento_Dom);
+			dr[4] = CalcMediaMai(vazamento_Dom);
+			dr[5] = CalcMediaJun(vazamento_Dom);
+			dr[6] = CalcMediaJul(vazamento_Dom);
+			dr[7] = CalcMediaAgo(vazamento_Dom);
+			dr[8] = CalcMediaSet(vazamento_Dom);
+			dr[9] = CalcMediaOut(vazamento_Dom);
+			dr[10] = CalcMediaNov(vazamento_Dom);
+			dr[11] = CalcMediaDez(vazamento_Dom);
+
+			m_mensais.Rows.Add(dr);
+
+			return m_mensais;
+        }
     }
 }

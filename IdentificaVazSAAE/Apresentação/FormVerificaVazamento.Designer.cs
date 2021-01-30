@@ -40,6 +40,18 @@ namespace IdentificaVazSAAE.Apresentação
             this.rol_label = new System.Windows.Forms.Label();
             this.rol_dataGridView = new System.Windows.Forms.DataGridView();
             this.meses_groupBox = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.dez_textBox = new System.Windows.Forms.TextBox();
             this.dez_label = new System.Windows.Forms.Label();
             this.nov_textBox = new System.Windows.Forms.TextBox();
@@ -64,18 +76,6 @@ namespace IdentificaVazSAAE.Apresentação
             this.fev_label = new System.Windows.Forms.Label();
             this.jan_textBox = new System.Windows.Forms.TextBox();
             this.jan_label = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.leituras_tabControl.SuspendLayout();
             this.leituras_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).BeginInit();
@@ -236,6 +236,114 @@ namespace IdentificaVazSAAE.Apresentação
             this.meses_groupBox.TabIndex = 0;
             this.meses_groupBox.TabStop = false;
             this.meses_groupBox.Text = "Consumo médio do mês de:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(225, 160);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(18, 13);
+            this.label13.TabIndex = 35;
+            this.label13.Text = "m³";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(225, 134);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(18, 13);
+            this.label12.TabIndex = 34;
+            this.label12.Text = "m³";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(225, 108);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 13);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "m³";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(225, 82);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(18, 13);
+            this.label10.TabIndex = 32;
+            this.label10.Text = "m³";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(225, 56);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 13);
+            this.label9.TabIndex = 31;
+            this.label9.Text = "m³";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(225, 30);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(18, 13);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "m³";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(95, 160);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 13);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "m³";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(95, 134);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "m³";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(95, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(18, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "m³";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(95, 82);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 13);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "m³";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(95, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "m³";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(95, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(18, 13);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "m³";
             // 
             // dez_textBox
             // 
@@ -428,114 +536,6 @@ namespace IdentificaVazSAAE.Apresentação
             this.jan_label.Size = new System.Drawing.Size(30, 13);
             this.jan_label.TabIndex = 0;
             this.jan_label.Text = "Jan.:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(95, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 13);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "m³";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(95, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 13);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "m³";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(95, 82);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 13);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "m³";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(95, 108);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(18, 13);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "m³";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(95, 134);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 13);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "m³";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(95, 160);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(18, 13);
-            this.label7.TabIndex = 29;
-            this.label7.Text = "m³";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(225, 30);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(18, 13);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "m³";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(225, 56);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(18, 13);
-            this.label9.TabIndex = 31;
-            this.label9.Text = "m³";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(225, 82);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(18, 13);
-            this.label10.TabIndex = 32;
-            this.label10.Text = "m³";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(225, 108);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(18, 13);
-            this.label11.TabIndex = 33;
-            this.label11.Text = "m³";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(225, 134);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(18, 13);
-            this.label12.TabIndex = 34;
-            this.label12.Text = "m³";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(225, 160);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(18, 13);
-            this.label13.TabIndex = 35;
-            this.label13.Text = "m³";
             // 
             // FormVerificaVazamento
             // 

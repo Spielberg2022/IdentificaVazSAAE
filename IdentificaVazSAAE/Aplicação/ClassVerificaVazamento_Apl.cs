@@ -130,5 +130,12 @@ namespace IdentificaVazSAAE.Aplicação
             verificaVazamento_Dom.mediaAgo = vazamento_Dom.mediaAgo;
             return vazamento_Dom.mediaAgo.ToString();
         }
+
+        public DataTable PreencheTabelaMediasMensais(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+            DataTable mMedias = new DataTable();
+            mMedias = verificaVazamento_Per.mMensais(vazamento_Dom);
+            return mMedias;
+        }
     }
 }

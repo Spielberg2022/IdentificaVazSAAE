@@ -38,18 +38,19 @@ namespace IdentificaVazSAAE.Apresentação
             verificaVazamento_Dom.ligacao = Int64.Parse(codLigacao_textBox.Text);
             leituras_dataGridView.DataSource = verificaVazamento_Apl.ListaLeituras(verificaVazamento_Dom);
             rol_dataGridView.DataSource = verificaVazamento_Apl.ListaRol(verificaVazamento_Dom);
-            jan_textBox.Text = verificaVazamento_Apl.MediaJan(verificaVazamento_Dom);
-            fev_textBox.Text = verificaVazamento_Apl.MediaFev(verificaVazamento_Dom);
-            mar_textBox.Text = verificaVazamento_Apl.MediaMar(verificaVazamento_Dom);
-            abr_textBox.Text = verificaVazamento_Apl.MediaAbr(verificaVazamento_Dom);
-            mai_textBox.Text = verificaVazamento_Apl.MediaMai(verificaVazamento_Dom);
-            jun_textBox.Text = verificaVazamento_Apl.MediaJun(verificaVazamento_Dom);
-            jul_textBox.Text = verificaVazamento_Apl.MediaJul(verificaVazamento_Dom);
-            ago_textBox.Text = verificaVazamento_Apl.MediaAgo(verificaVazamento_Dom);
-            set_textBox.Text = verificaVazamento_Apl.MediaSet(verificaVazamento_Dom);
-            out_textBox.Text = verificaVazamento_Apl.MediaOut(verificaVazamento_Dom);
-            nov_textBox.Text = verificaVazamento_Apl.MediaNov(verificaVazamento_Dom);
-            dez_textBox.Text = verificaVazamento_Apl.MediaDez(verificaVazamento_Dom);
+            verificaVazamento_Dom.mMensais = verificaVazamento_Apl.PreencheTabelaMediasMensais(verificaVazamento_Dom);
+            jan_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][0].ToString();
+            fev_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][1].ToString();
+            mar_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][2].ToString();
+            abr_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][3].ToString();
+            mai_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][4].ToString();
+            jun_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][5].ToString();
+            jul_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][6].ToString();
+            ago_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][7].ToString();
+            set_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][8].ToString();
+            out_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][9].ToString();
+            nov_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][10].ToString();
+            dez_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][11].ToString();
         }
 
         private void FormVerificaVazamento_FormClosed(object sender, FormClosedEventArgs e)
