@@ -14,7 +14,7 @@ namespace IdentificaVazSAAE.Persistência
 		public SqlConnection sqlConnection = new SqlConnection();
 		public SqlDataAdapter adaptador;
 		public SqlCommand comando;
-		public DataTable leituras, rol, media, consumo, desvio;
+		public DataTable leituras, rol, media, consumo, desvio, moda;
 
 		public string erro;
 
@@ -80,7 +80,38 @@ namespace IdentificaVazSAAE.Persistência
 			return double.Parse(consumo.Rows[0][0].ToString());
 		}
 
-		public double ConsumoMinimoFaturado(ClassVerificaVazamento_Dom vazamento_Dom)
+        public DataTable ModaGeral(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+			try
+			{
+				adaptador = new SqlDataAdapter();
+				comando = new SqlCommand();
+				moda = new DataTable();
+				erro = "";
+
+				comando.Connection = sqlConnection;
+				comando.Parameters.Add("@ligacao", SqlDbType.Int);
+				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
+				adaptador.SelectCommand = comando;
+
+				comando.CommandText = "select count(consumo_faturado) as Quantidade, consumo_faturado as [Consumo Faturado] from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and ocorrencia = 0 group by Consumo_faturado order by Quantidade Desc";
+				sqlConnection.Open();
+				adaptador.SelectCommand.ExecuteNonQuery();
+				adaptador.Fill(moda);
+			}
+			catch (Exception error)
+			{
+				erro = error.Message;
+			}
+			finally
+			{
+				sqlConnection.Close();
+			}
+
+			return moda;
+		}
+
+        public double ConsumoMinimoFaturado(ClassVerificaVazamento_Dom vazamento_Dom)
 		{
 			try
 			{

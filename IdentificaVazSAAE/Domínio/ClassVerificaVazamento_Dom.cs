@@ -11,9 +11,9 @@ namespace IdentificaVazSAAE.Domínio
         public DataTable leituras { get; set; }
         public Int64 ligacao { get; set; }
         public DataTable rol { get; set; }
-        public int amplitude { get; set; }
+        public double consumoPadraoMaximo { get; set; }
         public double mediaGeral { get; set; }
-        public Int64 modaGeral { get; set; }
+        public DataTable modaGeral { get; set; }
         public double desvioPadraoGeral { get; set; }
         public double mediaJan { get; set; }
         public double mediaFev { get; set; }

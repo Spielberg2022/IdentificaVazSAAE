@@ -39,6 +39,7 @@ namespace IdentificaVazSAAE.Apresentação
             leituras_dataGridView.DataSource = verificaVazamento_Apl.ListaLeituras(verificaVazamento_Dom);
             rol_dataGridView.DataSource = verificaVazamento_Apl.ListaRol(verificaVazamento_Dom);
             verificaVazamento_Dom.mMensais = verificaVazamento_Apl.PreencheTabelaMediasMensais(verificaVazamento_Dom);
+            moda_dataGridView.DataSource = verificaVazamento_Apl.ListaModa(verificaVazamento_Dom);
             jan_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][0].ToString();
             fev_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][1].ToString();
             mar_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][2].ToString();
@@ -59,6 +60,8 @@ namespace IdentificaVazSAAE.Apresentação
             mediaGeral_textBox.Text = verificaVazamento_Dom.mediaGeral.ToString();
             verificaVazamento_Dom.desvioPadraoGeral = verificaVazamento_Apl.VerDesvioPadrao(verificaVazamento_Dom);
             desvioPadrao_textBox.Text = verificaVazamento_Dom.desvioPadraoGeral.ToString();
+            verificaVazamento_Dom.consumoPadraoMaximo = verificaVazamento_Apl.VerConsumoPadraoMax(verificaVazamento_Dom);
+            mediaPadraoMax_textBox.Text = verificaVazamento_Dom.consumoPadraoMaximo.ToString();
         }
 
         private void FormVerificaVazamento_FormClosed(object sender, FormClosedEventArgs e)

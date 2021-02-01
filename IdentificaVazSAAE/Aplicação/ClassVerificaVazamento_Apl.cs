@@ -51,6 +51,14 @@ namespace IdentificaVazSAAE.Aplicação
             return vazamento_Dom.mediaFev.ToString();
         }
 
+        public object ListaModa(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+            verificaVazamento_Per.sqlConnection = connection;
+            vazamento_Dom.modaGeral = verificaVazamento_Per.ModaGeral(vazamento_Dom);
+            verificaVazamento_Dom.modaGeral = vazamento_Dom.modaGeral;
+            return vazamento_Dom.modaGeral;
+        }
+
         public string MediaMar(ClassVerificaVazamento_Dom vazamento_Dom)
         {
             verificaVazamento_Per.sqlConnection = connection;
@@ -89,6 +97,14 @@ namespace IdentificaVazSAAE.Aplicação
             vazamento_Dom.desvioPadraoGeral = verificaVazamento_Per.DesvioPadrao(vazamento_Dom);
             verificaVazamento_Dom.desvioPadraoGeral = vazamento_Dom.desvioPadraoGeral;
             return vazamento_Dom.desvioPadraoGeral;
+        }
+
+        public double VerConsumoPadraoMax(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+            verificaVazamento_Per.sqlConnection = connection;
+            vazamento_Dom.consumoPadraoMaximo = vazamento_Dom.desvioPadraoGeral + vazamento_Dom.mediaGeral;
+            verificaVazamento_Dom.consumoPadraoMaximo = vazamento_Dom.consumoPadraoMaximo;
+            return vazamento_Dom.consumoPadraoMaximo;
         }
 
         public double VerMediaGeral(ClassVerificaVazamento_Dom vazamento_Dom)
