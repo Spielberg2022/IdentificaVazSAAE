@@ -75,6 +75,38 @@ namespace IdentificaVazSAAE.Aplicação
             return vazamento_Dom.mediaMai.ToString();
         }
 
+        public double VerConsumoMinimo(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+            verificaVazamento_Per.sqlConnection = connection;
+            vazamento_Dom.consumoMinimo = verificaVazamento_Per.ConsumoMinimoFaturado(vazamento_Dom);
+            verificaVazamento_Dom.consumoMinimo = vazamento_Dom.consumoMinimo;
+            return vazamento_Dom.consumoMinimo;
+        }
+
+        public double VerDesvioPadrao(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+            verificaVazamento_Per.sqlConnection = connection;
+            vazamento_Dom.desvioPadraoGeral = verificaVazamento_Per.DesvioPadrao(vazamento_Dom);
+            verificaVazamento_Dom.desvioPadraoGeral = vazamento_Dom.desvioPadraoGeral;
+            return vazamento_Dom.desvioPadraoGeral;
+        }
+
+        public double VerMediaGeral(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+            verificaVazamento_Per.sqlConnection = connection;
+            vazamento_Dom.mediaGeral = verificaVazamento_Per.MediaGeral(vazamento_Dom);
+            verificaVazamento_Dom.mediaGeral = vazamento_Dom.mediaGeral;
+            return vazamento_Dom.mediaGeral;
+        }
+
+        public double VerConsumoMaximo(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+            verificaVazamento_Per.sqlConnection = connection;
+            vazamento_Dom.consumoMaximo = verificaVazamento_Per.ConsumoMaximoFaturado(vazamento_Dom);
+            verificaVazamento_Dom.consumoMaximo = vazamento_Dom.consumoMaximo;
+            return vazamento_Dom.consumoMaximo;
+        }
+
         public string MediaJun(ClassVerificaVazamento_Dom vazamento_Dom)
         {
             verificaVazamento_Per.sqlConnection = connection;

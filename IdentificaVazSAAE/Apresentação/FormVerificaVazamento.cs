@@ -51,6 +51,14 @@ namespace IdentificaVazSAAE.Apresentação
             out_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][9].ToString();
             nov_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][10].ToString();
             dez_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][11].ToString();
+            verificaVazamento_Dom.consumoMaximo = verificaVazamento_Apl.VerConsumoMaximo(verificaVazamento_Dom);
+            consumoMaxFaturado_textBox.Text = verificaVazamento_Dom.consumoMaximo.ToString();
+            verificaVazamento_Dom.consumoMinimo = verificaVazamento_Apl.VerConsumoMinimo(verificaVazamento_Dom);
+            consumoMinFaturado_textBox.Text = verificaVazamento_Dom.consumoMinimo.ToString();
+            verificaVazamento_Dom.mediaGeral = verificaVazamento_Apl.VerMediaGeral(verificaVazamento_Dom);
+            mediaGeral_textBox.Text = verificaVazamento_Dom.mediaGeral.ToString();
+            verificaVazamento_Dom.desvioPadraoGeral = verificaVazamento_Apl.VerDesvioPadrao(verificaVazamento_Dom);
+            desvioPadrao_textBox.Text = verificaVazamento_Dom.desvioPadraoGeral.ToString();
         }
 
         private void FormVerificaVazamento_FormClosed(object sender, FormClosedEventArgs e)

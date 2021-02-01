@@ -14,7 +14,7 @@ namespace IdentificaVazSAAE.Persistência
 		public SqlConnection sqlConnection = new SqlConnection();
 		public SqlDataAdapter adaptador;
 		public SqlCommand comando;
-		public DataTable leituras, rol, media;
+		public DataTable leituras, rol, media, consumo, desvio;
 
 		public string erro;
 
@@ -49,7 +49,69 @@ namespace IdentificaVazSAAE.Persistência
 			return leituras;
 		}
 
-        public double CalcMediaJan(ClassVerificaVazamento_Dom vazamento_Dom)
+		public double ConsumoMaximoFaturado(ClassVerificaVazamento_Dom vazamento_Dom)
+		{
+			try
+			{
+				adaptador = new SqlDataAdapter();
+				comando = new SqlCommand();
+				consumo = new DataTable();
+				erro = "";
+
+				comando.Connection = sqlConnection;
+				comando.Parameters.Add("@ligacao", SqlDbType.Int);
+				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
+				adaptador.SelectCommand = comando;
+
+				comando.CommandText = "select MAX(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300)";
+				sqlConnection.Open();
+				adaptador.SelectCommand.ExecuteNonQuery();
+				adaptador.Fill(consumo);
+			}
+			catch (Exception error)
+			{
+				erro = error.Message;
+			}
+			finally
+			{
+				sqlConnection.Close();
+			}
+
+			return double.Parse(consumo.Rows[0][0].ToString());
+		}
+
+		public double ConsumoMinimoFaturado(ClassVerificaVazamento_Dom vazamento_Dom)
+		{
+			try
+			{
+				adaptador = new SqlDataAdapter();
+				comando = new SqlCommand();
+				consumo = new DataTable();
+				erro = "";
+
+				comando.Connection = sqlConnection;
+				comando.Parameters.Add("@ligacao", SqlDbType.Int);
+				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
+				adaptador.SelectCommand = comando;
+
+				comando.CommandText = "select MIN(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300)";
+				sqlConnection.Open();
+				adaptador.SelectCommand.ExecuteNonQuery();
+				adaptador.Fill(consumo);
+			}
+			catch (Exception error)
+			{
+				erro = error.Message;
+			}
+			finally
+			{
+				sqlConnection.Close();
+			}
+
+			return double.Parse(consumo.Rows[0][0].ToString());
+		}
+
+		public double CalcMediaJan(ClassVerificaVazamento_Dom vazamento_Dom)
         {
 			try
 			{
@@ -63,7 +125,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 01 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 01 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -80,7 +142,69 @@ namespace IdentificaVazSAAE.Persistência
 			return double.Parse(media.Rows[0][0].ToString());
 		}
 
-		public double CalcMediaFev(ClassVerificaVazamento_Dom vazamento_Dom)
+        public double DesvioPadrao(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+			try
+			{
+				adaptador = new SqlDataAdapter();
+				comando = new SqlCommand();
+				desvio = new DataTable();
+				erro = "";
+
+				comando.Connection = sqlConnection;
+				comando.Parameters.Add("@ligacao", SqlDbType.Int);
+				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
+				adaptador.SelectCommand = comando;
+
+				comando.CommandText = "select ROUND(STDEVP(consumo_faturado), 0) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and ocorrencia = 0";
+				sqlConnection.Open();
+				adaptador.SelectCommand.ExecuteNonQuery();
+				adaptador.Fill(desvio);
+			}
+			catch (Exception error)
+			{
+				erro = error.Message;
+			}
+			finally
+			{
+				sqlConnection.Close();
+			}
+
+			return double.Parse(desvio.Rows[0][0].ToString());
+		}
+
+        internal double MediaGeral(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+			try
+			{
+				adaptador = new SqlDataAdapter();
+				comando = new SqlCommand();
+				media = new DataTable();
+				erro = "";
+
+				comando.Connection = sqlConnection;
+				comando.Parameters.Add("@ligacao", SqlDbType.Int);
+				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
+				adaptador.SelectCommand = comando;
+
+				comando.CommandText = "select avg(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and ocorrencia = 0";
+				sqlConnection.Open();
+				adaptador.SelectCommand.ExecuteNonQuery();
+				adaptador.Fill(media);
+			}
+			catch (Exception error)
+			{
+				erro = error.Message;
+			}
+			finally
+			{
+				sqlConnection.Close();
+			}
+
+			return double.Parse(media.Rows[0][0].ToString());
+		}
+
+        public double CalcMediaFev(ClassVerificaVazamento_Dom vazamento_Dom)
 		{
 			try
 			{
@@ -94,7 +218,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 02 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 02 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -125,7 +249,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 03 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 03 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -156,7 +280,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 04 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 04 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -187,7 +311,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 05 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 05 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -218,7 +342,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 06 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 06 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -249,7 +373,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 07 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 07 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -280,7 +404,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 08 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 08 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -311,7 +435,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 09 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 09 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -342,7 +466,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 10 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 10 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -373,7 +497,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 11 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 11 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -404,7 +528,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) and SUBSTRING(data_ref,5,2) = 12 and Ocorrencia = 0";
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and SUBSTRING(data_ref,5,2) = 12 and Ocorrencia = 0";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(media);
@@ -435,7 +559,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select (substring(data_ref, 5, 2) + '/' + substring(data_ref, 1, 4)) as [Data Ref], data_leitura as [Data da Leitura], leitura_orig as Leitura, ocorrencia_orig as Ocorrencia, consumo_faturado as [Consumo Faturado], hidrometro as Hidrometro from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),0,7) + 1 - 300) order by [Consumo Faturado]";
+				comando.CommandText = "select (substring(data_ref, 5, 2) + '/' + substring(data_ref, 1, 4)) as [Data Ref], data_leitura as [Data da Leitura], leitura_orig as Leitura, ocorrencia_orig as Ocorrencia, consumo_faturado as [Consumo Faturado], hidrometro as Hidrometro from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) order by [Consumo Faturado]";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(rol);

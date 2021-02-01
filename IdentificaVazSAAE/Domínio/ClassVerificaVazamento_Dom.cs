@@ -10,26 +10,11 @@ namespace IdentificaVazSAAE.Domínio
     {
         public DataTable leituras { get; set; }
         public Int64 ligacao { get; set; }
-        public string dataRef { get; set; }
-        public string dataRefAtual { get; set; }
-        public DateTime dataLeitura { get; set; }
-        public Int64 leitura { get; set; }
-        public int ocorrencia { get; set; }
-        public int consumoFaturado { get; set; }
-        public string hidrometro { get; set; }
         public DataTable rol { get; set; }
         public int amplitude { get; set; }
-        public int frequenciaAbsoluta { get; set; }
-        public int frequenciaRelativa { get; set; }
-        public int frequenciaAbsolutaAcumulada { get; set; }
-        public int frequenciaRelativaAcumulada { get; set; }
-        public double mediaSimples { get; set; }
-        public Int64 mediana { get; set; }
-        public double mediaAparada { get; set; }
-        public Int64 moda { get; set; }
-        public double desvioMedio { get; set; }
-        public double variancia { get; set; }
-        public double desvioPadrao { get; set; }
+        public double mediaGeral { get; set; }
+        public Int64 modaGeral { get; set; }
+        public double desvioPadraoGeral { get; set; }
         public double mediaJan { get; set; }
         public double mediaFev { get; set; }
         public double mediaMar { get; set; }
@@ -43,6 +28,8 @@ namespace IdentificaVazSAAE.Domínio
         public double mediaNov { get; set; }
         public double mediaDez { get; set; }
         public DataTable mMensais { get; set; }
+        public double consumoMaximo { get; set; }
+        public double consumoMinimo { get; set; }
 
     }
 }

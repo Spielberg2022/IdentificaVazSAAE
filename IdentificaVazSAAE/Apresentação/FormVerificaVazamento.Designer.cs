@@ -76,6 +76,18 @@ namespace IdentificaVazSAAE.Apresentação
             this.fev_label = new System.Windows.Forms.Label();
             this.jan_textBox = new System.Windows.Forms.TextBox();
             this.jan_label = new System.Windows.Forms.Label();
+            this.mediaGeral_label = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.mediaGeral_textBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.desvioPadral_label = new System.Windows.Forms.Label();
+            this.desvioPadrao_textBox = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.consumoMaxFaturado_label = new System.Windows.Forms.Label();
+            this.consumoMaxFaturado_textBox = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.consumoMinFaturado_label = new System.Windows.Forms.Label();
+            this.consumoMinFaturado_textBox = new System.Windows.Forms.TextBox();
             this.leituras_tabControl.SuspendLayout();
             this.leituras_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).BeginInit();
@@ -120,7 +132,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_tabControl.Location = new System.Drawing.Point(12, 42);
             this.leituras_tabControl.Name = "leituras_tabControl";
             this.leituras_tabControl.SelectedIndex = 0;
-            this.leituras_tabControl.Size = new System.Drawing.Size(673, 424);
+            this.leituras_tabControl.Size = new System.Drawing.Size(707, 424);
             this.leituras_tabControl.TabIndex = 3;
             // 
             // leituras_tabPage
@@ -130,7 +142,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_tabPage.Location = new System.Drawing.Point(4, 22);
             this.leituras_tabPage.Name = "leituras_tabPage";
             this.leituras_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.leituras_tabPage.Size = new System.Drawing.Size(665, 398);
+            this.leituras_tabPage.Size = new System.Drawing.Size(699, 398);
             this.leituras_tabPage.TabIndex = 0;
             this.leituras_tabPage.Text = "Leituras";
             this.leituras_tabPage.UseVisualStyleBackColor = true;
@@ -145,7 +157,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_dataGridView.Location = new System.Drawing.Point(9, 38);
             this.leituras_dataGridView.Name = "leituras_dataGridView";
             this.leituras_dataGridView.RowHeadersVisible = false;
-            this.leituras_dataGridView.Size = new System.Drawing.Size(650, 354);
+            this.leituras_dataGridView.Size = new System.Drawing.Size(684, 354);
             this.leituras_dataGridView.TabIndex = 1;
             // 
             // label1
@@ -159,13 +171,25 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // medias_tabPage
             // 
+            this.medias_tabPage.Controls.Add(this.label17);
+            this.medias_tabPage.Controls.Add(this.consumoMinFaturado_label);
+            this.medias_tabPage.Controls.Add(this.consumoMinFaturado_textBox);
+            this.medias_tabPage.Controls.Add(this.label16);
+            this.medias_tabPage.Controls.Add(this.consumoMaxFaturado_label);
+            this.medias_tabPage.Controls.Add(this.consumoMaxFaturado_textBox);
+            this.medias_tabPage.Controls.Add(this.label14);
+            this.medias_tabPage.Controls.Add(this.desvioPadral_label);
+            this.medias_tabPage.Controls.Add(this.desvioPadrao_textBox);
+            this.medias_tabPage.Controls.Add(this.label15);
+            this.medias_tabPage.Controls.Add(this.mediaGeral_label);
+            this.medias_tabPage.Controls.Add(this.mediaGeral_textBox);
             this.medias_tabPage.Controls.Add(this.rol_label);
             this.medias_tabPage.Controls.Add(this.rol_dataGridView);
             this.medias_tabPage.Controls.Add(this.meses_groupBox);
             this.medias_tabPage.Location = new System.Drawing.Point(4, 22);
             this.medias_tabPage.Name = "medias_tabPage";
             this.medias_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.medias_tabPage.Size = new System.Drawing.Size(665, 398);
+            this.medias_tabPage.Size = new System.Drawing.Size(699, 398);
             this.medias_tabPage.TabIndex = 1;
             this.medias_tabPage.Text = "Médias";
             this.medias_tabPage.UseVisualStyleBackColor = true;
@@ -189,7 +213,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.rol_dataGridView.Location = new System.Drawing.Point(7, 232);
             this.rol_dataGridView.Name = "rol_dataGridView";
             this.rol_dataGridView.RowHeadersVisible = false;
-            this.rol_dataGridView.Size = new System.Drawing.Size(650, 160);
+            this.rol_dataGridView.Size = new System.Drawing.Size(684, 160);
             this.rol_dataGridView.TabIndex = 2;
             // 
             // meses_groupBox
@@ -351,6 +375,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.dez_textBox.Name = "dez_textBox";
             this.dez_textBox.Size = new System.Drawing.Size(47, 20);
             this.dez_textBox.TabIndex = 23;
+            this.dez_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dez_label
             // 
@@ -367,6 +392,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.nov_textBox.Name = "nov_textBox";
             this.nov_textBox.Size = new System.Drawing.Size(47, 20);
             this.nov_textBox.TabIndex = 21;
+            this.nov_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // nov_label
             // 
@@ -383,6 +409,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.out_textBox.Name = "out_textBox";
             this.out_textBox.Size = new System.Drawing.Size(47, 20);
             this.out_textBox.TabIndex = 19;
+            this.out_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // out_label
             // 
@@ -399,6 +426,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.set_textBox.Name = "set_textBox";
             this.set_textBox.Size = new System.Drawing.Size(47, 20);
             this.set_textBox.TabIndex = 17;
+            this.set_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // set_label
             // 
@@ -415,6 +443,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.ago_textBox.Name = "ago_textBox";
             this.ago_textBox.Size = new System.Drawing.Size(47, 20);
             this.ago_textBox.TabIndex = 15;
+            this.ago_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // ago_label
             // 
@@ -431,6 +460,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.jul_textBox.Name = "jul_textBox";
             this.jul_textBox.Size = new System.Drawing.Size(47, 20);
             this.jul_textBox.TabIndex = 13;
+            this.jul_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // jul_label
             // 
@@ -447,6 +477,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.jun_textBox.Name = "jun_textBox";
             this.jun_textBox.Size = new System.Drawing.Size(47, 20);
             this.jun_textBox.TabIndex = 11;
+            this.jun_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // jun_label
             // 
@@ -463,6 +494,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.mai_textBox.Name = "mai_textBox";
             this.mai_textBox.Size = new System.Drawing.Size(47, 20);
             this.mai_textBox.TabIndex = 9;
+            this.mai_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // mai_label
             // 
@@ -479,6 +511,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.abr_textBox.Name = "abr_textBox";
             this.abr_textBox.Size = new System.Drawing.Size(47, 20);
             this.abr_textBox.TabIndex = 7;
+            this.abr_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // abr_label
             // 
@@ -495,6 +528,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.mar_textBox.Name = "mar_textBox";
             this.mar_textBox.Size = new System.Drawing.Size(47, 20);
             this.mar_textBox.TabIndex = 5;
+            this.mar_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // mar_label
             // 
@@ -511,6 +545,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.fev_textBox.Name = "fev_textBox";
             this.fev_textBox.Size = new System.Drawing.Size(47, 20);
             this.fev_textBox.TabIndex = 3;
+            this.fev_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // fev_label
             // 
@@ -527,6 +562,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.jan_textBox.Name = "jan_textBox";
             this.jan_textBox.Size = new System.Drawing.Size(47, 20);
             this.jan_textBox.TabIndex = 1;
+            this.jan_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // jan_label
             // 
@@ -537,12 +573,116 @@ namespace IdentificaVazSAAE.Apresentação
             this.jan_label.TabIndex = 0;
             this.jan_label.Text = "Jan.:";
             // 
+            // mediaGeral_label
+            // 
+            this.mediaGeral_label.AutoSize = true;
+            this.mediaGeral_label.Location = new System.Drawing.Point(546, 30);
+            this.mediaGeral_label.Name = "mediaGeral_label";
+            this.mediaGeral_label.Size = new System.Drawing.Size(65, 13);
+            this.mediaGeral_label.TabIndex = 25;
+            this.mediaGeral_label.Text = "Média geral:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(670, 30);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(18, 13);
+            this.label15.TabIndex = 37;
+            this.label15.Text = "m³";
+            // 
+            // mediaGeral_textBox
+            // 
+            this.mediaGeral_textBox.Location = new System.Drawing.Point(617, 27);
+            this.mediaGeral_textBox.Name = "mediaGeral_textBox";
+            this.mediaGeral_textBox.Size = new System.Drawing.Size(47, 20);
+            this.mediaGeral_textBox.TabIndex = 36;
+            this.mediaGeral_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(670, 56);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(18, 13);
+            this.label14.TabIndex = 40;
+            this.label14.Text = "m³";
+            // 
+            // desvioPadral_label
+            // 
+            this.desvioPadral_label.AutoSize = true;
+            this.desvioPadral_label.Location = new System.Drawing.Point(506, 56);
+            this.desvioPadral_label.Name = "desvioPadral_label";
+            this.desvioPadral_label.Size = new System.Drawing.Size(105, 13);
+            this.desvioPadral_label.TabIndex = 38;
+            this.desvioPadral_label.Text = "Desvio padrão geral:";
+            // 
+            // desvioPadrao_textBox
+            // 
+            this.desvioPadrao_textBox.Location = new System.Drawing.Point(617, 53);
+            this.desvioPadrao_textBox.Name = "desvioPadrao_textBox";
+            this.desvioPadrao_textBox.Size = new System.Drawing.Size(47, 20);
+            this.desvioPadrao_textBox.TabIndex = 39;
+            this.desvioPadrao_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(482, 56);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(18, 13);
+            this.label16.TabIndex = 43;
+            this.label16.Text = "m³";
+            // 
+            // consumoMaxFaturado_label
+            // 
+            this.consumoMaxFaturado_label.AutoSize = true;
+            this.consumoMaxFaturado_label.Location = new System.Drawing.Point(288, 56);
+            this.consumoMaxFaturado_label.Name = "consumoMaxFaturado_label";
+            this.consumoMaxFaturado_label.Size = new System.Drawing.Size(135, 13);
+            this.consumoMaxFaturado_label.TabIndex = 41;
+            this.consumoMaxFaturado_label.Text = "Consumo Máximo faturado:";
+            // 
+            // consumoMaxFaturado_textBox
+            // 
+            this.consumoMaxFaturado_textBox.Location = new System.Drawing.Point(429, 53);
+            this.consumoMaxFaturado_textBox.Name = "consumoMaxFaturado_textBox";
+            this.consumoMaxFaturado_textBox.Size = new System.Drawing.Size(47, 20);
+            this.consumoMaxFaturado_textBox.TabIndex = 42;
+            this.consumoMaxFaturado_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(482, 30);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(18, 13);
+            this.label17.TabIndex = 46;
+            this.label17.Text = "m³";
+            // 
+            // consumoMinFaturado_label
+            // 
+            this.consumoMinFaturado_label.AutoSize = true;
+            this.consumoMinFaturado_label.Location = new System.Drawing.Point(288, 30);
+            this.consumoMinFaturado_label.Name = "consumoMinFaturado_label";
+            this.consumoMinFaturado_label.Size = new System.Drawing.Size(134, 13);
+            this.consumoMinFaturado_label.TabIndex = 44;
+            this.consumoMinFaturado_label.Text = "Consumo Mínimo faturado:";
+            // 
+            // consumoMinFaturado_textBox
+            // 
+            this.consumoMinFaturado_textBox.Location = new System.Drawing.Point(429, 27);
+            this.consumoMinFaturado_textBox.Name = "consumoMinFaturado_textBox";
+            this.consumoMinFaturado_textBox.Size = new System.Drawing.Size(47, 20);
+            this.consumoMinFaturado_textBox.TabIndex = 45;
+            this.consumoMinFaturado_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // FormVerificaVazamento
             // 
             this.AcceptButton = this.localizar_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 478);
+            this.ClientSize = new System.Drawing.Size(731, 478);
             this.Controls.Add(this.leituras_tabControl);
             this.Controls.Add(this.localizar_button);
             this.Controls.Add(this.codLigacao_textBox);
@@ -614,5 +754,17 @@ namespace IdentificaVazSAAE.Apresentação
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label consumoMinFaturado_label;
+        private System.Windows.Forms.TextBox consumoMinFaturado_textBox;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label consumoMaxFaturado_label;
+        private System.Windows.Forms.TextBox consumoMaxFaturado_textBox;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label desvioPadral_label;
+        private System.Windows.Forms.TextBox desvioPadrao_textBox;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label mediaGeral_label;
+        private System.Windows.Forms.TextBox mediaGeral_textBox;
     }
 }
