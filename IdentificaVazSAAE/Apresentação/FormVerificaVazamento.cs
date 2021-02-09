@@ -62,6 +62,16 @@ namespace IdentificaVazSAAE.Apresentação
             desvioPadrao_textBox.Text = verificaVazamento_Dom.desvioPadraoGeral.ToString();
             verificaVazamento_Dom.consumoPadraoMaximo = verificaVazamento_Apl.VerConsumoPadraoMax(verificaVazamento_Dom);
             mediaPadraoMax_textBox.Text = verificaVazamento_Dom.consumoPadraoMaximo.ToString();
+            if (verificaVazamento_Apl.verificaUltConta())
+                MessageBox.Show("Possível Vazamento! Última conta faturada excedeu o limite de consumo!\n\nData de referência: " + verificaVazamento_Apl.verificaVazamento_Dom.dataRef + ".\nConsumo Faturado: " + verificaVazamento_Apl.verificaVazamento_Dom.consumoAtual + ".\nConsumo Máximo Permitido: " + verificaVazamento_Dom.consumoPadraoMaximo + ".",
+                    "Atenção!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+            else
+                MessageBox.Show("Última conta faturada está dentro do padrão normal.",
+                    "Mensagem: ",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
         }
 
         private void FormVerificaVazamento_FormClosed(object sender, FormClosedEventArgs e)

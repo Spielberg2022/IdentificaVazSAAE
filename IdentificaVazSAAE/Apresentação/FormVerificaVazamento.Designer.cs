@@ -37,6 +37,8 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_dataGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.medias_tabPage = new System.Windows.Forms.TabPage();
+            this.moda_label = new System.Windows.Forms.Label();
+            this.moda_dataGridView = new System.Windows.Forms.DataGridView();
             this.label18 = new System.Windows.Forms.Label();
             this.mediaPadraoMax_label = new System.Windows.Forms.Label();
             this.mediaPadraoMax_textBox = new System.Windows.Forms.TextBox();
@@ -91,15 +93,18 @@ namespace IdentificaVazSAAE.Apresentação
             this.fev_label = new System.Windows.Forms.Label();
             this.jan_textBox = new System.Windows.Forms.TextBox();
             this.jan_label = new System.Windows.Forms.Label();
-            this.moda_dataGridView = new System.Windows.Forms.DataGridView();
-            this.moda_label = new System.Windows.Forms.Label();
+            this.vazamento_tabPage = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.vazamento_label = new System.Windows.Forms.Label();
             this.leituras_tabControl.SuspendLayout();
             this.leituras_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).BeginInit();
             this.medias_tabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.moda_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rol_dataGridView)).BeginInit();
             this.meses_groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.moda_dataGridView)).BeginInit();
+            this.vazamento_tabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // codLigacao_label
@@ -135,6 +140,7 @@ namespace IdentificaVazSAAE.Apresentação
             | System.Windows.Forms.AnchorStyles.Right)));
             this.leituras_tabControl.Controls.Add(this.leituras_tabPage);
             this.leituras_tabControl.Controls.Add(this.medias_tabPage);
+            this.leituras_tabControl.Controls.Add(this.vazamento_tabPage);
             this.leituras_tabControl.Location = new System.Drawing.Point(12, 42);
             this.leituras_tabControl.Name = "leituras_tabControl";
             this.leituras_tabControl.SelectedIndex = 0;
@@ -204,6 +210,27 @@ namespace IdentificaVazSAAE.Apresentação
             this.medias_tabPage.TabIndex = 1;
             this.medias_tabPage.Text = "Médias";
             this.medias_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // moda_label
+            // 
+            this.moda_label.AutoSize = true;
+            this.moda_label.Location = new System.Drawing.Point(288, 99);
+            this.moda_label.Name = "moda_label";
+            this.moda_label.Size = new System.Drawing.Size(37, 13);
+            this.moda_label.TabIndex = 51;
+            this.moda_label.Text = "Moda:";
+            // 
+            // moda_dataGridView
+            // 
+            this.moda_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.moda_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.moda_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.moda_dataGridView.Location = new System.Drawing.Point(291, 115);
+            this.moda_dataGridView.Name = "moda_dataGridView";
+            this.moda_dataGridView.RowHeadersVisible = false;
+            this.moda_dataGridView.Size = new System.Drawing.Size(400, 98);
+            this.moda_dataGridView.TabIndex = 50;
             // 
             // label18
             // 
@@ -717,27 +744,37 @@ namespace IdentificaVazSAAE.Apresentação
             this.jan_label.TabIndex = 0;
             this.jan_label.Text = "Jan.:";
             // 
-            // moda_dataGridView
+            // vazamento_tabPage
             // 
-            this.moda_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.vazamento_tabPage.Controls.Add(this.vazamento_label);
+            this.vazamento_tabPage.Controls.Add(this.dataGridView1);
+            this.vazamento_tabPage.Location = new System.Drawing.Point(4, 22);
+            this.vazamento_tabPage.Name = "vazamento_tabPage";
+            this.vazamento_tabPage.Size = new System.Drawing.Size(699, 398);
+            this.vazamento_tabPage.TabIndex = 2;
+            this.vazamento_tabPage.Text = "Provável Vazamento e Simulação de Correção da conta";
+            this.vazamento_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.moda_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.moda_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.moda_dataGridView.Location = new System.Drawing.Point(291, 115);
-            this.moda_dataGridView.Name = "moda_dataGridView";
-            this.moda_dataGridView.RowHeadersVisible = false;
-            this.moda_dataGridView.Size = new System.Drawing.Size(400, 98);
-            this.moda_dataGridView.TabIndex = 50;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 29);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(681, 132);
+            this.dataGridView1.TabIndex = 3;
             // 
-            // moda_label
+            // vazamento_label
             // 
-            this.moda_label.AutoSize = true;
-            this.moda_label.Location = new System.Drawing.Point(288, 99);
-            this.moda_label.Name = "moda_label";
-            this.moda_label.Size = new System.Drawing.Size(37, 13);
-            this.moda_label.TabIndex = 51;
-            this.moda_label.Text = "Moda:";
+            this.vazamento_label.AutoSize = true;
+            this.vazamento_label.Location = new System.Drawing.Point(3, 9);
+            this.vazamento_label.Name = "vazamento_label";
+            this.vazamento_label.Size = new System.Drawing.Size(173, 13);
+            this.vazamento_label.TabIndex = 4;
+            this.vazamento_label.Text = "Meses com prováveis vazamentos:";
             // 
             // FormVerificaVazamento
             // 
@@ -759,10 +796,13 @@ namespace IdentificaVazSAAE.Apresentação
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).EndInit();
             this.medias_tabPage.ResumeLayout(false);
             this.medias_tabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.moda_dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rol_dataGridView)).EndInit();
             this.meses_groupBox.ResumeLayout(false);
             this.meses_groupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.moda_dataGridView)).EndInit();
+            this.vazamento_tabPage.ResumeLayout(false);
+            this.vazamento_tabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -834,5 +874,8 @@ namespace IdentificaVazSAAE.Apresentação
         private System.Windows.Forms.TextBox mediaPadraoMax_textBox;
         private System.Windows.Forms.Label moda_label;
         private System.Windows.Forms.DataGridView moda_dataGridView;
+        private System.Windows.Forms.TabPage vazamento_tabPage;
+        private System.Windows.Forms.Label vazamento_label;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

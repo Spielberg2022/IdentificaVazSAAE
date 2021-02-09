@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 using IdentificaVazSAAE.Persistência;
 using IdentificaVazSAAE.Domínio;
@@ -97,6 +98,21 @@ namespace IdentificaVazSAAE.Aplicação
             vazamento_Dom.desvioPadraoGeral = verificaVazamento_Per.DesvioPadrao(vazamento_Dom);
             verificaVazamento_Dom.desvioPadraoGeral = vazamento_Dom.desvioPadraoGeral;
             return vazamento_Dom.desvioPadraoGeral;
+        }
+
+        public bool verificaUltConta()
+        {
+            if(verificaVazamento_Dom.leituras.Rows.Count > 0)
+            {
+                var temp = verificaVazamento_Dom.leituras.Rows.Count - 1;
+                verificaVazamento_Dom.consumoAtual = double.Parse(verificaVazamento_Dom.leituras.Rows[temp][4].ToString());
+                verificaVazamento_Dom.dataRef = verificaVazamento_Dom.leituras.Rows[temp][0].ToString();
+                if (double.Parse(verificaVazamento_Dom.leituras.Rows[temp][4].ToString()) > verificaVazamento_Dom.consumoPadraoMaximo)
+                    return true;
+                else
+                    return false;
+            }
+            return false;
         }
 
         public double VerConsumoPadraoMax(ClassVerificaVazamento_Dom vazamento_Dom)
