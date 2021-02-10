@@ -72,6 +72,13 @@ namespace IdentificaVazSAAE.Apresentação
                     "Mensagem: ",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+            if(verificaVazamento_Apl.verificaVazamento_Dom.leituras.Rows.Count > 0)
+                vazamentos_dataGridView.DataSource = verificaVazamento_Apl.verificaVazamentos(verificaVazamento_Dom);
+            else
+                MessageBox.Show("Tabela de leituras vazia",
+                    "Erro ",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
         }
 
         private void FormVerificaVazamento_FormClosed(object sender, FormClosedEventArgs e)

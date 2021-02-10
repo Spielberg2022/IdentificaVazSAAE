@@ -14,7 +14,7 @@ namespace IdentificaVazSAAE.Persistência
 		public SqlConnection sqlConnection = new SqlConnection();
 		public SqlDataAdapter adaptador;
 		public SqlCommand comando;
-		public DataTable leituras, rol, media, consumo, desvio, moda;
+		public DataTable leituras, rol, media, consumo, desvio, moda, vazamentos;
 
 		public string erro;
 
@@ -171,6 +171,39 @@ namespace IdentificaVazSAAE.Persistência
 			}
 
 			return double.Parse(media.Rows[0][0].ToString());
+		}
+
+        public DataTable VerificaVazamentos(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+			try
+			{
+				adaptador = new SqlDataAdapter();
+				comando = new SqlCommand();
+				vazamentos = new DataTable();
+				erro = "";
+
+				comando.Connection = sqlConnection;
+				comando.Parameters.Add("@ligacao", SqlDbType.Int);
+				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
+				comando.Parameters.Add("@consumoMaximo", SqlDbType.Float);
+                comando.Parameters["@consumoMaximo"].Value = Double.Parse(vazamento_Dom.consumoPadraoMaximo.ToString());
+				adaptador.SelectCommand = comando;
+
+				comando.CommandText = "select (substring(data_ref, 5, 2) + '/' + substring(data_ref, 1, 4)) as [Data Ref], data_leitura as [Data da Leitura], leitura_orig as Leitura, ocorrencia_orig as Ocorrencia,consumo_faturado as [Consumo Faturado], hidrometro as Hidrometro from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and consumo_faturado > @consumoMaximo order by data_ref desc";
+				sqlConnection.Open();
+				adaptador.SelectCommand.ExecuteNonQuery();
+				adaptador.Fill(vazamentos);
+			}
+			catch (Exception error)
+			{
+				erro = error.Message;
+			}
+			finally
+			{
+				sqlConnection.Close();
+			}
+
+			return vazamentos;
 		}
 
         public double DesvioPadrao(ClassVerificaVazamento_Dom vazamento_Dom)

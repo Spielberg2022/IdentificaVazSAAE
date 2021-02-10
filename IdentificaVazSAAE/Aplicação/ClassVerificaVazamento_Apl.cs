@@ -115,6 +115,13 @@ namespace IdentificaVazSAAE.Aplicação
             return false;
         }
 
+        public DataTable verificaVazamentos(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+            verificaVazamento_Per.sqlConnection = connection;
+            verificaVazamento_Dom.vazamentos = verificaVazamento_Per.VerificaVazamentos(vazamento_Dom);
+            return verificaVazamento_Dom.vazamentos;
+        }
+
         public double VerConsumoPadraoMax(ClassVerificaVazamento_Dom vazamento_Dom)
         {
             verificaVazamento_Per.sqlConnection = connection;

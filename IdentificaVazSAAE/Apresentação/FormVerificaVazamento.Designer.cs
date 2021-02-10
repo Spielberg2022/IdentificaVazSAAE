@@ -37,6 +37,9 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_dataGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.medias_tabPage = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.moda_label = new System.Windows.Forms.Label();
             this.moda_dataGridView = new System.Windows.Forms.DataGridView();
             this.label18 = new System.Windows.Forms.Label();
@@ -94,24 +97,19 @@ namespace IdentificaVazSAAE.Apresentação
             this.jan_textBox = new System.Windows.Forms.TextBox();
             this.jan_label = new System.Windows.Forms.Label();
             this.vazamento_tabPage = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.vazamento_label = new System.Windows.Forms.Label();
-            this.simulaFaturamento_groupBox = new System.Windows.Forms.GroupBox();
-            this.simFatMedMeses_radioButton = new System.Windows.Forms.RadioButton();
-            this.simFatMedGer_radioButton = new System.Windows.Forms.RadioButton();
-            this.simFatMaxPerm_radioButton = new System.Windows.Forms.RadioButton();
-            this.simFatMed3_radioButton = new System.Windows.Forms.RadioButton();
-            this.simFat_button = new System.Windows.Forms.Button();
-            this.simFatMedConsMax_radioButton = new System.Windows.Forms.RadioButton();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.fatAtualSimFat_label = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.fatAtualSimFat_label = new System.Windows.Forms.Label();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.simulaFaturamento_groupBox = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.simFatMedConsMax_radioButton = new System.Windows.Forms.RadioButton();
+            this.simFat_button = new System.Windows.Forms.Button();
+            this.simFatMed3_radioButton = new System.Windows.Forms.RadioButton();
+            this.simFatMaxPerm_radioButton = new System.Windows.Forms.RadioButton();
+            this.simFatMedGer_radioButton = new System.Windows.Forms.RadioButton();
+            this.simFatMedMeses_radioButton = new System.Windows.Forms.RadioButton();
+            this.vazamento_label = new System.Windows.Forms.Label();
+            this.vazamentos_dataGridView = new System.Windows.Forms.DataGridView();
             this.leituras_tabControl.SuspendLayout();
             this.leituras_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).BeginInit();
@@ -120,13 +118,9 @@ namespace IdentificaVazSAAE.Apresentação
             ((System.ComponentModel.ISupportInitialize)(this.rol_dataGridView)).BeginInit();
             this.meses_groupBox.SuspendLayout();
             this.vazamento_tabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.simulaFaturamento_groupBox.SuspendLayout();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.simulaFaturamento_groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vazamentos_dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // codLigacao_label
@@ -235,6 +229,32 @@ namespace IdentificaVazSAAE.Apresentação
             this.medias_tabPage.TabIndex = 1;
             this.medias_tabPage.Text = "Médias";
             this.medias_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(482, 82);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(18, 13);
+            this.label20.TabIndex = 54;
+            this.label20.Text = "m³";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(286, 82);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(136, 13);
+            this.label21.TabIndex = 52;
+            this.label21.Text = "Media dos últimos 3 meses:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(429, 79);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(47, 20);
+            this.textBox1.TabIndex = 53;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // moda_label
             // 
@@ -776,34 +796,44 @@ namespace IdentificaVazSAAE.Apresentação
             this.vazamento_tabPage.Controls.Add(this.splitContainer1);
             this.vazamento_tabPage.Controls.Add(this.simulaFaturamento_groupBox);
             this.vazamento_tabPage.Controls.Add(this.vazamento_label);
-            this.vazamento_tabPage.Controls.Add(this.dataGridView1);
+            this.vazamento_tabPage.Controls.Add(this.vazamentos_dataGridView);
             this.vazamento_tabPage.Location = new System.Drawing.Point(4, 22);
             this.vazamento_tabPage.Name = "vazamento_tabPage";
             this.vazamento_tabPage.Size = new System.Drawing.Size(936, 440);
             this.vazamento_tabPage.TabIndex = 2;
-            this.vazamento_tabPage.Text = "Prováveis Vazamentos e Simulação de Correção da conta";
+            this.vazamento_tabPage.Text = "Prováveis Vazamentos de acordo com a Média Geral e Simulação de Correção da conta" +
+    "";
             this.vazamento_tabPage.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // label19
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(182, 9);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(478, 13);
+            this.label19.TabIndex = 8;
+            this.label19.Text = "SELECIONAR A CONTA QUE DESEJA FAZER A SIMULAÇÃO DO FATURAMENTO:";
+            // 
+            // fatAtualSimFat_label
+            // 
+            this.fatAtualSimFat_label.AutoSize = true;
+            this.fatAtualSimFat_label.Location = new System.Drawing.Point(9, 281);
+            this.fatAtualSimFat_label.Name = "fatAtualSimFat_label";
+            this.fatAtualSimFat_label.Size = new System.Drawing.Size(233, 13);
+            this.fatAtualSimFat_label.TabIndex = 7;
+            this.fatAtualSimFat_label.Text = "Faturamento Atual / Simulação do Faturamento:";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 29);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(918, 132);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // vazamento_label
-            // 
-            this.vazamento_label.AutoSize = true;
-            this.vazamento_label.Location = new System.Drawing.Point(3, 9);
-            this.vazamento_label.Name = "vazamento_label";
-            this.vazamento_label.Size = new System.Drawing.Size(173, 13);
-            this.vazamento_label.TabIndex = 4;
-            this.vazamento_label.Text = "Meses com prováveis vazamentos:";
+            this.splitContainer1.Location = new System.Drawing.Point(6, 297);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Size = new System.Drawing.Size(918, 140);
+            this.splitContainer1.SplitterDistance = 457;
+            this.splitContainer1.TabIndex = 6;
             // 
             // simulaFaturamento_groupBox
             // 
@@ -823,59 +853,17 @@ namespace IdentificaVazSAAE.Apresentação
             this.simulaFaturamento_groupBox.TabStop = false;
             this.simulaFaturamento_groupBox.Text = "Simulação de faturamento:";
             // 
-            // simFatMedMeses_radioButton
+            // radioButton1
             // 
-            this.simFatMedMeses_radioButton.AutoSize = true;
-            this.simFatMedMeses_radioButton.Location = new System.Drawing.Point(6, 19);
-            this.simFatMedMeses_radioButton.Name = "simFatMedMeses_radioButton";
-            this.simFatMedMeses_radioButton.Size = new System.Drawing.Size(288, 17);
-            this.simFatMedMeses_radioButton.TabIndex = 0;
-            this.simFatMedMeses_radioButton.TabStop = true;
-            this.simFatMedMeses_radioButton.Text = "Simular faturamento de acordo com a média dos meses.";
-            this.simFatMedMeses_radioButton.UseVisualStyleBackColor = true;
-            // 
-            // simFatMedGer_radioButton
-            // 
-            this.simFatMedGer_radioButton.AutoSize = true;
-            this.simFatMedGer_radioButton.Location = new System.Drawing.Point(6, 42);
-            this.simFatMedGer_radioButton.Name = "simFatMedGer_radioButton";
-            this.simFatMedGer_radioButton.Size = new System.Drawing.Size(261, 17);
-            this.simFatMedGer_radioButton.TabIndex = 1;
-            this.simFatMedGer_radioButton.TabStop = true;
-            this.simFatMedGer_radioButton.Text = "Simular faturamento de acordo com a média geral.";
-            this.simFatMedGer_radioButton.UseVisualStyleBackColor = true;
-            // 
-            // simFatMaxPerm_radioButton
-            // 
-            this.simFatMaxPerm_radioButton.AutoSize = true;
-            this.simFatMaxPerm_radioButton.Location = new System.Drawing.Point(344, 42);
-            this.simFatMaxPerm_radioButton.Name = "simFatMaxPerm_radioButton";
-            this.simFatMaxPerm_radioButton.Size = new System.Drawing.Size(408, 17);
-            this.simFatMaxPerm_radioButton.TabIndex = 2;
-            this.simFatMaxPerm_radioButton.TabStop = true;
-            this.simFatMaxPerm_radioButton.Text = "Simular faturamento de acordo com a média geral e o consumo máximo permitido.";
-            this.simFatMaxPerm_radioButton.UseVisualStyleBackColor = true;
-            // 
-            // simFatMed3_radioButton
-            // 
-            this.simFatMed3_radioButton.AutoSize = true;
-            this.simFatMed3_radioButton.Location = new System.Drawing.Point(6, 65);
-            this.simFatMed3_radioButton.Name = "simFatMed3_radioButton";
-            this.simFatMed3_radioButton.Size = new System.Drawing.Size(332, 17);
-            this.simFatMed3_radioButton.TabIndex = 3;
-            this.simFatMed3_radioButton.TabStop = true;
-            this.simFatMed3_radioButton.Text = "Simular faturamento de acordo com a média dos últimos 3 meses.";
-            this.simFatMed3_radioButton.UseVisualStyleBackColor = true;
-            // 
-            // simFat_button
-            // 
-            this.simFat_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simFat_button.Location = new System.Drawing.Point(834, 13);
-            this.simFat_button.Name = "simFat_button";
-            this.simFat_button.Size = new System.Drawing.Size(74, 69);
-            this.simFat_button.TabIndex = 4;
-            this.simFat_button.Text = "&Simulação do Faturamento";
-            this.simFat_button.UseVisualStyleBackColor = true;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(344, 65);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(484, 17);
+            this.radioButton1.TabIndex = 6;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Simular faturamento de acordo com a média dos últimos 3 meses com consumo máximo " +
+    "permitido.";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // simFatMedConsMax_radioButton
             // 
@@ -889,99 +877,80 @@ namespace IdentificaVazSAAE.Apresentação
     "";
             this.simFatMedConsMax_radioButton.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1
+            // simFat_button
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.simFat_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simFat_button.Location = new System.Drawing.Point(834, 13);
+            this.simFat_button.Name = "simFat_button";
+            this.simFat_button.Size = new System.Drawing.Size(74, 69);
+            this.simFat_button.TabIndex = 4;
+            this.simFat_button.Text = "&Simulação do Faturamento";
+            this.simFat_button.UseVisualStyleBackColor = true;
+            // 
+            // simFatMed3_radioButton
+            // 
+            this.simFatMed3_radioButton.AutoSize = true;
+            this.simFatMed3_radioButton.Location = new System.Drawing.Point(6, 65);
+            this.simFatMed3_radioButton.Name = "simFatMed3_radioButton";
+            this.simFatMed3_radioButton.Size = new System.Drawing.Size(332, 17);
+            this.simFatMed3_radioButton.TabIndex = 3;
+            this.simFatMed3_radioButton.TabStop = true;
+            this.simFatMed3_radioButton.Text = "Simular faturamento de acordo com a média dos últimos 3 meses.";
+            this.simFatMed3_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // simFatMaxPerm_radioButton
+            // 
+            this.simFatMaxPerm_radioButton.AutoSize = true;
+            this.simFatMaxPerm_radioButton.Location = new System.Drawing.Point(344, 42);
+            this.simFatMaxPerm_radioButton.Name = "simFatMaxPerm_radioButton";
+            this.simFatMaxPerm_radioButton.Size = new System.Drawing.Size(408, 17);
+            this.simFatMaxPerm_radioButton.TabIndex = 2;
+            this.simFatMaxPerm_radioButton.TabStop = true;
+            this.simFatMaxPerm_radioButton.Text = "Simular faturamento de acordo com a média geral e o consumo máximo permitido.";
+            this.simFatMaxPerm_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // simFatMedGer_radioButton
+            // 
+            this.simFatMedGer_radioButton.AutoSize = true;
+            this.simFatMedGer_radioButton.Location = new System.Drawing.Point(6, 42);
+            this.simFatMedGer_radioButton.Name = "simFatMedGer_radioButton";
+            this.simFatMedGer_radioButton.Size = new System.Drawing.Size(261, 17);
+            this.simFatMedGer_radioButton.TabIndex = 1;
+            this.simFatMedGer_radioButton.TabStop = true;
+            this.simFatMedGer_radioButton.Text = "Simular faturamento de acordo com a média geral.";
+            this.simFatMedGer_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // simFatMedMeses_radioButton
+            // 
+            this.simFatMedMeses_radioButton.AutoSize = true;
+            this.simFatMedMeses_radioButton.Location = new System.Drawing.Point(6, 19);
+            this.simFatMedMeses_radioButton.Name = "simFatMedMeses_radioButton";
+            this.simFatMedMeses_radioButton.Size = new System.Drawing.Size(288, 17);
+            this.simFatMedMeses_radioButton.TabIndex = 0;
+            this.simFatMedMeses_radioButton.TabStop = true;
+            this.simFatMedMeses_radioButton.Text = "Simular faturamento de acordo com a média dos meses.";
+            this.simFatMedMeses_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // vazamento_label
+            // 
+            this.vazamento_label.AutoSize = true;
+            this.vazamento_label.Location = new System.Drawing.Point(3, 9);
+            this.vazamento_label.Name = "vazamento_label";
+            this.vazamento_label.Size = new System.Drawing.Size(173, 13);
+            this.vazamento_label.TabIndex = 4;
+            this.vazamento_label.Text = "Meses com prováveis vazamentos:";
+            // 
+            // vazamentos_dataGridView
+            // 
+            this.vazamentos_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(6, 297);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridView2);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView3);
-            this.splitContainer1.Size = new System.Drawing.Size(918, 140);
-            this.splitContainer1.SplitterDistance = 446;
-            this.splitContainer1.TabIndex = 6;
-            // 
-            // fatAtualSimFat_label
-            // 
-            this.fatAtualSimFat_label.AutoSize = true;
-            this.fatAtualSimFat_label.Location = new System.Drawing.Point(9, 281);
-            this.fatAtualSimFat_label.Name = "fatAtualSimFat_label";
-            this.fatAtualSimFat_label.Size = new System.Drawing.Size(233, 13);
-            this.fatAtualSimFat_label.TabIndex = 7;
-            this.fatAtualSimFat_label.Text = "Faturamento Atual / Simulação do Faturamento:";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(446, 140);
-            this.dataGridView2.TabIndex = 0;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView3.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(468, 140);
-            this.dataGridView3.TabIndex = 0;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(344, 65);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(484, 17);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Simular faturamento de acordo com a média dos últimos 3 meses com consumo máximo " +
-    "permitido.";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(182, 9);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(478, 13);
-            this.label19.TabIndex = 8;
-            this.label19.Text = "SELECIONAR A CONTA QUE DESEJA FAZER A SIMULAÇÃO DO FATURAMENTO:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(482, 82);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(18, 13);
-            this.label20.TabIndex = 54;
-            this.label20.Text = "m³";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(286, 82);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(136, 13);
-            this.label21.TabIndex = 52;
-            this.label21.Text = "Media dos últimos 3 meses:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(429, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(47, 20);
-            this.textBox1.TabIndex = 53;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.vazamentos_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.vazamentos_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.vazamentos_dataGridView.Location = new System.Drawing.Point(6, 29);
+            this.vazamentos_dataGridView.Name = "vazamentos_dataGridView";
+            this.vazamentos_dataGridView.RowHeadersVisible = false;
+            this.vazamentos_dataGridView.Size = new System.Drawing.Size(918, 132);
+            this.vazamentos_dataGridView.TabIndex = 3;
             // 
             // FormVerificaVazamento
             // 
@@ -1009,14 +978,10 @@ namespace IdentificaVazSAAE.Apresentação
             this.meses_groupBox.PerformLayout();
             this.vazamento_tabPage.ResumeLayout(false);
             this.vazamento_tabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.simulaFaturamento_groupBox.ResumeLayout(false);
             this.simulaFaturamento_groupBox.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vazamentos_dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1090,7 +1055,7 @@ namespace IdentificaVazSAAE.Apresentação
         private System.Windows.Forms.DataGridView moda_dataGridView;
         private System.Windows.Forms.TabPage vazamento_tabPage;
         private System.Windows.Forms.Label vazamento_label;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView vazamentos_dataGridView;
         private System.Windows.Forms.GroupBox simulaFaturamento_groupBox;
         private System.Windows.Forms.Button simFat_button;
         private System.Windows.Forms.RadioButton simFatMed3_radioButton;
@@ -1100,8 +1065,6 @@ namespace IdentificaVazSAAE.Apresentação
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label fatAtualSimFat_label;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton simFatMedConsMax_radioButton;
         private System.Windows.Forms.Label label20;

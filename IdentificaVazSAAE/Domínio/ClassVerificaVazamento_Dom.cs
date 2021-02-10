@@ -9,6 +9,7 @@ namespace IdentificaVazSAAE.Domínio
     public class ClassVerificaVazamento_Dom
     {
         public DataTable leituras { get; set; }
+        public DataTable vazamentos { get; set; }
         public string dataRef { get; set; }
         public double consumoAtual { get; set; }
         public Int64 ligacao { get; set; }
