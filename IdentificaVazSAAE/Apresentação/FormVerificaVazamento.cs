@@ -34,51 +34,76 @@ namespace IdentificaVazSAAE.Apresentação
 
         private void localizar_button_Click(object sender, EventArgs e)
         {
-            verificaVazamento_Apl.connection = connection;
-            verificaVazamento_Dom.ligacao = Int64.Parse(codLigacao_textBox.Text);
-            leituras_dataGridView.DataSource = verificaVazamento_Apl.ListaLeituras(verificaVazamento_Dom);
-            rol_dataGridView.DataSource = verificaVazamento_Apl.ListaRol(verificaVazamento_Dom);
-            verificaVazamento_Dom.mMensais = verificaVazamento_Apl.PreencheTabelaMediasMensais(verificaVazamento_Dom);
-            moda_dataGridView.DataSource = verificaVazamento_Apl.ListaModa(verificaVazamento_Dom);
-            jan_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][0].ToString();
-            fev_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][1].ToString();
-            mar_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][2].ToString();
-            abr_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][3].ToString();
-            mai_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][4].ToString();
-            jun_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][5].ToString();
-            jul_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][6].ToString();
-            ago_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][7].ToString();
-            set_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][8].ToString();
-            out_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][9].ToString();
-            nov_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][10].ToString();
-            dez_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][11].ToString();
-            verificaVazamento_Dom.consumoMaximo = verificaVazamento_Apl.VerConsumoMaximo(verificaVazamento_Dom);
-            consumoMaxFaturado_textBox.Text = verificaVazamento_Dom.consumoMaximo.ToString();
-            verificaVazamento_Dom.consumoMinimo = verificaVazamento_Apl.VerConsumoMinimo(verificaVazamento_Dom);
-            consumoMinFaturado_textBox.Text = verificaVazamento_Dom.consumoMinimo.ToString();
-            verificaVazamento_Dom.mediaGeral = verificaVazamento_Apl.VerMediaGeral(verificaVazamento_Dom);
-            mediaGeral_textBox.Text = verificaVazamento_Dom.mediaGeral.ToString();
-            verificaVazamento_Dom.desvioPadraoGeral = verificaVazamento_Apl.VerDesvioPadrao(verificaVazamento_Dom);
-            desvioPadrao_textBox.Text = verificaVazamento_Dom.desvioPadraoGeral.ToString();
-            verificaVazamento_Dom.consumoPadraoMaximo = verificaVazamento_Apl.VerConsumoPadraoMax(verificaVazamento_Dom);
-            mediaPadraoMax_textBox.Text = verificaVazamento_Dom.consumoPadraoMaximo.ToString();
-            if (verificaVazamento_Apl.verificaUltConta())
-                MessageBox.Show("Possível Vazamento! Última conta faturada excedeu o limite de consumo!\n\nData de referência: " + verificaVazamento_Apl.verificaVazamento_Dom.dataRef + ".\nConsumo Faturado: " + verificaVazamento_Apl.verificaVazamento_Dom.consumoAtual + ".\nConsumo Máximo Permitido: " + verificaVazamento_Dom.consumoPadraoMaximo + ".",
-                    "Atenção!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-            else
-                MessageBox.Show("Última conta faturada está dentro do padrão normal.",
-                    "Mensagem: ",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            if(verificaVazamento_Apl.verificaVazamento_Dom.leituras.Rows.Count > 0)
-                vazamentos_dataGridView.DataSource = verificaVazamento_Apl.verificaVazamentos(verificaVazamento_Dom);
-            else
-                MessageBox.Show("Tabela de leituras vazia",
-                    "Erro ",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+            try
+            {
+                if(codLigacao_textBox.Text != "")
+                {
+                    verificaVazamento_Apl.connection = connection;
+                    verificaVazamento_Dom.ligacao = Int64.Parse(codLigacao_textBox.Text);
+                    leituras_dataGridView.DataSource = verificaVazamento_Apl.ListaLeituras(verificaVazamento_Dom);
+                    rol_dataGridView.DataSource = verificaVazamento_Apl.ListaRol(verificaVazamento_Dom);
+                    verificaVazamento_Dom.mMensais = verificaVazamento_Apl.PreencheTabelaMediasMensais(verificaVazamento_Dom);
+                    moda_dataGridView.DataSource = verificaVazamento_Apl.ListaModa(verificaVazamento_Dom);
+                    jan_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][0].ToString();
+                    fev_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][1].ToString();
+                    mar_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][2].ToString();
+                    abr_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][3].ToString();
+                    mai_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][4].ToString();
+                    jun_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][5].ToString();
+                    jul_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][6].ToString();
+                    ago_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][7].ToString();
+                    set_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][8].ToString();
+                    out_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][9].ToString();
+                    nov_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][10].ToString();
+                    dez_textBox.Text = verificaVazamento_Dom.mMensais.Rows[0][11].ToString();
+                    verificaVazamento_Dom.consumoMaximo = verificaVazamento_Apl.VerConsumoMaximo(verificaVazamento_Dom);
+                    consumoMaxFaturado_textBox.Text = verificaVazamento_Dom.consumoMaximo.ToString();
+                    verificaVazamento_Dom.consumoMinimo = verificaVazamento_Apl.VerConsumoMinimo(verificaVazamento_Dom);
+                    consumoMinFaturado_textBox.Text = verificaVazamento_Dom.consumoMinimo.ToString();
+                    verificaVazamento_Dom.mediault3meses = verificaVazamento_Apl.VerMediaUlt3Meses(verificaVazamento_Dom);
+                    mediaUlt3meses_textBox.Text = verificaVazamento_Dom.mediault3meses.ToString();
+                    verificaVazamento_Dom.mediaGeral = verificaVazamento_Apl.VerMediaGeral(verificaVazamento_Dom);
+                    mediaGeral_textBox.Text = verificaVazamento_Dom.mediaGeral.ToString();
+                    verificaVazamento_Dom.desvioPadraoGeral = verificaVazamento_Apl.VerDesvioPadrao(verificaVazamento_Dom);
+                    desvioPadrao_textBox.Text = verificaVazamento_Dom.desvioPadraoGeral.ToString();
+                    verificaVazamento_Dom.consumoPadraoMaximo = verificaVazamento_Apl.VerConsumoPadraoMax(verificaVazamento_Dom);
+                    mediaPadraoMax_textBox.Text = verificaVazamento_Dom.consumoPadraoMaximo.ToString();
+                    if (verificaVazamento_Apl.verificaUltConta())
+                        MessageBox.Show("Possível Vazamento! Última conta faturada excedeu o limite de consumo!\n\nData de referência: " + verificaVazamento_Apl.verificaVazamento_Dom.dataRef + ".\nConsumo Faturado: " + verificaVazamento_Apl.verificaVazamento_Dom.consumoAtual + ".\nConsumo Máximo Permitido: " + verificaVazamento_Dom.consumoPadraoMaximo + ".",
+                            "Atenção!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
+                    else
+                        MessageBox.Show("Última conta faturada está dentro do padrão normal.",
+                            "Mensagem: ",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    if (verificaVazamento_Apl.verificaVazamento_Dom.leituras.Rows.Count > 0)
+                        vazamentos_dataGridView.DataSource = verificaVazamento_Apl.verificaVazamentos(verificaVazamento_Dom);
+                    else
+                        MessageBox.Show("Tabela de leituras vazia",
+                            "Erro ",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Informe um código de ligação para continuar!",
+                            "Atenção!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
+
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message,
+                        "Erro:",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+            }
+            finally
+            {
+
+            }
         }
 
         private void FormVerificaVazamento_FormClosed(object sender, FormClosedEventArgs e)

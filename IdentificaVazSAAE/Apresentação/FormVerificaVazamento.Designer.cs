@@ -39,7 +39,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.medias_tabPage = new System.Windows.Forms.TabPage();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.mediaUlt3meses_textBox = new System.Windows.Forms.TextBox();
             this.moda_label = new System.Windows.Forms.Label();
             this.moda_dataGridView = new System.Windows.Forms.DataGridView();
             this.label18 = new System.Windows.Forms.Label();
@@ -99,9 +99,8 @@ namespace IdentificaVazSAAE.Apresentação
             this.vazamento_tabPage = new System.Windows.Forms.TabPage();
             this.label19 = new System.Windows.Forms.Label();
             this.fatAtualSimFat_label = new System.Windows.Forms.Label();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.simulaFaturamento_groupBox = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.simFatMed3ConsMaxPadr_radioButton = new System.Windows.Forms.RadioButton();
             this.simFatMedConsMax_radioButton = new System.Windows.Forms.RadioButton();
             this.simFat_button = new System.Windows.Forms.Button();
             this.simFatMed3_radioButton = new System.Windows.Forms.RadioButton();
@@ -110,6 +109,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.simFatMedMeses_radioButton = new System.Windows.Forms.RadioButton();
             this.vazamento_label = new System.Windows.Forms.Label();
             this.vazamentos_dataGridView = new System.Windows.Forms.DataGridView();
+            this.simFatConsMaxPadr_radioButton = new System.Windows.Forms.RadioButton();
             this.leituras_tabControl.SuspendLayout();
             this.leituras_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).BeginInit();
@@ -118,7 +118,6 @@ namespace IdentificaVazSAAE.Apresentação
             ((System.ComponentModel.ISupportInitialize)(this.rol_dataGridView)).BeginInit();
             this.meses_groupBox.SuspendLayout();
             this.vazamento_tabPage.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.simulaFaturamento_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vazamentos_dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -160,7 +159,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_tabControl.Location = new System.Drawing.Point(12, 42);
             this.leituras_tabControl.Name = "leituras_tabControl";
             this.leituras_tabControl.SelectedIndex = 0;
-            this.leituras_tabControl.Size = new System.Drawing.Size(944, 466);
+            this.leituras_tabControl.Size = new System.Drawing.Size(674, 466);
             this.leituras_tabControl.TabIndex = 3;
             // 
             // leituras_tabPage
@@ -170,7 +169,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_tabPage.Location = new System.Drawing.Point(4, 22);
             this.leituras_tabPage.Name = "leituras_tabPage";
             this.leituras_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.leituras_tabPage.Size = new System.Drawing.Size(936, 440);
+            this.leituras_tabPage.Size = new System.Drawing.Size(666, 440);
             this.leituras_tabPage.TabIndex = 0;
             this.leituras_tabPage.Text = "Leituras";
             this.leituras_tabPage.UseVisualStyleBackColor = true;
@@ -185,7 +184,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.leituras_dataGridView.Location = new System.Drawing.Point(9, 38);
             this.leituras_dataGridView.Name = "leituras_dataGridView";
             this.leituras_dataGridView.RowHeadersVisible = false;
-            this.leituras_dataGridView.Size = new System.Drawing.Size(921, 396);
+            this.leituras_dataGridView.Size = new System.Drawing.Size(651, 396);
             this.leituras_dataGridView.TabIndex = 1;
             // 
             // label1
@@ -201,7 +200,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             this.medias_tabPage.Controls.Add(this.label20);
             this.medias_tabPage.Controls.Add(this.label21);
-            this.medias_tabPage.Controls.Add(this.textBox1);
+            this.medias_tabPage.Controls.Add(this.mediaUlt3meses_textBox);
             this.medias_tabPage.Controls.Add(this.moda_label);
             this.medias_tabPage.Controls.Add(this.moda_dataGridView);
             this.medias_tabPage.Controls.Add(this.label18);
@@ -225,7 +224,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.medias_tabPage.Location = new System.Drawing.Point(4, 22);
             this.medias_tabPage.Name = "medias_tabPage";
             this.medias_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.medias_tabPage.Size = new System.Drawing.Size(936, 440);
+            this.medias_tabPage.Size = new System.Drawing.Size(666, 440);
             this.medias_tabPage.TabIndex = 1;
             this.medias_tabPage.Text = "Médias";
             this.medias_tabPage.UseVisualStyleBackColor = true;
@@ -233,7 +232,7 @@ namespace IdentificaVazSAAE.Apresentação
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(482, 82);
+            this.label20.Location = new System.Drawing.Point(596, 99);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(18, 13);
             this.label20.TabIndex = 54;
@@ -242,19 +241,19 @@ namespace IdentificaVazSAAE.Apresentação
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(286, 82);
+            this.label21.Location = new System.Drawing.Point(400, 99);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(136, 13);
             this.label21.TabIndex = 52;
             this.label21.Text = "Media dos últimos 3 meses:";
             // 
-            // textBox1
+            // mediaUlt3meses_textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(429, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(47, 20);
-            this.textBox1.TabIndex = 53;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.mediaUlt3meses_textBox.Location = new System.Drawing.Point(543, 96);
+            this.mediaUlt3meses_textBox.Name = "mediaUlt3meses_textBox";
+            this.mediaUlt3meses_textBox.Size = new System.Drawing.Size(47, 20);
+            this.mediaUlt3meses_textBox.TabIndex = 53;
+            this.mediaUlt3meses_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // moda_label
             // 
@@ -274,14 +273,14 @@ namespace IdentificaVazSAAE.Apresentação
             this.moda_dataGridView.Location = new System.Drawing.Point(9, 238);
             this.moda_dataGridView.Name = "moda_dataGridView";
             this.moda_dataGridView.RowHeadersVisible = false;
-            this.moda_dataGridView.Size = new System.Drawing.Size(491, 82);
+            this.moda_dataGridView.Size = new System.Drawing.Size(651, 82);
             this.moda_dataGridView.TabIndex = 50;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(781, 30);
+            this.label18.Location = new System.Drawing.Point(596, 178);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(20, 13);
             this.label18.TabIndex = 49;
@@ -291,7 +290,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             this.mediaPadraoMax_label.AutoSize = true;
             this.mediaPadraoMax_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mediaPadraoMax_label.Location = new System.Drawing.Point(516, 30);
+            this.mediaPadraoMax_label.Location = new System.Drawing.Point(331, 178);
             this.mediaPadraoMax_label.Name = "mediaPadraoMax_label";
             this.mediaPadraoMax_label.Size = new System.Drawing.Size(206, 13);
             this.mediaPadraoMax_label.TabIndex = 47;
@@ -300,7 +299,7 @@ namespace IdentificaVazSAAE.Apresentação
             // mediaPadraoMax_textBox
             // 
             this.mediaPadraoMax_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mediaPadraoMax_textBox.Location = new System.Drawing.Point(728, 27);
+            this.mediaPadraoMax_textBox.Location = new System.Drawing.Point(543, 175);
             this.mediaPadraoMax_textBox.Name = "mediaPadraoMax_textBox";
             this.mediaPadraoMax_textBox.Size = new System.Drawing.Size(47, 20);
             this.mediaPadraoMax_textBox.TabIndex = 48;
@@ -309,7 +308,7 @@ namespace IdentificaVazSAAE.Apresentação
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(482, 30);
+            this.label17.Location = new System.Drawing.Point(596, 47);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(18, 13);
             this.label17.TabIndex = 46;
@@ -318,7 +317,7 @@ namespace IdentificaVazSAAE.Apresentação
             // consumoMinFaturado_label
             // 
             this.consumoMinFaturado_label.AutoSize = true;
-            this.consumoMinFaturado_label.Location = new System.Drawing.Point(288, 30);
+            this.consumoMinFaturado_label.Location = new System.Drawing.Point(402, 47);
             this.consumoMinFaturado_label.Name = "consumoMinFaturado_label";
             this.consumoMinFaturado_label.Size = new System.Drawing.Size(134, 13);
             this.consumoMinFaturado_label.TabIndex = 44;
@@ -326,7 +325,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // consumoMinFaturado_textBox
             // 
-            this.consumoMinFaturado_textBox.Location = new System.Drawing.Point(429, 27);
+            this.consumoMinFaturado_textBox.Location = new System.Drawing.Point(543, 44);
             this.consumoMinFaturado_textBox.Name = "consumoMinFaturado_textBox";
             this.consumoMinFaturado_textBox.Size = new System.Drawing.Size(47, 20);
             this.consumoMinFaturado_textBox.TabIndex = 45;
@@ -335,7 +334,7 @@ namespace IdentificaVazSAAE.Apresentação
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(482, 56);
+            this.label16.Location = new System.Drawing.Point(596, 73);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(18, 13);
             this.label16.TabIndex = 43;
@@ -344,7 +343,7 @@ namespace IdentificaVazSAAE.Apresentação
             // consumoMaxFaturado_label
             // 
             this.consumoMaxFaturado_label.AutoSize = true;
-            this.consumoMaxFaturado_label.Location = new System.Drawing.Point(288, 56);
+            this.consumoMaxFaturado_label.Location = new System.Drawing.Point(402, 73);
             this.consumoMaxFaturado_label.Name = "consumoMaxFaturado_label";
             this.consumoMaxFaturado_label.Size = new System.Drawing.Size(135, 13);
             this.consumoMaxFaturado_label.TabIndex = 41;
@@ -352,7 +351,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // consumoMaxFaturado_textBox
             // 
-            this.consumoMaxFaturado_textBox.Location = new System.Drawing.Point(429, 53);
+            this.consumoMaxFaturado_textBox.Location = new System.Drawing.Point(543, 70);
             this.consumoMaxFaturado_textBox.Name = "consumoMaxFaturado_textBox";
             this.consumoMaxFaturado_textBox.Size = new System.Drawing.Size(47, 20);
             this.consumoMaxFaturado_textBox.TabIndex = 42;
@@ -361,7 +360,7 @@ namespace IdentificaVazSAAE.Apresentação
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(482, 134);
+            this.label14.Location = new System.Drawing.Point(596, 151);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(18, 13);
             this.label14.TabIndex = 40;
@@ -370,7 +369,7 @@ namespace IdentificaVazSAAE.Apresentação
             // desvioPadral_label
             // 
             this.desvioPadral_label.AutoSize = true;
-            this.desvioPadral_label.Location = new System.Drawing.Point(318, 134);
+            this.desvioPadral_label.Location = new System.Drawing.Point(432, 151);
             this.desvioPadral_label.Name = "desvioPadral_label";
             this.desvioPadral_label.Size = new System.Drawing.Size(105, 13);
             this.desvioPadral_label.TabIndex = 38;
@@ -378,7 +377,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // desvioPadrao_textBox
             // 
-            this.desvioPadrao_textBox.Location = new System.Drawing.Point(429, 131);
+            this.desvioPadrao_textBox.Location = new System.Drawing.Point(543, 148);
             this.desvioPadrao_textBox.Name = "desvioPadrao_textBox";
             this.desvioPadrao_textBox.Size = new System.Drawing.Size(47, 20);
             this.desvioPadrao_textBox.TabIndex = 39;
@@ -387,7 +386,7 @@ namespace IdentificaVazSAAE.Apresentação
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(482, 108);
+            this.label15.Location = new System.Drawing.Point(596, 125);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(18, 13);
             this.label15.TabIndex = 37;
@@ -396,7 +395,7 @@ namespace IdentificaVazSAAE.Apresentação
             // mediaGeral_label
             // 
             this.mediaGeral_label.AutoSize = true;
-            this.mediaGeral_label.Location = new System.Drawing.Point(358, 108);
+            this.mediaGeral_label.Location = new System.Drawing.Point(472, 125);
             this.mediaGeral_label.Name = "mediaGeral_label";
             this.mediaGeral_label.Size = new System.Drawing.Size(65, 13);
             this.mediaGeral_label.TabIndex = 25;
@@ -404,7 +403,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // mediaGeral_textBox
             // 
-            this.mediaGeral_textBox.Location = new System.Drawing.Point(429, 105);
+            this.mediaGeral_textBox.Location = new System.Drawing.Point(543, 122);
             this.mediaGeral_textBox.Name = "mediaGeral_textBox";
             this.mediaGeral_textBox.Size = new System.Drawing.Size(47, 20);
             this.mediaGeral_textBox.TabIndex = 36;
@@ -429,7 +428,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.rol_dataGridView.Location = new System.Drawing.Point(7, 339);
             this.rol_dataGridView.Name = "rol_dataGridView";
             this.rol_dataGridView.RowHeadersVisible = false;
-            this.rol_dataGridView.Size = new System.Drawing.Size(493, 95);
+            this.rol_dataGridView.Size = new System.Drawing.Size(653, 95);
             this.rol_dataGridView.TabIndex = 2;
             // 
             // meses_groupBox
@@ -793,13 +792,12 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             this.vazamento_tabPage.Controls.Add(this.label19);
             this.vazamento_tabPage.Controls.Add(this.fatAtualSimFat_label);
-            this.vazamento_tabPage.Controls.Add(this.splitContainer1);
             this.vazamento_tabPage.Controls.Add(this.simulaFaturamento_groupBox);
             this.vazamento_tabPage.Controls.Add(this.vazamento_label);
             this.vazamento_tabPage.Controls.Add(this.vazamentos_dataGridView);
             this.vazamento_tabPage.Location = new System.Drawing.Point(4, 22);
             this.vazamento_tabPage.Name = "vazamento_tabPage";
-            this.vazamento_tabPage.Size = new System.Drawing.Size(936, 440);
+            this.vazamento_tabPage.Size = new System.Drawing.Size(666, 440);
             this.vazamento_tabPage.TabIndex = 2;
             this.vazamento_tabPage.Text = "Prováveis Vazamentos de acordo com a Média Geral e Simulação de Correção da conta" +
     "";
@@ -809,7 +807,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(182, 9);
+            this.label19.Location = new System.Drawing.Point(176, 9);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(478, 13);
             this.label19.TabIndex = 8;
@@ -818,28 +816,18 @@ namespace IdentificaVazSAAE.Apresentação
             // fatAtualSimFat_label
             // 
             this.fatAtualSimFat_label.AutoSize = true;
-            this.fatAtualSimFat_label.Location = new System.Drawing.Point(9, 281);
+            this.fatAtualSimFat_label.Location = new System.Drawing.Point(9, 351);
             this.fatAtualSimFat_label.Name = "fatAtualSimFat_label";
-            this.fatAtualSimFat_label.Size = new System.Drawing.Size(233, 13);
+            this.fatAtualSimFat_label.Size = new System.Drawing.Size(136, 13);
             this.fatAtualSimFat_label.TabIndex = 7;
-            this.fatAtualSimFat_label.Text = "Faturamento Atual / Simulação do Faturamento:";
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(6, 297);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Size = new System.Drawing.Size(918, 140);
-            this.splitContainer1.SplitterDistance = 457;
-            this.splitContainer1.TabIndex = 6;
+            this.fatAtualSimFat_label.Text = "Simulação do Faturamento:";
             // 
             // simulaFaturamento_groupBox
             // 
             this.simulaFaturamento_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.simulaFaturamento_groupBox.Controls.Add(this.radioButton1);
+            this.simulaFaturamento_groupBox.Controls.Add(this.simFatConsMaxPadr_radioButton);
+            this.simulaFaturamento_groupBox.Controls.Add(this.simFatMed3ConsMaxPadr_radioButton);
             this.simulaFaturamento_groupBox.Controls.Add(this.simFatMedConsMax_radioButton);
             this.simulaFaturamento_groupBox.Controls.Add(this.simFat_button);
             this.simulaFaturamento_groupBox.Controls.Add(this.simFatMed3_radioButton);
@@ -848,41 +836,41 @@ namespace IdentificaVazSAAE.Apresentação
             this.simulaFaturamento_groupBox.Controls.Add(this.simFatMedMeses_radioButton);
             this.simulaFaturamento_groupBox.Location = new System.Drawing.Point(6, 167);
             this.simulaFaturamento_groupBox.Name = "simulaFaturamento_groupBox";
-            this.simulaFaturamento_groupBox.Size = new System.Drawing.Size(918, 96);
+            this.simulaFaturamento_groupBox.Size = new System.Drawing.Size(648, 181);
             this.simulaFaturamento_groupBox.TabIndex = 5;
             this.simulaFaturamento_groupBox.TabStop = false;
             this.simulaFaturamento_groupBox.Text = "Simulação de faturamento:";
             // 
-            // radioButton1
+            // simFatMed3ConsMaxPadr_radioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(344, 65);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(484, 17);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Simular faturamento de acordo com a média dos últimos 3 meses com consumo máximo " +
-    "permitido.";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.simFatMed3ConsMaxPadr_radioButton.AutoSize = true;
+            this.simFatMed3ConsMaxPadr_radioButton.Location = new System.Drawing.Point(6, 157);
+            this.simFatMed3ConsMaxPadr_radioButton.Name = "simFatMed3ConsMaxPadr_radioButton";
+            this.simFatMed3ConsMaxPadr_radioButton.Size = new System.Drawing.Size(473, 17);
+            this.simFatMed3ConsMaxPadr_radioButton.TabIndex = 6;
+            this.simFatMed3ConsMaxPadr_radioButton.TabStop = true;
+            this.simFatMed3ConsMaxPadr_radioButton.Text = "Simular faturamento de acordo com a média dos últimos 3 meses com variação máxima" +
+    " padrão.";
+            this.simFatMed3ConsMaxPadr_radioButton.UseVisualStyleBackColor = true;
             // 
             // simFatMedConsMax_radioButton
             // 
             this.simFatMedConsMax_radioButton.AutoSize = true;
-            this.simFatMedConsMax_radioButton.Location = new System.Drawing.Point(344, 19);
+            this.simFatMedConsMax_radioButton.Location = new System.Drawing.Point(6, 111);
             this.simFatMedConsMax_radioButton.Name = "simFatMedConsMax_radioButton";
-            this.simFatMedConsMax_radioButton.Size = new System.Drawing.Size(440, 17);
+            this.simFatMedConsMax_radioButton.Size = new System.Drawing.Size(429, 17);
             this.simFatMedConsMax_radioButton.TabIndex = 5;
             this.simFatMedConsMax_radioButton.TabStop = true;
-            this.simFatMedConsMax_radioButton.Text = "Simular faturamento de acordo com a média dos meses com consumo máximo permitido." +
+            this.simFatMedConsMax_radioButton.Text = "Simular faturamento de acordo com a média dos meses com variação máxima padrão.\r\n" +
     "";
             this.simFatMedConsMax_radioButton.UseVisualStyleBackColor = true;
             // 
             // simFat_button
             // 
             this.simFat_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simFat_button.Location = new System.Drawing.Point(834, 13);
+            this.simFat_button.Location = new System.Drawing.Point(498, 13);
             this.simFat_button.Name = "simFat_button";
-            this.simFat_button.Size = new System.Drawing.Size(74, 69);
+            this.simFat_button.Size = new System.Drawing.Size(144, 36);
             this.simFat_button.TabIndex = 4;
             this.simFat_button.Text = "&Simulação do Faturamento";
             this.simFat_button.UseVisualStyleBackColor = true;
@@ -901,12 +889,12 @@ namespace IdentificaVazSAAE.Apresentação
             // simFatMaxPerm_radioButton
             // 
             this.simFatMaxPerm_radioButton.AutoSize = true;
-            this.simFatMaxPerm_radioButton.Location = new System.Drawing.Point(344, 42);
+            this.simFatMaxPerm_radioButton.Location = new System.Drawing.Point(6, 134);
             this.simFatMaxPerm_radioButton.Name = "simFatMaxPerm_radioButton";
-            this.simFatMaxPerm_radioButton.Size = new System.Drawing.Size(408, 17);
+            this.simFatMaxPerm_radioButton.Size = new System.Drawing.Size(402, 17);
             this.simFatMaxPerm_radioButton.TabIndex = 2;
             this.simFatMaxPerm_radioButton.TabStop = true;
-            this.simFatMaxPerm_radioButton.Text = "Simular faturamento de acordo com a média geral e o consumo máximo permitido.";
+            this.simFatMaxPerm_radioButton.Text = "Simular faturamento de acordo com a média geral com variação máxima padrão.";
             this.simFatMaxPerm_radioButton.UseVisualStyleBackColor = true;
             // 
             // simFatMedGer_radioButton
@@ -949,15 +937,26 @@ namespace IdentificaVazSAAE.Apresentação
             this.vazamentos_dataGridView.Location = new System.Drawing.Point(6, 29);
             this.vazamentos_dataGridView.Name = "vazamentos_dataGridView";
             this.vazamentos_dataGridView.RowHeadersVisible = false;
-            this.vazamentos_dataGridView.Size = new System.Drawing.Size(918, 132);
+            this.vazamentos_dataGridView.Size = new System.Drawing.Size(648, 132);
             this.vazamentos_dataGridView.TabIndex = 3;
+            // 
+            // simFatConsMaxPadr_radioButton
+            // 
+            this.simFatConsMaxPadr_radioButton.AutoSize = true;
+            this.simFatConsMaxPadr_radioButton.Location = new System.Drawing.Point(6, 88);
+            this.simFatConsMaxPadr_radioButton.Name = "simFatConsMaxPadr_radioButton";
+            this.simFatConsMaxPadr_radioButton.Size = new System.Drawing.Size(315, 17);
+            this.simFatConsMaxPadr_radioButton.TabIndex = 7;
+            this.simFatConsMaxPadr_radioButton.TabStop = true;
+            this.simFatConsMaxPadr_radioButton.Text = "Simular faturamento de acordo com consumo máximo padrão.\r\n";
+            this.simFatConsMaxPadr_radioButton.UseVisualStyleBackColor = true;
             // 
             // FormVerificaVazamento
             // 
             this.AcceptButton = this.localizar_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 520);
+            this.ClientSize = new System.Drawing.Size(698, 520);
             this.Controls.Add(this.leituras_tabControl);
             this.Controls.Add(this.localizar_button);
             this.Controls.Add(this.codLigacao_textBox);
@@ -978,7 +977,6 @@ namespace IdentificaVazSAAE.Apresentação
             this.meses_groupBox.PerformLayout();
             this.vazamento_tabPage.ResumeLayout(false);
             this.vazamento_tabPage.PerformLayout();
-            this.splitContainer1.ResumeLayout(false);
             this.simulaFaturamento_groupBox.ResumeLayout(false);
             this.simulaFaturamento_groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vazamentos_dataGridView)).EndInit();
@@ -1064,11 +1062,11 @@ namespace IdentificaVazSAAE.Apresentação
         private System.Windows.Forms.RadioButton simFatMedMeses_radioButton;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label fatAtualSimFat_label;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton simFatMed3ConsMaxPadr_radioButton;
         private System.Windows.Forms.RadioButton simFatMedConsMax_radioButton;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox mediaUlt3meses_textBox;
+        private System.Windows.Forms.RadioButton simFatConsMaxPadr_radioButton;
     }
 }

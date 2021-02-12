@@ -14,7 +14,7 @@ namespace IdentificaVazSAAE.Persistência
 		public SqlConnection sqlConnection = new SqlConnection();
 		public SqlDataAdapter adaptador;
 		public SqlCommand comando;
-		public DataTable leituras, rol, media, consumo, desvio, moda, vazamentos;
+		public DataTable leituras, rol, media, consumo, desvio, moda, vazamentos, mediaUlt3meses;
 
 		public string erro;
 
@@ -142,7 +142,38 @@ namespace IdentificaVazSAAE.Persistência
 			return double.Parse(consumo.Rows[0][0].ToString());
 		}
 
-		public double CalcMediaJan(ClassVerificaVazamento_Dom vazamento_Dom)
+        public double MediaUlt3Meses(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+			try
+			{
+				adaptador = new SqlDataAdapter();
+				comando = new SqlCommand();
+				mediaUlt3meses = new DataTable();
+				erro = "";
+
+				comando.Connection = sqlConnection;
+				comando.Parameters.Add("@ligacao", SqlDbType.Int);
+				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
+				adaptador.SelectCommand = comando;
+
+				comando.CommandText = "select AVG(consumo_faturado) from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) -1) and Ocorrencia = 0";
+				sqlConnection.Open();
+				adaptador.SelectCommand.ExecuteNonQuery();
+				adaptador.Fill(mediaUlt3meses);
+			}
+			catch (Exception error)
+			{
+				erro = error.Message;
+			}
+			finally
+			{
+				sqlConnection.Close();
+			}
+
+			return double.Parse(mediaUlt3meses.Rows[0][0].ToString());
+		}
+
+        public double CalcMediaJan(ClassVerificaVazamento_Dom vazamento_Dom)
         {
 			try
 			{
@@ -189,7 +220,7 @@ namespace IdentificaVazSAAE.Persistência
                 comando.Parameters["@consumoMaximo"].Value = Double.Parse(vazamento_Dom.consumoPadraoMaximo.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select (substring(data_ref, 5, 2) + '/' + substring(data_ref, 1, 4)) as [Data Ref], data_leitura as [Data da Leitura], leitura_orig as Leitura, consumo_faturado as [Consumo Faturado], hidrometro as Hidrometro from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and consumo_faturado > @consumoMaximo and ocorrencia = 0 order by data_ref desc";
+				comando.CommandText = "select (substring(data_ref, 5, 2) + '/' + substring(data_ref, 1, 4)) as [Data Ref], data_leitura as [Data da Leitura], leitura_orig as Leitura, consumo_faturado as [Consumo Faturado], hidrometro as Hidrometro from leituras where cod_ligacao = @ligacao and data_ref >= (select SUBSTRING((select data_ult_fech from controle),1,6) + 1 - 300) and consumo_faturado > @consumoMaximo and ocorrencia = 0 and data_ref in(select data_ref from ESPELHO_CONTA where cod_ligacao = @ligacao and situacao = '0') order by data_ref desc";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(vazamentos);

@@ -30,6 +30,7 @@ namespace IdentificaVazSAAE.Domínio
         public double mediaOut { get; set; }
         public double mediaNov { get; set; }
         public double mediaDez { get; set; }
+        public double mediault3meses { get; set; }
         public DataTable mMensais { get; set; }
         public double consumoMaximo { get; set; }
         public double consumoMinimo { get; set; }

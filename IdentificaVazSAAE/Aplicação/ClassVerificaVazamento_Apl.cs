@@ -92,6 +92,14 @@ namespace IdentificaVazSAAE.Aplicação
             return vazamento_Dom.consumoMinimo;
         }
 
+        public double VerMediaUlt3Meses(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+            verificaVazamento_Per.sqlConnection = connection;
+            vazamento_Dom.mediault3meses = verificaVazamento_Per.MediaUlt3Meses(vazamento_Dom);
+            verificaVazamento_Dom.mediault3meses = vazamento_Dom.mediault3meses;
+            return vazamento_Dom.mediault3meses;
+        }
+
         public double VerDesvioPadrao(ClassVerificaVazamento_Dom vazamento_Dom)
         {
             verificaVazamento_Per.sqlConnection = connection;
@@ -105,9 +113,10 @@ namespace IdentificaVazSAAE.Aplicação
             if(verificaVazamento_Dom.leituras.Rows.Count > 0)
             {
                 var temp = verificaVazamento_Dom.leituras.Rows.Count - 1;
+                var variacaoMaximaContaAnterior = double.Parse(verificaVazamento_Dom.leituras.Rows[temp - 1][4].ToString()) + verificaVazamento_Dom.desvioPadraoGeral;
                 verificaVazamento_Dom.consumoAtual = double.Parse(verificaVazamento_Dom.leituras.Rows[temp][4].ToString());
                 verificaVazamento_Dom.dataRef = verificaVazamento_Dom.leituras.Rows[temp][0].ToString();
-                if (double.Parse(verificaVazamento_Dom.leituras.Rows[temp][4].ToString()) > verificaVazamento_Dom.consumoPadraoMaximo)
+                if (double.Parse(verificaVazamento_Dom.leituras.Rows[temp][4].ToString()) > verificaVazamento_Dom.consumoPadraoMaximo && double.Parse(verificaVazamento_Dom.leituras.Rows[temp][4].ToString()) > variacaoMaximaContaAnterior)
                     return true;
                 else
                     return false;
