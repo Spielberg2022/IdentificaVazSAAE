@@ -101,7 +101,6 @@ namespace IdentificaVazSAAE.Apresentação
             this.fatAtualSimFat_label = new System.Windows.Forms.Label();
             this.simulaFaturamento_groupBox = new System.Windows.Forms.GroupBox();
             this.simFatMed3ConsMaxPadr_radioButton = new System.Windows.Forms.RadioButton();
-            this.simFatMedConsMax_radioButton = new System.Windows.Forms.RadioButton();
             this.simFat_button = new System.Windows.Forms.Button();
             this.simFatMed3_radioButton = new System.Windows.Forms.RadioButton();
             this.simFatMaxPerm_radioButton = new System.Windows.Forms.RadioButton();
@@ -816,7 +815,7 @@ namespace IdentificaVazSAAE.Apresentação
             // fatAtualSimFat_label
             // 
             this.fatAtualSimFat_label.AutoSize = true;
-            this.fatAtualSimFat_label.Location = new System.Drawing.Point(9, 351);
+            this.fatAtualSimFat_label.Location = new System.Drawing.Point(9, 331);
             this.fatAtualSimFat_label.Name = "fatAtualSimFat_label";
             this.fatAtualSimFat_label.Size = new System.Drawing.Size(136, 13);
             this.fatAtualSimFat_label.TabIndex = 7;
@@ -828,7 +827,6 @@ namespace IdentificaVazSAAE.Apresentação
             | System.Windows.Forms.AnchorStyles.Right)));
             this.simulaFaturamento_groupBox.Controls.Add(this.simFatConsMaxPadr_radioButton);
             this.simulaFaturamento_groupBox.Controls.Add(this.simFatMed3ConsMaxPadr_radioButton);
-            this.simulaFaturamento_groupBox.Controls.Add(this.simFatMedConsMax_radioButton);
             this.simulaFaturamento_groupBox.Controls.Add(this.simFat_button);
             this.simulaFaturamento_groupBox.Controls.Add(this.simFatMed3_radioButton);
             this.simulaFaturamento_groupBox.Controls.Add(this.simFatMaxPerm_radioButton);
@@ -836,7 +834,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.simulaFaturamento_groupBox.Controls.Add(this.simFatMedMeses_radioButton);
             this.simulaFaturamento_groupBox.Location = new System.Drawing.Point(6, 167);
             this.simulaFaturamento_groupBox.Name = "simulaFaturamento_groupBox";
-            this.simulaFaturamento_groupBox.Size = new System.Drawing.Size(648, 181);
+            this.simulaFaturamento_groupBox.Size = new System.Drawing.Size(648, 161);
             this.simulaFaturamento_groupBox.TabIndex = 5;
             this.simulaFaturamento_groupBox.TabStop = false;
             this.simulaFaturamento_groupBox.Text = "Simulação de faturamento:";
@@ -844,7 +842,7 @@ namespace IdentificaVazSAAE.Apresentação
             // simFatMed3ConsMaxPadr_radioButton
             // 
             this.simFatMed3ConsMaxPadr_radioButton.AutoSize = true;
-            this.simFatMed3ConsMaxPadr_radioButton.Location = new System.Drawing.Point(6, 157);
+            this.simFatMed3ConsMaxPadr_radioButton.Location = new System.Drawing.Point(6, 134);
             this.simFatMed3ConsMaxPadr_radioButton.Name = "simFatMed3ConsMaxPadr_radioButton";
             this.simFatMed3ConsMaxPadr_radioButton.Size = new System.Drawing.Size(473, 17);
             this.simFatMed3ConsMaxPadr_radioButton.TabIndex = 6;
@@ -852,18 +850,6 @@ namespace IdentificaVazSAAE.Apresentação
             this.simFatMed3ConsMaxPadr_radioButton.Text = "Simular faturamento de acordo com a média dos últimos 3 meses com variação máxima" +
     " padrão.";
             this.simFatMed3ConsMaxPadr_radioButton.UseVisualStyleBackColor = true;
-            // 
-            // simFatMedConsMax_radioButton
-            // 
-            this.simFatMedConsMax_radioButton.AutoSize = true;
-            this.simFatMedConsMax_radioButton.Location = new System.Drawing.Point(6, 111);
-            this.simFatMedConsMax_radioButton.Name = "simFatMedConsMax_radioButton";
-            this.simFatMedConsMax_radioButton.Size = new System.Drawing.Size(429, 17);
-            this.simFatMedConsMax_radioButton.TabIndex = 5;
-            this.simFatMedConsMax_radioButton.TabStop = true;
-            this.simFatMedConsMax_radioButton.Text = "Simular faturamento de acordo com a média dos meses com variação máxima padrão.\r\n" +
-    "";
-            this.simFatMedConsMax_radioButton.UseVisualStyleBackColor = true;
             // 
             // simFat_button
             // 
@@ -874,6 +860,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.simFat_button.TabIndex = 4;
             this.simFat_button.Text = "&Simulação do Faturamento";
             this.simFat_button.UseVisualStyleBackColor = true;
+            this.simFat_button.Click += new System.EventHandler(this.simFat_button_Click);
             // 
             // simFatMed3_radioButton
             // 
@@ -889,7 +876,7 @@ namespace IdentificaVazSAAE.Apresentação
             // simFatMaxPerm_radioButton
             // 
             this.simFatMaxPerm_radioButton.AutoSize = true;
-            this.simFatMaxPerm_radioButton.Location = new System.Drawing.Point(6, 134);
+            this.simFatMaxPerm_radioButton.Location = new System.Drawing.Point(6, 111);
             this.simFatMaxPerm_radioButton.Name = "simFatMaxPerm_radioButton";
             this.simFatMaxPerm_radioButton.Size = new System.Drawing.Size(402, 17);
             this.simFatMaxPerm_radioButton.TabIndex = 2;
@@ -1063,7 +1050,6 @@ namespace IdentificaVazSAAE.Apresentação
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label fatAtualSimFat_label;
         private System.Windows.Forms.RadioButton simFatMed3ConsMaxPadr_radioButton;
-        private System.Windows.Forms.RadioButton simFatMedConsMax_radioButton;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox mediaUlt3meses_textBox;

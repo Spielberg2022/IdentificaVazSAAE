@@ -147,6 +147,14 @@ namespace IdentificaVazSAAE.Aplicação
             return vazamento_Dom.mediaGeral;
         }
 
+        public double SimulaValorConta(ClassVerificaVazamento_Dom vazamento_Dom)
+        {
+            verificaVazamento_Per.sqlConnection = connection;
+            vazamento_Dom.valorConta = verificaVazamento_Per.ValorConta(vazamento_Dom);
+            verificaVazamento_Dom.valorConta = vazamento_Dom.valorConta;
+            return vazamento_Dom.valorConta;
+        }
+
         public double VerConsumoMaximo(ClassVerificaVazamento_Dom vazamento_Dom)
         {
             verificaVazamento_Per.sqlConnection = connection;

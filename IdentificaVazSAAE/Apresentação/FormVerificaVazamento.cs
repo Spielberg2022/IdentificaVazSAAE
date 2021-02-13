@@ -110,5 +110,24 @@ namespace IdentificaVazSAAE.Apresentação
         {
             Application.Exit();
         }
+
+        private void simFat_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom).ToString());
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message,
+                        "Erro:",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+            }
+            finally
+            {
+
+            }
+        }
     }
 }

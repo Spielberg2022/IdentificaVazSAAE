@@ -12,6 +12,7 @@ namespace IdentificaVazSAAE.Domínio
         public DataTable vazamentos { get; set; }
         public string dataRef { get; set; }
         public double consumoAtual { get; set; }
+        public double valorConta { get; set; }
         public Int64 ligacao { get; set; }
         public DataTable rol { get; set; }
         public double consumoPadraoMaximo { get; set; }
