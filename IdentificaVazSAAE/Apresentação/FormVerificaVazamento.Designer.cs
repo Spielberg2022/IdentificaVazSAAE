@@ -100,6 +100,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.label19 = new System.Windows.Forms.Label();
             this.fatAtualSimFat_label = new System.Windows.Forms.Label();
             this.simulaFaturamento_groupBox = new System.Windows.Forms.GroupBox();
+            this.simFatConsMaxPadr_radioButton = new System.Windows.Forms.RadioButton();
             this.simFatMed3ConsMaxPadr_radioButton = new System.Windows.Forms.RadioButton();
             this.simFat_button = new System.Windows.Forms.Button();
             this.simFatMed3_radioButton = new System.Windows.Forms.RadioButton();
@@ -108,7 +109,7 @@ namespace IdentificaVazSAAE.Apresentação
             this.simFatMedMeses_radioButton = new System.Windows.Forms.RadioButton();
             this.vazamento_label = new System.Windows.Forms.Label();
             this.vazamentos_dataGridView = new System.Windows.Forms.DataGridView();
-            this.simFatConsMaxPadr_radioButton = new System.Windows.Forms.RadioButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.leituras_tabControl.SuspendLayout();
             this.leituras_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leituras_dataGridView)).BeginInit();
@@ -789,6 +790,7 @@ namespace IdentificaVazSAAE.Apresentação
             // 
             // vazamento_tabPage
             // 
+            this.vazamento_tabPage.Controls.Add(this.textBox1);
             this.vazamento_tabPage.Controls.Add(this.label19);
             this.vazamento_tabPage.Controls.Add(this.fatAtualSimFat_label);
             this.vazamento_tabPage.Controls.Add(this.simulaFaturamento_groupBox);
@@ -815,7 +817,7 @@ namespace IdentificaVazSAAE.Apresentação
             // fatAtualSimFat_label
             // 
             this.fatAtualSimFat_label.AutoSize = true;
-            this.fatAtualSimFat_label.Location = new System.Drawing.Point(9, 331);
+            this.fatAtualSimFat_label.Location = new System.Drawing.Point(9, 337);
             this.fatAtualSimFat_label.Name = "fatAtualSimFat_label";
             this.fatAtualSimFat_label.Size = new System.Drawing.Size(136, 13);
             this.fatAtualSimFat_label.TabIndex = 7;
@@ -838,6 +840,17 @@ namespace IdentificaVazSAAE.Apresentação
             this.simulaFaturamento_groupBox.TabIndex = 5;
             this.simulaFaturamento_groupBox.TabStop = false;
             this.simulaFaturamento_groupBox.Text = "Simulação de faturamento:";
+            // 
+            // simFatConsMaxPadr_radioButton
+            // 
+            this.simFatConsMaxPadr_radioButton.AutoSize = true;
+            this.simFatConsMaxPadr_radioButton.Location = new System.Drawing.Point(6, 88);
+            this.simFatConsMaxPadr_radioButton.Name = "simFatConsMaxPadr_radioButton";
+            this.simFatConsMaxPadr_radioButton.Size = new System.Drawing.Size(315, 17);
+            this.simFatConsMaxPadr_radioButton.TabIndex = 7;
+            this.simFatConsMaxPadr_radioButton.TabStop = true;
+            this.simFatConsMaxPadr_radioButton.Text = "Simular faturamento de acordo com consumo máximo padrão.\r\n";
+            this.simFatConsMaxPadr_radioButton.UseVisualStyleBackColor = true;
             // 
             // simFatMed3ConsMaxPadr_radioButton
             // 
@@ -927,16 +940,12 @@ namespace IdentificaVazSAAE.Apresentação
             this.vazamentos_dataGridView.Size = new System.Drawing.Size(648, 132);
             this.vazamentos_dataGridView.TabIndex = 3;
             // 
-            // simFatConsMaxPadr_radioButton
+            // textBox1
             // 
-            this.simFatConsMaxPadr_radioButton.AutoSize = true;
-            this.simFatConsMaxPadr_radioButton.Location = new System.Drawing.Point(6, 88);
-            this.simFatConsMaxPadr_radioButton.Name = "simFatConsMaxPadr_radioButton";
-            this.simFatConsMaxPadr_radioButton.Size = new System.Drawing.Size(315, 17);
-            this.simFatConsMaxPadr_radioButton.TabIndex = 7;
-            this.simFatConsMaxPadr_radioButton.TabStop = true;
-            this.simFatConsMaxPadr_radioButton.Text = "Simular faturamento de acordo com consumo máximo padrão.\r\n";
-            this.simFatConsMaxPadr_radioButton.UseVisualStyleBackColor = true;
+            this.textBox1.Location = new System.Drawing.Point(151, 334);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 9;
             // 
             // FormVerificaVazamento
             // 
@@ -1054,5 +1063,6 @@ namespace IdentificaVazSAAE.Apresentação
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox mediaUlt3meses_textBox;
         private System.Windows.Forms.RadioButton simFatConsMaxPadr_radioButton;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
