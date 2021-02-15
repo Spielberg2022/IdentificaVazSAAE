@@ -147,10 +147,20 @@ namespace IdentificaVazSAAE.Aplicação
             return vazamento_Dom.mediaGeral;
         }
 
-        public double SimulaValorConta(ClassVerificaVazamento_Dom vazamento_Dom)
+        public double SimulaValorConta(ClassVerificaVazamento_Dom vazamento_Dom, int linhaTabVazamento, double consumoAFaturar)
         {
             verificaVazamento_Per.sqlConnection = connection;
-            vazamento_Dom.valorConta = verificaVazamento_Per.ValorConta(vazamento_Dom);
+            string dataRef = vazamento_Dom.vazamentos.Rows[linhaTabVazamento][0].ToString().Substring(3, 4) + vazamento_Dom.vazamentos.Rows[linhaTabVazamento][0].ToString().Substring(0,2);
+            vazamento_Dom.valorConta = verificaVazamento_Per.ValorConta(vazamento_Dom, dataRef, consumoAFaturar);
+            verificaVazamento_Dom.valorConta = vazamento_Dom.valorConta;
+            return vazamento_Dom.valorConta;
+        }
+
+        public double SimulaValorConta(ClassVerificaVazamento_Dom vazamento_Dom, int linhaTabVazamento)
+        {
+            verificaVazamento_Per.sqlConnection = connection;
+            string dataRef = vazamento_Dom.vazamentos.Rows[linhaTabVazamento][0].ToString().Substring(3, 4) + vazamento_Dom.vazamentos.Rows[linhaTabVazamento][0].ToString().Substring(0, 2);
+            vazamento_Dom.valorConta = verificaVazamento_Per.ValorConta(vazamento_Dom, dataRef);
             verificaVazamento_Dom.valorConta = vazamento_Dom.valorConta;
             return vazamento_Dom.valorConta;
         }

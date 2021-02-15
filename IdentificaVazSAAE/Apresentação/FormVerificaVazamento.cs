@@ -69,7 +69,7 @@ namespace IdentificaVazSAAE.Apresentação
                     verificaVazamento_Dom.consumoPadraoMaximo = verificaVazamento_Apl.VerConsumoPadraoMax(verificaVazamento_Dom);
                     mediaPadraoMax_textBox.Text = verificaVazamento_Dom.consumoPadraoMaximo.ToString();
                     if (verificaVazamento_Apl.verificaUltConta())
-                        MessageBox.Show("Possível Vazamento! Última conta faturada excedeu o limite de consumo!\n\nData de referência: " + verificaVazamento_Apl.verificaVazamento_Dom.dataRef + ".\nConsumo Faturado: " + verificaVazamento_Apl.verificaVazamento_Dom.consumoAtual + ".\nConsumo Máximo Permitido: " + verificaVazamento_Dom.consumoPadraoMaximo + ".",
+                        MessageBox.Show("Possível Vazamento! Última conta faturada excedeu o limite de consumo em comparação com a conta do mês anterior!\n\nData de referência: " + verificaVazamento_Apl.verificaVazamento_Dom.dataRef + ".\nConsumo Faturado: " + verificaVazamento_Apl.verificaVazamento_Dom.consumoAtual + ".\nConsumo Máximo Permitido: " + verificaVazamento_Dom.consumoPadraoMaximo + ".",
                             "Atenção!",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation);
@@ -79,7 +79,10 @@ namespace IdentificaVazSAAE.Apresentação
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
                     if (verificaVazamento_Apl.verificaVazamento_Dom.leituras.Rows.Count > 0)
-                        vazamentos_dataGridView.DataSource = verificaVazamento_Apl.verificaVazamentos(verificaVazamento_Dom);
+                    {
+                        verificaVazamento_Dom.vazamentos = verificaVazamento_Apl.verificaVazamentos(verificaVazamento_Dom);
+                        vazamentos_dataGridView.DataSource = verificaVazamento_Dom.vazamentos;
+                    }
                     else
                         MessageBox.Show("Tabela de leituras vazia",
                             "Erro ",
@@ -115,7 +118,112 @@ namespace IdentificaVazSAAE.Apresentação
         {
             try
             {
-                MessageBox.Show(verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom).ToString());
+                int linha;
+                linha = int.Parse(vazamentos_dataGridView.CurrentRow.Index.ToString());
+                if (simFatMedMeses_radioButton.Checked)
+                {
+                    switch (verificaVazamento_Dom.vazamentos.Rows[linha][0].ToString().Substring(0, 2))
+                    {
+                        case "01":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaJan).ToString();
+                            break;
+                        case "02":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaFev).ToString();
+                            break;
+                        case "03":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaMar).ToString();
+                            break;
+                        case "04":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaAbr).ToString();
+                            break;
+                        case "05":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaMai).ToString();
+                            break;
+                        case "06":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaJun).ToString();
+                            break;
+                        case "07":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaJul).ToString();
+                            break;
+                        case "08":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaAgo).ToString();
+                            break;
+                        case "09":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaSet).ToString();
+                            break;
+                        case "10":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaOut).ToString();
+                            break;
+                        case "11":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaNov).ToString();
+                            break;
+                        case "12":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaDez).ToString();
+                            break;
+                        default:
+                            MessageBox.Show("Nenhum mês selecionado! Selecione algum mês!",
+                                "Atenção:",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+                            break;
+                    }
+                }
+                else if (simFatMedGer_radioButton.Checked)
+                    vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaGeral).ToString();
+                else if (simFatMed3_radioButton.Checked)
+                    vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediault3meses).ToString();
+                else if(simFatConsMaxPadr_radioButton.Checked)
+                    vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.consumoPadraoMaximo).ToString();
+                else if(simFatMed3ConsMaxPadr_radioButton.Checked)
+                {
+                    switch (verificaVazamento_Dom.vazamentos.Rows[linha][0].ToString().Substring(0, 2))
+                    {
+                        case "01":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaJan + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        case "02":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaFev + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        case "03":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaMar + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        case "04":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaAbr + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        case "05":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaMai + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        case "06":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaJun + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        case "07":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaJul + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        case "08":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaAgo + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        case "09":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaSet + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        case "10":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaOut + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        case "11":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaNov + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        case "12":
+                            vrSimulação_textBox.Text = verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha, verificaVazamento_Dom.mediaDez + verificaVazamento_Dom.desvioPadraoGeral).ToString();
+                            break;
+                        default:
+                            MessageBox.Show("Nenhum mês selecionado! Selecione algum mês!",
+                                "Atenção:",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+                            break;
+                    }
+                }
+
+                //MessageBox.Show(verificaVazamento_Apl.SimulaValorConta(verificaVazamento_Dom, linha).ToString());
             }
             catch (Exception error)
             {

@@ -238,7 +238,7 @@ namespace IdentificaVazSAAE.Persistência
 			return vazamentos;
 		}
 
-        public double ValorConta(ClassVerificaVazamento_Dom vazamento_Dom)
+        public double ValorConta(ClassVerificaVazamento_Dom vazamento_Dom, string dataRef, double consumoAFaturar)
         {
 			try
 			{
@@ -258,7 +258,7 @@ namespace IdentificaVazSAAE.Persistência
 				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
 				adaptador.SelectCommand = comando;
 
-				comando.CommandText = "select leituras.Data_Ref, leituras.Consumo_faturado, usuario.economia_dom, usuario.economia_com, usuario.economia_ind, usuario.economia_pub, usuario.economia_out from usuario, LEITURAS where usuario.cod_ligacao = @ligacao and leituras.cod_ligacao = usuario.cod_ligacao and leituras.Data_Ref in(select SUBSTRING((select data_ult_fech from controle),1,6) + 1) and usuario.cod_ligacao in(select cod_ligacao from DADOSADICIONAISUSUARIO where D02 = 0)";
+				comando.CommandText = "select leituras.Data_Ref, leituras.Consumo_faturado, usuario.economia_dom, usuario.economia_com, usuario.economia_ind, usuario.economia_pub, usuario.economia_out from usuario, LEITURAS where usuario.cod_ligacao = @ligacao and leituras.cod_ligacao = usuario.cod_ligacao and leituras.Data_Ref = '" + dataRef + "' and usuario.cod_ligacao in(select cod_ligacao from DADOSADICIONAISUSUARIO where D02 = 0)";
 				sqlConnection.Open();
 				adaptador.SelectCommand.ExecuteNonQuery();
 				adaptador.Fill(valorAgua);
@@ -271,7 +271,7 @@ namespace IdentificaVazSAAE.Persistência
 				consEconOut = int.Parse(valorAgua.Rows[0]["economia_out"].ToString());
 				consFaturado = int.Parse(valorAgua.Rows[0]["Consumo_faturado"].ToString());
 
-				consPorEcon = consFaturado / (consEconDom + consEconCom + consEconInd + consEconPub + consEconOut);
+				consPorEcon = consumoAFaturar / (consEconDom + consEconCom + consEconInd + consEconPub + consEconOut);
 
 				if (consEconDom > 0)
                 {
@@ -341,6 +341,10 @@ namespace IdentificaVazSAAE.Persistência
 							+ double.Parse(anexo.Rows[0]["vr_TBO_agua_Atual"].ToString())
 							+ double.Parse(anexo.Rows[0]["vr_TBO_esgo_Atual"].ToString());				
                 }
+				else
+					valorContaA = double.Parse(anexo.Rows[0]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[0]["vr_TBO_esgo_Atual"].ToString());
+
 				if (consEconCom > 0)
 				{
 					if (consPorEcon <= double.Parse(anexo.Rows[2]["faixa_cons6"].ToString()) && consPorEcon > double.Parse(anexo.Rows[2]["faixa_cons5"].ToString()))
@@ -409,6 +413,10 @@ namespace IdentificaVazSAAE.Persistência
 							+ double.Parse(anexo.Rows[2]["vr_TBO_agua_Atual"].ToString())
 							+ double.Parse(anexo.Rows[2]["vr_TBO_esgo_Atual"].ToString());
 				}
+				else 
+					valorContaB = double.Parse(anexo.Rows[2]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[2]["vr_TBO_esgo_Atual"].ToString());
+
 				if (consEconInd > 0)
 				{
 					if (consPorEcon <= double.Parse(anexo.Rows[3]["faixa_cons6"].ToString()) && consPorEcon > double.Parse(anexo.Rows[3]["faixa_cons5"].ToString()))
@@ -477,6 +485,10 @@ namespace IdentificaVazSAAE.Persistência
 							+ double.Parse(anexo.Rows[3]["vr_TBO_agua_Atual"].ToString())
 							+ double.Parse(anexo.Rows[3]["vr_TBO_esgo_Atual"].ToString());
 				}
+				else
+					valorContaC = double.Parse(anexo.Rows[3]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[3]["vr_TBO_esgo_Atual"].ToString());
+
 				if (consEconPub > 0)
 				{
 					if (consPorEcon <= double.Parse(anexo.Rows[4]["faixa_cons6"].ToString()) && consPorEcon > double.Parse(anexo.Rows[4]["faixa_cons5"].ToString()))
@@ -545,6 +557,10 @@ namespace IdentificaVazSAAE.Persistência
 							+ double.Parse(anexo.Rows[4]["vr_TBO_agua_Atual"].ToString())
 							+ double.Parse(anexo.Rows[4]["vr_TBO_esgo_Atual"].ToString());
 				}
+				else
+					valorContaD = double.Parse(anexo.Rows[4]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[4]["vr_TBO_esgo_Atual"].ToString());
+
 				if (consEconOut > 0)
 				{
 					if (consPorEcon <= double.Parse(anexo.Rows[7]["faixa_cons6"].ToString()) && consPorEcon > double.Parse(anexo.Rows[7]["faixa_cons5"].ToString()))
@@ -582,7 +598,7 @@ namespace IdentificaVazSAAE.Persistência
 							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))
 							+ (double.Parse(anexo.Rows[7]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString()))
 							+ (double.Parse(anexo.Rows[7]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString())))
-							+ ((double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString())
+							+ ((double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
 							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))
 							+ (double.Parse(anexo.Rows[7]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString()))
 							+ (double.Parse(anexo.Rows[7]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))) / 2)
@@ -613,8 +629,420 @@ namespace IdentificaVazSAAE.Persistência
 							+ double.Parse(anexo.Rows[7]["vr_TBO_agua_Atual"].ToString())
 							+ double.Parse(anexo.Rows[7]["vr_TBO_esgo_Atual"].ToString());
 				}
+				else
+					valorContaO = double.Parse(anexo.Rows[7]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[7]["vr_TBO_esgo_Atual"].ToString());
 
 				valorConta = (valorContaA*consEconDom) + (valorContaB*consEconCom) + (valorContaC*consEconInd) + (valorContaD*consEconPub) + (valorContaO*consEconOut);
+			}
+			catch (Exception error)
+			{
+				erro = error.Message;
+			}
+			finally
+			{
+				sqlConnection.Close();
+			}
+
+			return valorConta;
+		}
+
+		public double ValorConta(ClassVerificaVazamento_Dom vazamento_Dom, string dataRef)
+		{
+			try
+			{
+				adaptador = new SqlDataAdapter();
+				comando = new SqlCommand();
+				valorAgua = new DataTable();
+				anexo = new DataTable();
+				erro = "";
+				string data_ref;
+				int consEconDom, consEconCom, consEconInd, consEconPub, consEconOut, consFaturado;
+				double consPorEcon;
+
+				anexo = DadosAnexo();
+
+				comando.Connection = sqlConnection;
+				comando.Parameters.Add("@ligacao", SqlDbType.Int);
+				comando.Parameters["@ligacao"].Value = Int64.Parse(vazamento_Dom.ligacao.ToString());
+				adaptador.SelectCommand = comando;
+
+				comando.CommandText = "select leituras.Data_Ref, leituras.Consumo_faturado, usuario.economia_dom, usuario.economia_com, usuario.economia_ind, usuario.economia_pub, usuario.economia_out from usuario, LEITURAS where usuario.cod_ligacao = @ligacao and leituras.cod_ligacao = usuario.cod_ligacao and leituras.Data_Ref = '" + dataRef + "' and usuario.cod_ligacao in(select cod_ligacao from DADOSADICIONAISUSUARIO where D02 = 0)";
+				sqlConnection.Open();
+				adaptador.SelectCommand.ExecuteNonQuery();
+				adaptador.Fill(valorAgua);
+
+				data_ref = valorAgua.Rows[0]["Data_Ref"].ToString();
+				consEconDom = int.Parse(valorAgua.Rows[0]["economia_dom"].ToString());
+				consEconCom = int.Parse(valorAgua.Rows[0]["economia_com"].ToString());
+				consEconInd = int.Parse(valorAgua.Rows[0]["economia_ind"].ToString());
+				consEconPub = int.Parse(valorAgua.Rows[0]["economia_pub"].ToString());
+				consEconOut = int.Parse(valorAgua.Rows[0]["economia_out"].ToString());
+				consFaturado = int.Parse(valorAgua.Rows[0]["Consumo_faturado"].ToString());
+
+				consPorEcon = consFaturado / (consEconDom + consEconCom + consEconInd + consEconPub + consEconOut);
+
+				if (consEconDom > 0)
+				{
+					if (consPorEcon <= double.Parse(anexo.Rows[0]["faixa_cons6"].ToString()) && consPorEcon > double.Parse(anexo.Rows[0]["faixa_cons5"].ToString()))
+						valorContaA = (double.Parse(anexo.Rows[0]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual5"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons5"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual6"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[0]["faixa_cons5"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[0]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual5"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons5"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual6"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[0]["faixa_cons5"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[0]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[0]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[0]["faixa_cons5"].ToString()) && consPorEcon > double.Parse(anexo.Rows[0]["faixa_cons4"].ToString()))
+						valorContaA = (double.Parse(anexo.Rows[0]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual5"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[0]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[0]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual5"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[0]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[0]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[0]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[0]["faixa_cons4"].ToString()) && consPorEcon > double.Parse(anexo.Rows[0]["faixa_cons3"].ToString()))
+						valorContaA = (double.Parse(anexo.Rows[0]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[0]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[0]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[0]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[0]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[0]["faixa_cons3"].ToString()) && consPorEcon > double.Parse(anexo.Rows[0]["faixa_cons2"].ToString()))
+						valorContaA = (double.Parse(anexo.Rows[0]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual3"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[0]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual3"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[0]["faixa_cons2"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[0]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[0]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[0]["faixa_cons2"].ToString()) && consPorEcon > double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+						valorContaA = (double.Parse(anexo.Rows[0]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual2"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[0]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[0]["vl_atual2"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[0]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[0]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[0]["faixa_cons1"].ToString()))
+						valorContaA = (double.Parse(anexo.Rows[0]["vl_atual1"].ToString()) * consPorEcon)
+							+ ((double.Parse(anexo.Rows[0]["vl_atual1"].ToString()) * consPorEcon) / 2)
+							+ double.Parse(anexo.Rows[0]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[0]["vr_TBO_esgo_Atual"].ToString());
+				}
+				else
+					valorContaA = double.Parse(anexo.Rows[0]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[0]["vr_TBO_esgo_Atual"].ToString());
+
+				if (consEconCom > 0)
+				{
+					if (consPorEcon <= double.Parse(anexo.Rows[2]["faixa_cons6"].ToString()) && consPorEcon > double.Parse(anexo.Rows[2]["faixa_cons5"].ToString()))
+						valorContaB = (double.Parse(anexo.Rows[2]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual5"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons5"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual6"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[2]["faixa_cons5"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[2]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual5"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons5"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual6"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[2]["faixa_cons5"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[2]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[2]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[2]["faixa_cons5"].ToString()) && consPorEcon > double.Parse(anexo.Rows[2]["faixa_cons4"].ToString()))
+						valorContaB = (double.Parse(anexo.Rows[2]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual5"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[2]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[2]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual5"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[2]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[2]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[2]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[2]["faixa_cons4"].ToString()) && consPorEcon > double.Parse(anexo.Rows[2]["faixa_cons3"].ToString()))
+						valorContaB = (double.Parse(anexo.Rows[2]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[2]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[2]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[2]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[2]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[2]["faixa_cons3"].ToString()) && consPorEcon > double.Parse(anexo.Rows[2]["faixa_cons2"].ToString()))
+						valorContaB = (double.Parse(anexo.Rows[2]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual3"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[2]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual3"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[2]["faixa_cons2"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[2]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[2]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[2]["faixa_cons2"].ToString()) && consPorEcon > double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+						valorContaB = (double.Parse(anexo.Rows[2]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual2"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[2]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[2]["vl_atual2"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[2]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[2]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[2]["faixa_cons1"].ToString()))
+						valorContaB = (double.Parse(anexo.Rows[2]["vl_atual1"].ToString()) * consPorEcon)
+							+ ((double.Parse(anexo.Rows[2]["vl_atual1"].ToString()) * consPorEcon) / 2)
+							+ double.Parse(anexo.Rows[2]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[2]["vr_TBO_esgo_Atual"].ToString());
+				}
+				else
+					valorContaB = double.Parse(anexo.Rows[2]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[2]["vr_TBO_esgo_Atual"].ToString());
+
+				if (consEconInd > 0)
+				{
+					if (consPorEcon <= double.Parse(anexo.Rows[3]["faixa_cons6"].ToString()) && consPorEcon > double.Parse(anexo.Rows[3]["faixa_cons5"].ToString()))
+						valorContaC = (double.Parse(anexo.Rows[3]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual5"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons5"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual6"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[3]["faixa_cons5"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[3]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual5"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons5"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual6"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[3]["faixa_cons5"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[3]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[3]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[3]["faixa_cons5"].ToString()) && consPorEcon > double.Parse(anexo.Rows[3]["faixa_cons4"].ToString()))
+						valorContaC = (double.Parse(anexo.Rows[3]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual5"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[3]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[3]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual5"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[3]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[3]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[3]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[3]["faixa_cons4"].ToString()) && consPorEcon > double.Parse(anexo.Rows[3]["faixa_cons3"].ToString()))
+						valorContaC = (double.Parse(anexo.Rows[3]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[3]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[3]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[3]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[3]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[3]["faixa_cons3"].ToString()) && consPorEcon > double.Parse(anexo.Rows[3]["faixa_cons2"].ToString()))
+						valorContaC = (double.Parse(anexo.Rows[3]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual3"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[3]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual3"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[3]["faixa_cons2"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[3]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[3]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[3]["faixa_cons2"].ToString()) && consPorEcon > double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+						valorContaC = (double.Parse(anexo.Rows[3]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual2"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[3]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[3]["vl_atual2"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[3]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[3]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[3]["faixa_cons1"].ToString()))
+						valorContaC = (double.Parse(anexo.Rows[3]["vl_atual1"].ToString()) * consPorEcon)
+							+ ((double.Parse(anexo.Rows[3]["vl_atual1"].ToString()) * consPorEcon) / 2)
+							+ double.Parse(anexo.Rows[3]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[3]["vr_TBO_esgo_Atual"].ToString());
+				}
+				else
+					valorContaC = double.Parse(anexo.Rows[3]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[3]["vr_TBO_esgo_Atual"].ToString());
+
+				if (consEconPub > 0)
+				{
+					if (consPorEcon <= double.Parse(anexo.Rows[4]["faixa_cons6"].ToString()) && consPorEcon > double.Parse(anexo.Rows[4]["faixa_cons5"].ToString()))
+						valorContaD = (double.Parse(anexo.Rows[4]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual5"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons5"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual6"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[4]["faixa_cons5"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[4]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual5"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons5"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual6"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[4]["faixa_cons5"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[4]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[4]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[4]["faixa_cons5"].ToString()) && consPorEcon > double.Parse(anexo.Rows[4]["faixa_cons4"].ToString()))
+						valorContaD = (double.Parse(anexo.Rows[4]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual5"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[4]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[4]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual5"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[4]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[4]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[4]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[4]["faixa_cons4"].ToString()) && consPorEcon > double.Parse(anexo.Rows[4]["faixa_cons3"].ToString()))
+						valorContaD = (double.Parse(anexo.Rows[4]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[4]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[4]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[4]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[4]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[4]["faixa_cons3"].ToString()) && consPorEcon > double.Parse(anexo.Rows[4]["faixa_cons2"].ToString()))
+						valorContaD = (double.Parse(anexo.Rows[4]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual3"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[4]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual3"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[4]["faixa_cons2"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[4]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[4]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[4]["faixa_cons2"].ToString()) && consPorEcon > double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+						valorContaD = (double.Parse(anexo.Rows[4]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual2"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[4]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[4]["vl_atual2"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[4]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[4]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[4]["faixa_cons1"].ToString()))
+						valorContaD = (double.Parse(anexo.Rows[4]["vl_atual1"].ToString()) * consPorEcon)
+							+ ((double.Parse(anexo.Rows[4]["vl_atual1"].ToString()) * consPorEcon) / 2)
+							+ double.Parse(anexo.Rows[4]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[4]["vr_TBO_esgo_Atual"].ToString());
+				}
+				else
+					valorContaD = double.Parse(anexo.Rows[4]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[4]["vr_TBO_esgo_Atual"].ToString());
+
+				if (consEconOut > 0)
+				{
+					if (consPorEcon <= double.Parse(anexo.Rows[7]["faixa_cons6"].ToString()) && consPorEcon > double.Parse(anexo.Rows[7]["faixa_cons5"].ToString()))
+						valorContaO = (double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual5"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons5"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual6"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons5"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual5"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons5"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual6"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons5"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[7]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[7]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[7]["faixa_cons5"].ToString()) && consPorEcon > double.Parse(anexo.Rows[7]["faixa_cons4"].ToString()))
+						valorContaO = (double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual5"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual4"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons4"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual5"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons4"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[7]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[7]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[7]["faixa_cons4"].ToString()) && consPorEcon > double.Parse(anexo.Rows[7]["faixa_cons3"].ToString()))
+						valorContaO = (double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual3"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual4"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons3"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[7]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[7]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[7]["faixa_cons3"].ToString()) && consPorEcon > double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))
+						valorContaO = (double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual3"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual3"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString())) - (double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[7]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[7]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[7]["faixa_cons2"].ToString()) && consPorEcon > double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+						valorContaO = (double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString())))
+							+ ((double.Parse(anexo.Rows[7]["vl_atual1"].ToString())) * (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+							+ (double.Parse(anexo.Rows[7]["vl_atual2"].ToString())) * (consPorEcon - (double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))) / 2)
+							+ double.Parse(anexo.Rows[7]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[7]["vr_TBO_esgo_Atual"].ToString());
+
+					else if (consPorEcon <= double.Parse(anexo.Rows[7]["faixa_cons1"].ToString()))
+						valorContaO = (double.Parse(anexo.Rows[7]["vl_atual1"].ToString()) * consPorEcon)
+							+ ((double.Parse(anexo.Rows[7]["vl_atual1"].ToString()) * consPorEcon) / 2)
+							+ double.Parse(anexo.Rows[7]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[7]["vr_TBO_esgo_Atual"].ToString());
+				}
+				else
+					valorContaO = double.Parse(anexo.Rows[7]["vr_TBO_agua_Atual"].ToString())
+							+ double.Parse(anexo.Rows[7]["vr_TBO_esgo_Atual"].ToString());
+
+				valorConta = (valorContaA * consEconDom) + (valorContaB * consEconCom) + (valorContaC * consEconInd) + (valorContaD * consEconPub) + (valorContaO * consEconOut);
 			}
 			catch (Exception error)
 			{
